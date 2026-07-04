@@ -231,3 +231,25 @@ body {
   border-left-color: #ef4444;
   background-color: rgba(239, 68, 68, 0.03);
 }
+
+/* ═══════════════════ TARGET HIGHLIGHTS ═══════════════════ */
+:target {
+  scroll-margin-top: 120px;
+  animation: target-glow 2.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  background-color: rgba(245, 158, 11, 0.02) !important;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.05);
+}
+
+@keyframes target-glow {
+  0% {
+    border-color: rgba(245, 158, 11, 0.8) !important;
+    background-color: rgba(245, 158, 11, 0.1) !important;
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.25);
+  }
+  100% {
+    border-color: rgba(245, 158, 11, 0.35) !important;
+    background-color: rgba(245, 158, 11, 0.02) !important;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.05);
+  }
+}

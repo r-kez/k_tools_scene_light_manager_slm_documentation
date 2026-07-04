@@ -1,0 +1,169 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import MainPanelTabs from '../../components/MainPanelTabs.astro';
+import Icon from '../../components/Icon.astro';
+---
+
+<DocLayout title="UI List Component">
+  <h1>Main Panel — UI List Component</h1>
+  <MainPanelTabs activeTab="main-panel/ui-list" />
+  <p>
+    The <strong>UI List</strong> is the visual representation of the scene's lighting hierarchy inside Scene Light Manager. It provides a dense, information-rich view of every light and emitter object in your scene.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. The Main UI List Structure ──</h2>
+  <p class="mb-6">
+    The central list displays your scene structure, divided into three main types of rows: **World Rows**, **Collection Header Rows**, and **Light Object Rows**.
+  </p>
+
+  <!-- A. World Row -->
+  <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl mb-6">
+    <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+      <Icon name="WORLD" /> A. World Row
+    </h3>
+    <p class="mb-4 text-xs text-zinc-400">
+      Appears at the very top of the list (can be hidden in options) and represents the active environment shading:
+    </p>
+    <ul class="space-y-3 text-xs pl-4 border-l border-white/5">
+      <li>
+        <strong class="text-white"><Icon name="WORLD" /> World Label:</strong> 
+        Displays the active world background shader block.
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="HIDE_OFF" /> / <Icon name="HIDE_ON" /> Mute World:</strong> 
+        Toggles the world background shader on/off. When muted, it isolates scene lights against pure black. <em>Lights up red if muted.</em>
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="STICKY_UVS_LOC" /> / <Icon name="STICKY_UVS_DISABLE" /> Isolate World:</strong> 
+        Isolates the world lighting contribution, temporarily disabling all other scene lights.
+      </li>
+    </ul>
+  </div>
+
+  <!-- B. Collection Header Rows -->
+  <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl mb-6">
+    <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+      <Icon name="COLLECTION_NEW" /> B. Collection Header Rows
+    </h3>
+    <p class="mb-4 text-xs text-zinc-400">
+      Represent rig folders or scene collections, featuring collapse triggers and bulk override locks:
+    </p>
+    <ul class="space-y-3 text-xs pl-4 border-l border-white/5">
+      <li>
+        <strong class="text-white"><Icon name="RIGHTARROW" /> / <Icon name="DOWNARROW_HLT" /> Collapse/Expand Trigger:</strong> 
+        Toggles children visibility in the list.
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="OUTLINER_COLLECTION" /> Color Tag:</strong> 
+        Displays the native Blender outliner collection color tag (e.g. red, orange, green, blue) for quick visual grouping.
+      </li>
+      <li>
+        <strong class="text-white">Inherited Overrides Indicators:</strong>
+        <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+          <li><Icon name="LOCKED" /> / <Icon name="LIGHT_GROUP" /> Light Group Lock — Active parent-level Light Group override.</li>
+          <li><Icon name="LOCKED" /> / <Icon name="LIGHT_LINKING" /> Light Linking Lock — Active parent-level Light Linking override.</li>
+          <li><Icon name="LOCKED" /> / <Icon name="SHADOW_LINKING" /> Shadow Linking Lock — Active parent-level Shadow Linking override.</li>
+          <li><Icon name="icon_exposure_override" /> Exposure Override — Active parent-level Exposure override.</li>
+        </ul>
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="CON_TRACKTO" /> Select Target:</strong> 
+        Selects the rig's tracking target empty in the 3D viewport.
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="EMPTY_AXIS" /> Select Controller:</strong> 
+        Selects the rig's main transform empty controller in the viewport.
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="STICKY_UVS_LOC" /> Isolate Indicator:</strong> 
+        Lights up if this collection is currently soloed.
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="PINNED" /> Pin Indicator:</strong> 
+        Lights up if the collection visibility is pinned.
+      </li>
+      <li>
+        <strong class="text-white">Children Count:</strong> Shows the total number of light sources contained inside, e.g., <code>(3)</code>.
+      </li>
+      <li>
+        <strong class="text-white">Visibility Toggles:</strong>
+        <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+          <li><Icon name="RESTRICT_SELECT_OFF" /> / <Icon name="RESTRICT_SELECT_ON" /> Selectability</li>
+          <li><Icon name="HIDE_OFF" /> / <Icon name="HIDE_ON" /> Viewport Visibility</li>
+          <li><Icon name="RESTRICT_RENDER_OFF" /> / <Icon name="RESTRICT_RENDER_ON" /> Render Visibility</li>
+          <li><Icon name="LOCKED" /> Driven Animation Lock — Shown if visibility is controlled by drivers.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- C. Light Object Rows -->
+  <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl mb-8">
+    <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+      <Icon name="LIGHT" /> C. Light Object Rows
+    </h3>
+    <p class="mb-4 text-xs text-zinc-400">
+      Represent individual light sources, meshes, or helpers:
+    </p>
+    <ul class="space-y-3 text-xs pl-4 border-l border-white/5">
+      <li>
+        <strong class="text-white">Emitter Type Icon:</strong>
+        <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+          <li><Icon name="LIGHT_POINT" /> Point Light</li>
+          <li><Icon name="LIGHT_SUN" /> Sun Light</li>
+          <li><Icon name="LIGHT_SPOT" /> Spot Light</li>
+          <li><Icon name="LIGHT_AREA" /> Area Light</li>
+          <li><Icon name="icon_bouncer" /> Bouncer (Reflector Card)</li>
+          <li><Icon name="icon_blocker" /> Blocker (Absorbent Flag)</li>
+          <li><Icon name="icon_meshlight" /> Mesh Light (Emissive Plane Mesh)</li>
+          <li><Icon name="OUTLINER_OB_MESH" /> Mesh Emitter (Standard mesh with emissive material)</li>
+          <li><Icon name="OUTLINER_OB_EMPTY" /> Controller / Empty</li>
+          <li><Icon name="WORLD" /> HDRI Sphere</li>
+        </ul>
+      </li>
+      <li>
+        <strong class="text-white">Relationship Column Assigner Buttons:</strong>
+        <p class="text-zinc-400 mt-1 mb-2">Clicking these buttons opens a quick popup menu to assign the light to a group/linking collection:</p>
+        <ul class="pl-6 space-y-1.5 list-disc text-zinc-400">
+          <li><Icon name="LIGHT_GROUP" /> Light Group (LG)</li>
+          <li><Icon name="LIGHT_LINKING" /> Light Linking (LL)</li>
+          <li><Icon name="SHADOW_LINKING" /> Shadow Linking (SL)</li>
+        </ul>
+      </li>
+      <li>
+        <strong class="text-white"><Icon name="STICKY_UVS_LOC" /> Isolate Indicator:</strong> 
+        Active if this specific light is soloed.
+      </li>
+      <li>
+        <strong class="text-white">Visibility Toggles:</strong>
+        <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+          <li><Icon name="RESTRICT_SELECT_OFF" /> / <Icon name="RESTRICT_SELECT_ON" /> Selectability</li>
+          <li><Icon name="HIDE_OFF" /> / <Icon name="HIDE_ON" /> Viewport Visibility</li>
+          <li><Icon name="RESTRICT_RENDER_OFF" /> / <Icon name="RESTRICT_RENDER_ON" /> Render Visibility</li>
+          <li><Icon name="LOCKED" /> Driven Animation Lock</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Inline Expanded Details Sub-Row ──</h2>
+  <blockquote>
+    <p>
+      <strong>[NOTE] Expanded Sub-Row Interface:</strong>
+      If a light is selected (and "Auto Expand" is enabled) or if "Expand All Details" is enabled, an indented sub-row <code>└─</code> opens displaying properties directly within the list:
+    </p>
+  </blockquote>
+  <ul class="space-y-3 mb-6 text-xs pl-4 border-l border-white/5">
+    <li>
+      <strong class="text-white">For Lights:</strong> Target Pointer Slot, Power Slider (<code>energy</code>), Color Picker (<code>color</code>).
+    </li>
+    <li>
+      <strong class="text-white">For Controllers/Empties:</strong> Display Type, Display Size.
+    </li>
+  </ul>
+</DocLayout>
+

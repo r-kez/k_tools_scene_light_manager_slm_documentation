@@ -1,204 +1,325 @@
 ---
-import DocLayout from '../layouts/DocLayout.astro';
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
-<DocLayout title="Technical Guide & Overview">
-  
+<Layout title="Scene Light Manager — Premium Blender Lighting Workspace">
+  <!-- Glowing background elements -->
+  <div class="absolute top-[10%] left-[10%] w-[500px] h-[500px] rounded-full pointer-events-none -z-10 blur-[150px] bg-amber-500/10"></div>
+  <div class="absolute top-[40%] right-[5%] w-[600px] h-[600px] rounded-full pointer-events-none -z-10 blur-[180px] bg-blue-500/5"></div>
+
   <!-- Hero Section -->
-  <div class="relative py-12 md:py-16 border-b border-white/5 mb-12 overflow-hidden rounded-2xl">
-    <div class="relative z-10 max-w-2xl">
-      <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-technical-amber mb-2 block">Blender Addon Documentation</span>
-      <h1 class="text-4xl md:text-5xl font-light text-white tracking-tight leading-none mb-4 border-none p-0 mt-0">
-        Scene Light Manager
-      </h1>
-      <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed mb-6">
-        A professional, modular Blender extension designed to optimize lighting workflows. Manage scene hierarchies, collection-level overrides, interactive viewport gizmos, and GPU shader previews from a single unified panel.
-      </p>
-      
-      <div class="flex flex-wrap gap-4">
-        <a href="#features" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-zinc-950 font-mono text-[10px] uppercase tracking-widest font-medium hover:bg-zinc-200 transition-all duration-300">
-          Explore Features
-        </a>
-        <a href="https://kezives.gumroad.com/l/k-tools-mode-highlight" target="_blank" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest font-medium hover:bg-white/10 transition-all duration-300">
-          Gumroad Store
-        </a>
+  <section class="max-w-[1400px] mx-auto px-6 md:px-12 pt-20 pb-16 text-center relative">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 text-amber-400 font-mono text-[9px] md:text-[10px] uppercase tracking-widest mb-6 backdrop-blur-sm animate-pulse">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+      Version 1.0.0 Now Available
+    </div>
+    
+    <h1 class="text-5xl md:text-7xl font-extralight text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto">
+      Sculpt Your Scenes <br class="hidden md:block"/>
+      With <span class="font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 drop-shadow-[0_2px_20px_rgba(245,158,11,0.2)]">Interactive Light</span>
+    </h1>
+
+    <p class="text-sm md:text-lg text-zinc-400 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+      The ultimate parametric lighting suite for Blender. Accelerate your production workflow with collection-level overrides, viewport spatial gizmos, and real-time GPU-accelerated previews.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
+      <a 
+        href={`${base}guide`} 
+        class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-zinc-950 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(255,255,255,0.15)]"
+      >
+        Explore Documentation
+      </a>
+      <a 
+        href="https://kezives.gumroad.com/l/k-tools-mode-highlight" 
+        target="_blank" 
+        class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-zinc-900 border border-white/10 text-white font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-800 hover:border-white/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+      >
+        Gumroad Store
+      </a>
+    </div>
+
+    <!-- Interactive 3D Viewport Simulator (Banner) -->
+    <div class="relative w-full max-w-[1200px] mx-auto bg-zinc-950/40 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-28 group">
+      <!-- Top header bar -->
+      <div class="flex items-center justify-between px-6 py-3 border-b border-white/5 bg-zinc-900/40 font-mono text-[10px] text-zinc-500">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/30"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/30"></span>
+          <span class="ml-2 text-zinc-400">Blender 3D Viewport — SLM_Rig_Active</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span>Global</span>
+          <div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            SOLO ACTIVE
+          </div>
+        </div>
+      </div>
+
+      <!-- Main viewport arena -->
+      <div class="relative w-full aspect-[21/9] bg-gradient-to-b from-zinc-950 to-zinc-900/60 flex items-center justify-center overflow-hidden">
+        <!-- Grid overlay pattern -->
+        <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(circle, #3f3f46 1px, transparent 1px); background-size: 24px 24px;"></div>
+        
+        <!-- Technical center guidelines -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
+          <div class="h-full w-[1px] bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
+        </div>
+
+        <!-- Simulated 3D Elements -->
+        <div class="relative w-[300px] h-[200px] flex items-center justify-center">
+          <!-- Central target mesh (abstract sphere) -->
+          <div class="absolute w-16 h-16 rounded-full border border-white/10 flex items-center justify-center animate-spin" style="animation-duration: 20s">
+            <div class="w-12 h-12 rounded-full border border-dashed border-zinc-600"></div>
+            <!-- Axis lines -->
+            <div class="absolute w-20 h-[1px] bg-zinc-700"></div>
+            <div class="absolute h-20 w-[1px] bg-zinc-700"></div>
+          </div>
+          <div class="absolute w-4 h-4 rounded-full bg-amber-400/20 border border-amber-400 flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.5)]">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          </div>
+
+          <!-- Lights and lines -->
+          <!-- Key Light -->
+          <div class="absolute -top-12 -left-16 flex flex-col items-center group/light">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center relative hover:scale-110 hover:border-amber-400 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+              <!-- Target constraint path line -->
+              <div class="absolute w-[180px] h-[2px] border-t border-dashed border-amber-500/30 origin-bottom-left rotate-[40deg] -bottom-[1px] left-5 pointer-events-none"></div>
+            </div>
+            <span class="text-[8px] font-mono text-amber-400 mt-1 uppercase tracking-wider bg-zinc-950/80 px-1 py-0.5 rounded border border-white/5">Key Light</span>
+          </div>
+
+          <!-- Fill Light -->
+          <div class="absolute top-20 -right-24 flex flex-col items-center group/light">
+            <div class="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center relative hover:scale-110 hover:border-blue-400 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+              <!-- Target constraint path line -->
+              <div class="absolute w-[120px] h-[2px] border-t border-dashed border-blue-500/20 origin-top-right rotate-[145deg] top-4 right-4 pointer-events-none"></div>
+            </div>
+            <span class="text-[8px] font-mono text-blue-400 mt-1 uppercase tracking-wider bg-zinc-950/80 px-1 py-0.5 rounded border border-white/5">Fill Light</span>
+          </div>
+
+          <!-- Rim Light -->
+          <div class="absolute -top-16 right-16 flex flex-col items-center group/light">
+            <div class="w-8 h-8 rounded-full bg-white/5 border border-white/20 flex items-center justify-center relative hover:scale-110 hover:border-white transition-all duration-300">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+              <!-- Target constraint path line -->
+              <div class="absolute w-[110px] h-[2px] border-t border-dashed border-white/20 origin-bottom-right rotate-[-55deg] -bottom-[1px] right-4 pointer-events-none"></div>
+            </div>
+            <span class="text-[8px] font-mono text-zinc-400 mt-1 uppercase tracking-wider bg-zinc-950/80 px-1 py-0.5 rounded border border-white/5">Rim Light</span>
+          </div>
+        </div>
+
+        <!-- Floating UI panel simulating the addon -->
+        <div class="absolute bottom-6 right-6 w-64 bg-zinc-950/80 border border-white/10 rounded-xl p-4 font-mono text-[9px] text-zinc-400 shadow-2xl backdrop-blur-md">
+          <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-3">
+            <span class="text-white font-semibold">▼ SCENE LIGHT MANAGER</span>
+            <span class="text-amber-400">[RIG_3POINT]</span>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Base Energy</span>
+                <span class="text-white">120 W</span>
+              </div>
+              <div class="w-full h-1.5 bg-zinc-900 rounded border border-white/5 overflow-hidden">
+                <div class="w-3/5 h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Contrast Ratio</span>
+                <span class="text-white">4.2 : 1</span>
+              </div>
+              <div class="w-full h-1.5 bg-zinc-900 rounded border border-white/5 overflow-hidden">
+                <div class="w-[75%] h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span>Rig Radius</span>
+                <span class="text-white">5.80m</span>
+              </div>
+              <div class="w-full h-1.5 bg-zinc-900 rounded border border-white/5 overflow-hidden">
+                <div class="w-2/5 h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded"></div>
+              </div>
+            </div>
+            <div class="flex gap-2 pt-1">
+              <div class="flex-1 py-1 px-2 bg-zinc-900 hover:bg-zinc-800 rounded border border-white/5 text-center text-white cursor-pointer select-none">
+                Link Light
+              </div>
+              <div class="flex-1 py-1 px-2 bg-zinc-900 hover:bg-zinc-800 rounded border border-white/5 text-center text-white cursor-pointer select-none">
+                Spawn Rig
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating UI panel for Collection Overrides (Left Side) -->
+        <div class="absolute bottom-6 left-6 w-52 bg-zinc-950/80 border border-white/10 rounded-xl p-4 font-mono text-[9px] text-zinc-400 shadow-2xl backdrop-blur-md">
+          <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-2">
+            <span class="text-white font-semibold">▼ COLLECTION OVERRIDES</span>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between py-1 px-1.5 rounded bg-white/[0.02] border border-white/5">
+              <span class="text-white">✔ Character_Light</span>
+              <span class="text-zinc-500">Ex: +1.5</span>
+            </div>
+            <div class="flex items-center justify-between py-1 px-1.5 rounded bg-white/[0.02] border border-white/5">
+              <span class="text-white">✔ BG_Light_Group</span>
+              <span class="text-zinc-500">Ex: -0.8</span>
+            </div>
+            <div class="flex items-center justify-between py-1 px-1.5 rounded bg-white/[0.02] border border-white/5">
+              <span class="text-white">✔ Rim_Accent</span>
+              <span class="text-amber-400 font-semibold">SOLO</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="features" class="scroll-mt-[120px]"></div>
-
-  <h2>── 1. Architectural Design & Folder Layout ──</h2>
-  <p>
-    SLM is built under a modular design philosophy that separates Blender's registration lifecycle from UI layouts, operator actions, and custom data schemas.
-  </p>
-  
-  <pre class="scrollbar-custom"><code>k_tools_scene_light_manager/
-├── __init__.py               # Registers/unregisters core modules & registers subclasses
-├── auto_load.py              # Handles dynamic recursive module detection and registration
-├── blender_manifest.toml     # Metadata and platform information for Blender Extensions
-├── preferences.py            # Global addon preferences, properties, and the main preference panel
-│
-├── properties/               # Persistent data and RNA properties
-│   ├── outliner.py           # Custom attributes for outliner synchronization
-│   └── light_properties.py   # Scene-wide properties and custom data types
-│
-├── operators/                # Logic and actions triggered by UI or viewport events
-│   ├── assets.py             # Operations for importing library assets (Blockers, Bouncers)
-│   ├── presets.py            # Rig generator operators (3-Point, Warm-Cool, Butterfly, etc.)
-│   └── linking.py            # Collection and lighting relationship assignment handlers
-│
-├── ui/                       # Visual layout and draw calls
-│   ├── main_panel.py         # Main N-Panel sidebar containing light lists and linking panels
-│   ├── properties_light.py   # Preview generation buttons and object lighting adjustments
-│   └── menu_popup.py         # Floating quick-popup settings panel
-│
-└── utils/                    # Shared helper functions and rendering controllers
-    ├── addon.py              # Preference retrieval helpers
-    ├── icons.py              # Dynamic preview and icon cache management
-    ├── detection.py          # Background handler for light-groups and mesh lights
-    └── viewport_preview.py   # GPU rendering drawing handles and depsgraph updates</code></pre>
-
-  <hr class="my-8 border-white/5" />
-
-  <h2>── 2. Core Systems & Workflows ──</h2>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-xs">
-    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
-      <strong class="text-white block mb-2 font-mono">1. Viewport Gizmo Interface</strong>
-      Provides direct interactive controls drawn right next to selected lights. Instantly adjust light type, Area shapes (Square/Disk/Rectangle/Ellipse), Solo status, sizes, and beam spreads without having properties tabs open.
-    </div>
-    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
-      <strong class="text-white block mb-2 font-mono">2. GPU Linking Highlights System</strong>
-      Utilizes Blender's GPU module shader pipelines (<code>GPUShader</code>) to render receiver/blocker outlines directly onto the viewport buffer during active Light/Shadow linking actions, avoiding undo stack bloat.
-    </div>
-    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
-      <strong class="text-white block mb-2 font-mono">3. Interactive Sky Rotation</strong>
-      A modal viewport operator that rotates world environment mapping coordinates, Nishita Sun angles, or viewport HDRI values. Triggered via <code>Ctrl + Alt + RMB</code> and dragged horizontally.
-    </div>
-    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
-      <strong class="text-white block mb-2 font-mono">4. Geographic Sun & Sky</strong>
-      Accepts decimal coordinates, Degree-Minute-Second DMS coordinates, or text-labeled maps to calibrate day/night cycles. Renders daily solar arc indicators and ground-horizon compass guides in the viewport.
-    </div>
-  </div>
-
-  <hr class="my-8 border-white/5" />
-
-  <h2>── 3. Preview Rendering & Caching ──</h2>
-  <p>
-    To eliminate viewport stuttering and freezes when adjusting material properties, SLM implements three optimization structures:
-  </p>
-
-  <ul class="space-y-4 mb-8">
-    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
-      <strong class="text-white block mb-1">Persistent Preview Scene Caching:</strong>
-      A hidden scene (<code>.slm_preview_scene</code>) is kept alive containing camera, plane, and material blocks. Modifying shader nodes updates the material node tree but reuses the graphics pipeline, reducing render compiled times from <strong>~200ms to ~10ms</strong>.
-    </li>
-    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
-      <strong class="text-white block mb-1">Depsgraph Update Debouncing:</strong>
-      Dragging exposure or color sliders registers timestamp offsets. The render routine waits for a <strong>0.4-second debounce window</strong> before triggering a redraw task, locking viewport navigation at a smooth 60 FPS.
-    </li>
-    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
-      <strong class="text-white block mb-1">Selection Isolation:</strong>
-      Selecting an alternate light triggers instantly. The UI fetches existing thumbnails from cached storage immediately, delaying background renders until properties are actively tweaked.
-    </li>
-  </ul>
-
-  <hr class="my-8 border-white/5" />
-
-  <h2>── 4. Viewport Shortcuts ──</h2>
-  <p>
-    Key interactions mapped inside the active viewport session:
-  </p>
-  
-  <table>
-    <thead>
-      <tr>
-        <th>Action</th>
-        <th>Shortcut Command</th>
-        <th>Context</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Quick Popup Menu</strong></td>
-        <td><code>Y</code></td>
-        <td>Viewport Selected Emitters</td>
-      </tr>
-      <tr>
-        <td><strong>Interactive HDRI Rotation</strong></td>
-        <td><code>Ctrl + Alt + RMB</code> (Drag Mouse)</td>
-        <td>Viewport Shaded Views</td>
-      </tr>
-      <tr>
-        <td><strong>Precision Adjustments</strong></td>
-        <td>Hold <code>Shift</code> while dragging</td>
-        <td>Active Modal Operators</td>
-      </tr>
-      <tr>
-        <td><strong>Stepped Snappings</strong></td>
-        <td>Hold <code>Ctrl</code> while dragging</td>
-        <td>Active Modal Operators</td>
-      </tr>
-      <tr>
-        <td><strong>Confirm modal coordinates</strong></td>
-        <td><code>Left Click</code> or <code>Enter</code></td>
-        <td>Active Modal Operators</td>
-      </tr>
-      <tr>
-        <td><strong>Cancel modal coordinates</strong></td>
-        <td><code>Right Click</code> or <code>Escape</code></td>
-        <td>Active Modal Operators</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <hr class="my-8 border-white/5" />
-
-  <h2>── 5. Developer API & RNA Custom Properties ──</h2>
-  <p>
-    For pipeline integration, script automations, or asset exporters, SLM registers custom RNA data blocks:
-  </p>
-
-  <h3>Custom Collection Attributes</h3>
-  <ul class="space-y-2 text-xs font-mono mb-6">
-    <li><code class="text-amber-400">coll.k_tools_rig_type</code> - Enum indicating spawned rig presets (3Point, Studio Duo, W-Cool, Rim, etc).</li>
-    <li><code class="text-amber-400">coll.k_tools_lock_exposure</code> - Boolean toggle enabling exposure override.</li>
-    <li><code class="text-amber-400">coll.k_tools_lock_exposure_val</code> - Float value (-10.0 to 10.0) driving exposure levels.</li>
-    <li><code class="text-amber-400">coll.k_tools_lock_lg_val</code> - String setting target Light Group overrides.</li>
-    <li><code class="text-amber-400">coll.k_tools_lock_ll_val</code> - Pointer property referencing Light Linking target collections.</li>
-  </ul>
-
-  <h3>Object State Caching Properties</h3>
-  <ul class="space-y-2 text-xs font-mono mb-6">
-    <li><code class="text-amber-400">obj["k_tools_original_exposure"]</code> - Float storing pre-override exposure value.</li>
-    <li><code class="text-amber-400">obj["k_tools_original_lg"]</code> - String storing pre-override Light Group assignments.</li>
-    <li><code class="text-amber-400">obj["k_tools_original_ll"]</code> - Pointer mapping pre-override Light Linking paths.</li>
-  </ul>
-
-  <hr class="my-8 border-white/5" />
-
-  <h2>── 6. Troubleshooting & FAQ ──</h2>
-
-  <blockquote>
-    <p>
-      <strong>[WARNING] Viewport lag during slider manipulation:</strong>
-      If adjusting exposure or colors causes micro-stuttering, ensure <strong>Cycles GPU</strong> is set as the active Preview Render Engine in Addon Preferences. Cycles performs asynchronous background renders, whereas EEVEE compiles shaders synchronously on Blender's main thread, causing frames to drop.
-    </p>
-  </blockquote>
-
-  <ul class="space-y-6 mt-6 text-xs">
-    <li>
-      <strong class="text-white block mb-1">Q: Why is "No Shader Preview Rendered" showing?</strong>
-      <p class="text-zinc-400">
-        Shader previews require node-based materials. Ensure that the active emitter has "Use Nodes" enabled under Blender's shading editor. Previews are not compiled for standard inputs.
+  <!-- Video Showcase Section -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 text-center">
+    <div class="max-w-2xl mx-auto mb-12">
+      <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block">Watch SLM in Action</span>
+      <h2 class="text-3xl md:text-4xl font-light text-white tracking-tight leading-none mb-4">
+        Dynamic Viewport Workflows
+      </h2>
+      <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+        See how interactive gizmos, local presets, and responsive overrides completely transform the process of setting up studio-ready renders.
       </p>
-    </li>
-    <li>
-      <strong class="text-white block mb-1">Q: A tagged Mesh Light is missing from the Outliner list?</strong>
-      <p class="text-zinc-400">
-        Ensure the mesh material has an active Emissive shader, and the mesh name or material name matches your preference keywords (e.g. <code>glow</code>, <code>emit</code>). You can also mark objects manually via the <strong>Mark as Mesh Light</strong> operator.
-      </p>
-    </li>
-  </ul>
-</DocLayout>
+    </div>
+
+    <!-- Video Player Mockup -->
+    <div class="relative aspect-video w-full max-w-[900px] mx-auto bg-zinc-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
+      <!-- Simulated Video Background (Abstract dark tech grid + lens flares) -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-zinc-950 via-zinc-900 to-zinc-950 flex items-center justify-center">
+        <!-- Glowing Amber/Orange Core -->
+        <div class="absolute w-80 h-80 rounded-full bg-amber-500/10 blur-[80px] pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
+        <div class="absolute w-96 h-96 rounded-full bg-blue-500/5 blur-[100px] pointer-events-none"></div>
+
+        <!-- Grid layout overlay in mock video -->
+        <svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#27272a" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+
+        <!-- Simulated render lines -->
+        <div class="absolute border border-dashed border-amber-500/30 px-6 py-4 rounded-xl flex flex-col items-center">
+          <span class="text-[9px] font-mono text-amber-500 tracking-widest uppercase mb-1">Interactive Video Preview</span>
+          <span class="text-zinc-500 font-mono text-[8px]">0:00 / 3:15</span>
+        </div>
+      </div>
+
+      <!-- Play button overlay -->
+      <div class="absolute inset-0 flex items-center justify-center z-10">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-zinc-950/80 border border-white/10 flex items-center justify-center relative hover:scale-110 hover:border-amber-400/40 transition-all duration-300 group shadow-2xl backdrop-blur-sm">
+          <!-- Pulse rings -->
+          <div class="absolute inset-0 rounded-full border border-amber-500/30 animate-ping group-hover:duration-1000"></div>
+          
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white ml-1.5 transition-colors duration-300 group-hover:text-amber-400"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+      </div>
+
+      <!-- Bottom controls bar mockup -->
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 font-mono text-[9px] text-zinc-400">
+        <div class="flex items-center gap-4 w-full">
+          <!-- Play icon -->
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          
+          <!-- Progress bar -->
+          <div class="flex-grow h-1 bg-white/20 rounded-full relative overflow-hidden">
+            <div class="w-[15%] h-full bg-gradient-to-r from-amber-500 to-orange-500"></div>
+          </div>
+
+          <!-- Time text -->
+          <span>00:45 / 03:12</span>
+          
+          <!-- Volume icon -->
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-400"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          
+          <!-- Fullscreen icon -->
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-400"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="bg-white/[0.01] border border-white/5 hover:border-amber-500/20 hover:bg-white/[0.02] p-8 rounded-2xl transition-all duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        </div>
+        <h3 class="text-lg font-normal text-white mb-3">Parametric Studio Rigs</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed font-light">
+          Spawn pre-calibrated portrait, product, and architectural lighting configurations instantly. Adjust distances, contrast ratios, and temperatures in real-time.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="bg-white/[0.01] border border-white/5 hover:border-amber-500/20 hover:bg-white/[0.02] p-8 rounded-2xl transition-all duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+        </div>
+        <h3 class="text-lg font-normal text-white mb-3">Spatial Gizmo Interface</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed font-light">
+          Adjust lighting values right inside the 3D viewport. Skip the properties panel by tweaking beam spreads, area dimensions, and visibility toggles directly on objects.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="bg-white/[0.01] border border-white/5 hover:border-amber-500/20 hover:bg-white/[0.02] p-8 rounded-2xl transition-all duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+        </div>
+        <h3 class="text-lg font-normal text-white mb-3">Override Presets & Soloing</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed font-light">
+          Swap lighting setups with collection-wide overrides. Solo individual lights, groups, or collections dynamically to isolate silhouettes and preview shadow directions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction & Overview Section -->
+  <section class="max-w-[1000px] mx-auto px-6 md:px-12 py-16 mb-20">
+    <div class="border border-white/5 rounded-3xl bg-zinc-950/20 p-8 md:p-12 backdrop-blur-sm relative overflow-hidden">
+      <!-- Glow background -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-amber-500/5 blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 max-w-3xl">
+        <span class="text-[9px] font-mono tracking-[0.3em] uppercase text-zinc-500 mb-3 block">Why Scene Light Manager?</span>
+        <h2 class="text-2xl md:text-3xl font-light text-white tracking-tight mb-6">
+          Architected for Speed & Technical Precision
+        </h2>
+        <div class="space-y-4 text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+          <p>
+            Traditional lighting workflows in Blender force you to jump back and forth between the Outliner, the Properties panels, and the Viewport. Adjusting parameters across multiple light structures often leads to messy collection setups and lost configuration states.
+          </p>
+          <p>
+            <strong>Scene Light Manager</strong> addresses this by centralizing all lights under a unified, collection-level override manager. Built with an optimized rendering pipeline, it uses dynamic scene caches and debounced redraw loops to guarantee stable 60 FPS viewport manipulation even in heavy production files.
+          </p>
+        </div>
+        
+        <div class="flex items-center gap-6 mt-8">
+          <a href={`${base}guide`} class="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-amber-400 hover:text-white transition-colors duration-200">
+            <span>Read the technical overview</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

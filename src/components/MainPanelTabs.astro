@@ -1,0 +1,36 @@
+---
+const base = import.meta.env.BASE_URL;
+const { activeTab } = Astro.props;
+
+const tabs = [
+  { label: 'Overview', path: 'main-panel' },
+  { label: 'UI List', path: 'main-panel/ui-list' },
+  { label: 'Collection Properties', path: 'main-panel/collection-properties' },
+  { label: 'Light Properties', path: 'main-panel/light-properties' },
+  { label: 'Linking Manager', path: 'main-panel/linking-manager' },
+];
+
+const relLink = (path: string) => {
+  const safeBase = base.endsWith('/') ? base : `${base}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${safeBase}${cleanPath}`;
+};
+---
+
+<div class="flex flex-wrap gap-2 border-b border-white/5 pb-6 mb-8 font-mono text-[9px] md:text-[10px] uppercase tracking-wider">
+  {tabs.map(tab => {
+    const isCurrent = activeTab === tab.path;
+    return (
+      <a
+        href={relLink(tab.path)}
+        class={`px-3 md:px-4 py-2 rounded-lg border transition-all duration-300 ${
+          isCurrent
+            ? 'bg-amber-500/10 border-amber-500/30 text-amber-400 font-semibold shadow-[0_0_15px_rgba(245,158,11,0.05)]'
+            : 'bg-white/[0.01] border-white/5 text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.03]'
+        }`}
+      >
+        {tab.label}
+      </a>
+    );
+  })}
+</div>

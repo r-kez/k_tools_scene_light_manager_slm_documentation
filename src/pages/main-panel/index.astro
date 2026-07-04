@@ -1,0 +1,307 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import MainPanelTabs from '../../components/MainPanelTabs.astro';
+import Icon from '../../components/Icon.astro';
+---
+
+<DocLayout title="Main Panel UI">
+  <h1>The Main Panel Interface</h1>
+  <MainPanelTabs activeTab="main-panel" />
+  <p>
+    The <strong>Main Panel</strong> acts as the central command center of Scene Light Manager. It consolidates all active lights, mesh emitters, blockers, and world environments in your scene into a single, unified list. From here, you can drive values, control visibility, lock exposure metrics, and configure light groups without diving into the Outliner or property panels.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Main Mode Switcher ──</h2>
+  <p>
+    At the top of the Scene Light Manager panel, you can toggle between two core management modes:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-xs text-left border-collapse">
+      <thead>
+        <tr class="border-b border-white/5 text-zinc-400 font-mono">
+          <th class="py-3 px-4 font-normal">Mode</th>
+          <th class="py-3 px-4 font-normal text-center">Icon</th>
+          <th class="py-3 px-4 font-normal">Description</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/5">
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Light Manager</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="LIGHT" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400 leading-relaxed">
+            Standard list mode for managing your lights, environment (World), collection hierarchies, helper objects, and direct properties.
+          </td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Link Manager</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="LINK_BLEND" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400 leading-relaxed">
+            Dedicated overview panel to manage relationship overrides: <strong>Light Groups (LG)</strong>, <strong>Light Linking (LL)</strong>, and <strong>Shadow Linking (SL)</strong> at a global level.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Toolbar Row 1: Visibility & Filters ──</h2>
+  <p>
+    Just below the mode switcher, you'll find visibility controls and a quick-filter system to isolate specific assets:
+  </p>
+
+  <ul class="space-y-4 mb-6 text-xs">
+    <li class="bg-white/[0.01] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Visibility Mode Selection (<code>GLOBAL</code> vs <code>VIEW_LAYER</code>)</strong>
+      Toggle whether visibility changes affect the global scene settings or are limited to the active view layer.
+    </li>
+    <li class="bg-white/[0.01] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Filter Toggle (<Icon name="FILTER" /> <code>FILTER</code>)</strong>
+      Opens/closes the advanced search and filtering foldout panel.
+    </li>
+  </ul>
+
+  <h3 class="text-sm font-semibold text-white mb-3">🗂️ Advanced Filters Foldout</h3>
+  <p class="mb-4">
+    When the filter panel is toggled open, the following options are available:
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-8">
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2">
+        <Icon name="VIEWZOOM" />
+        <span class="font-mono text-white">Search Bar</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Search and filter elements in the list by name. Clear the search instantly with the <strong>X</strong> button.</p>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2 font-mono text-white">
+        <span>Type Filter</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Filter items by their light category (<em>Point, Sun, Spot, Area, Bouncer, Blocker, Mesh Light, Catcher, HDRI Sphere</em>).</p>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2">
+        <Icon name="OUTLINER" />
+        <span class="font-mono text-white">Flat List</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Flatten the collection hierarchy. Shows all objects as a single list, hiding parent collection folders.</p>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2 font-mono text-white">
+        <span>Relationship Dropdowns</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Filter elements based on whether they belong to a specific Light Group (LG), Light Linking collection (LL), or Shadow Linking collection (SL).</p>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 3. Toolbar Row 2: Creation & Rigs ──</h2>
+  <p>
+    This row contains the creation tools, parametric rigs, and deletion operators.
+  </p>
+
+  <h3 class="text-sm font-semibold text-white mb-3">➕ The Add Menu (<Icon name="ADD" /> <code>+ Add...</code>)</h3>
+  <p class="mb-4">Allows spawning custom lights, calibrated rigs, and special studio tools directly at the 3D cursor:</p>
+  
+  <ul class="space-y-3 mb-8 text-xs pl-4 border-l border-white/5">
+    <li>
+      <strong class="text-white"><Icon name="COLLECTION_NEW" /> Set:</strong> 
+      Creates a new pre-structured light group collection containing default area and point light configurations.
+    </li>
+    <li>
+      <strong class="text-white">Standard Lights:</strong>
+      <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+        <li><Icon name="LIGHT_POINT" /> Point Light — Omni-directional point source.</li>
+        <li><Icon name="LIGHT_SUN" /> Sun Light — Directional parallel sun rays.</li>
+        <li><Icon name="LIGHT_SPOT" /> Spot Light — Conical light source.</li>
+        <li><Icon name="LIGHT_AREA" /> Area Light — Flat emissive surface.</li>
+      </ul>
+    </li>
+    <li>
+      <strong class="text-white">Advanced / Special Lights:</strong>
+      <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+        <li><Icon name="LIGHT_SUN" /> Realistic Sun — Geographic Realistic Sun & Sky system aligned using coordinates, time, and day variables.</li>
+        <li><Icon name="LIGHT_SUN" /> Aligned Sun (HDRI) — Automatically detects the brightest point on the active HDRI environment map and aligns a Sun light to it.</li>
+      </ul>
+    </li>
+    <li>
+      <strong class="text-white">Helper Objects:</strong>
+      <ul class="pl-6 mt-1 space-y-1.5 list-disc text-zinc-400">
+        <li><Icon name="icon_bouncer" /> Bouncer — Spawns a white diffuse reflector card.</li>
+        <li><Icon name="icon_blocker" /> Blocker — Spawns an dark absorbent black flag (gobo blocker).</li>
+        <li><Icon name="icon_meshlight" /> Mesh Light — Spawns an emissive light plane mesh.</li>
+        <li><Icon name="MOD_DYNAMICPAINT" /> Catcher — Spawns a shadow catcher floor plane.</li>
+        <li><Icon name="WORLD" /> HDRI Sphere — Spawns a preview sphere mapping HDRI textures.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="text-sm font-semibold text-white mb-3">💡 The Presets Menu (<Icon name="LIGHT_DATA" /> <code>Presets...</code>)</h3>
+  <p class="mb-4">Spawns parametric studio lighting setups pre-parented to controller empties with unified controls:</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-8">
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="LIGHT" />
+      <div>
+        <strong class="text-white block mb-0.5">3-Point Light Setup</strong>
+        <span class="text-zinc-400">Classic Key, Fill, and Rim/Back studio rig.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="LIGHT" />
+      <div>
+        <strong class="text-white block mb-0.5">Studio Duo (Product)</strong>
+        <span class="text-zinc-400">Two-point product studio layout.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="COLOR" />
+      <div>
+        <strong class="text-white block mb-0.5">Warm-Cool Split (Cinematic)</strong>
+        <span class="text-zinc-400">Cinematic warm-cool split key-fill setup.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="SHADING_RENDERED" />
+      <div>
+        <strong class="text-white block mb-0.5">Dramatic Rim (Silhouette)</strong>
+        <span class="text-zinc-400">High-contrast rim lighting setup.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="USER" />
+      <div>
+        <strong class="text-white block mb-0.5">Butterfly Glamour (Portrait)</strong>
+        <span class="text-zinc-400">Glamour/portrait beauty rig.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="LIGHT_DATA" />
+      <div>
+        <strong class="text-white block mb-0.5">Double Sun (Atmospheric)</strong>
+        <span class="text-zinc-400">Dual-sun atmospheric setup.</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-xs mb-8">
+    <Icon name="REMOVE" /> <strong>Delete Button (<code>Delete</code>):</strong> Deletes the selected light object, helper object, or collection hierarchy.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 4. Right Sidebar Actions (UI List Column) ──</h2>
+  <p>
+    To the right of the main UI list is a vertical toolbar containing quick actions:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-xs text-left border-collapse">
+      <thead>
+        <tr class="border-b border-white/5 text-zinc-400 font-mono">
+          <th class="py-3 px-4 font-normal">Action</th>
+          <th class="py-3 px-4 font-normal text-center">Icon</th>
+          <th class="py-3 px-4 font-normal">Description</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/5">
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Expand Tree</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="icon_expand" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Recursively expands all collection levels in the list.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Collapse Tree</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="icon_collapse" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Recursively collapses all collection levels in the list.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Select Previous</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="TRIA_UP" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Selects the previous light or collection in the list index stack.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Select Next</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="TRIA_DOWN" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Selects the next light or collection in the list index stack.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Pin Collection</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="PINNED" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Pins the selected collection so its visibility is locked against global modifications.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Unpin Collection</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="UNPINNED" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Unpins the selected collection.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Solo / Isolate Mode</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="STICKY_UVS_LOC" /> / <Icon name="STICKY_UVS_DISABLE" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">
+            Turns off all other light sources to isolate the selected emitter/collection. <em>Turns red (alert mode) when active.</em>
+          </td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Options Popover</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="PREFERENCES" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Opens the <strong>List Display Options</strong> popover panel.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 5. List Display Options Popover ──</h2>
+  <p class="mb-4">
+    Clicking the Gear icon (<Icon name="PREFERENCES" />) opens a settings panel divided into two sections:
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs mb-6">
+    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
+      <strong class="text-white block mb-2 font-mono">📋 A. List Display</strong>
+      <ul class="space-y-2 list-disc pl-4 text-zinc-400">
+        <li><strong>Expand All Light Details:</strong> Forces all lights to display their target, power, and color sliders inline.</li>
+        <li><strong>Auto Expand Active Light:</strong> Only shows inline sliders for the currently selected light.</li>
+        <li><strong>Show World in List:</strong> Toggles the visibility of the top-level <strong>World</strong> row.</li>
+        <li><strong>Outliner Columns:</strong> Show/hide columns (Select, Viewport, Render, Exposure, L. Group, L. Link, S. Link, Targets, V. Layer).</li>
+      </ul>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
+      <strong class="text-white block mb-2 font-mono">🔄 B. Synchronization</strong>
+      <ul class="space-y-2 list-disc pl-4 text-zinc-400">
+        <li><strong>Auto Local Transform:</strong> Toggles transform orientation to <strong>Local</strong> space upon selection.</li>
+        <li><strong>Sync Selection:</strong> Synchronizes viewport selection with the list, and vice versa.</li>
+        <li><strong>Sync Collection Selection:</strong> Selects all lights in viewport when their collection is selected.</li>
+        <li><strong>Sync Visibility Drivers:</strong> Syncs viewport visibility drivers when visibility properties change.</li>
+        <li><strong>Show Selected in Camera Render:</strong> Overrides render visibility for camera test renders.</li>
+      </ul>
+    </div>
+  </div>
+</DocLayout>
+

@@ -1,0 +1,51 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import MainPanelTabs from '../../components/MainPanelTabs.astro';
+---
+
+<DocLayout title="Collection Properties">
+  <h1>Main Panel — Collection Properties</h1>
+  <MainPanelTabs activeTab="main-panel/collection-properties" />
+  <p>
+    Scene Light Manager enables collection-level overrides. This allows you to apply bulk settings, lock specific values, or dictate properties across group instances.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Custom Rig Collection Options ──</h2>
+  <blockquote>
+    <p>
+      <strong>[IMPORTANT] Custom Rig Integration:</strong> Collections designated as <strong>Studio Rigs</strong> or custom rigs (e.g. containing SLM suffix names) expose specialized RNA properties inside the collection properties tab.
+    </p>
+  </blockquote>
+
+  <p>
+    When a collection is marked as an active lighting rig, you gain access to the following custom properties:
+  </p>
+  
+  <ul class="space-y-4 mb-8 text-xs">
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Rig Preset Type (<code>coll.k_tools_rig_type</code>)</strong>
+      Identifies the active light rig template (e.g., 3-Point Setup, Studio Duo, Warm-Cool Split, Dramatic Rim). This lets SLM's algorithms manage light relationships and targets contextually.
+    </li>
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Lock Rig Exposure Toggle (<code>coll.k_tools_lock_exposure</code>)</strong>
+      Locks exposure calculations for every emitter within this collection. When turned on, global scene exposure shifts will not influence this rig.
+    </li>
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Rig Exposure Value (<code>coll.k_tools_lock_exposure_val</code>)</strong>
+      A float value (-10.0 to 10.0) that defines the master exposure level applied as an override to all lights nesting under this collection.
+    </li>
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Light Group Override (<code>coll.k_tools_lock_lg_val</code>)</strong>
+      Enforces a single Cycles Light Group naming override across all child lights, grouping them automatically in the Compositor.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Standard Collection Tracking ──</h2>
+  <p>
+    Standard collections organize your outliner. Turning visibility eyes or rendering states on/off at the collection level automatically mutes/unmutes child light properties tracked in the SLM list.
+  </p>
+</DocLayout>

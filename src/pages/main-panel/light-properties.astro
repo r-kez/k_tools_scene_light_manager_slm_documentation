@@ -1,0 +1,31 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import MainPanelTabs from '../../components/MainPanelTabs.astro';
+---
+
+<DocLayout title="Light Properties">
+  <h1>Main Panel — Light Properties</h1>
+  <MainPanelTabs activeTab="main-panel/light-properties" />
+  <p>
+    The <strong>Light Properties</strong> section within the Main Panel UI mirrors and expands Blender's native light data blocks. It exposes immediate adjustments for individual emitters.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Exposure and Color Management ──</h2>
+  <p>
+    Quickly tweak essential parameters from the central list item:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-xs mb-6">
+    <li><strong>Exposure Slider:</strong> Calibrate energy output in Watts or custom exposure values.</li>
+    <li><strong>Color Temperature (Kelvin):</strong> Slide between warm tungsten (2000K) and cold skylight (10000K) with visual color feedback.</li>
+    <li><strong>Texture Emitter Mapping:</strong> Load high-fidelity softbox HDR textures directly onto Cycles Emitter Nodes.</li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Emitter Isolation ──</h2>
+  <p>
+    Isolate light contributions instantly. Toggling a light's "Solo" button locks out the rest of the scene, allowing you to examine specular highlights and direct illumination paths in isolation.
+  </p>
+</DocLayout>

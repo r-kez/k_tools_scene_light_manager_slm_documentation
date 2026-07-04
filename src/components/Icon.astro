@@ -1,0 +1,97 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+  title?: string;
+}
+
+const { name, class: className = "", title } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+// Map logical names used in wiki to standard filenames
+const blenderIcons: Record<string, string> = {
+  LIGHT: 'light.svg',
+  LINK_BLEND: 'link_blend.svg',
+  FILTER: 'filter.svg',
+  VIEWZOOM: 'viewzoom.svg',
+  OUTLINER: 'outliner.svg',
+  ADD: 'add.svg',
+  COLLECTION_NEW: 'collection_new.svg',
+  LIGHT_POINT: 'light_point.svg',
+  LIGHT_SUN: 'light_sun.svg',
+  LIGHT_SPOT: 'light_spot.svg',
+  LIGHT_AREA: 'light_area.svg',
+  WORLD: 'world.svg',
+  LIGHT_DATA: 'light_data.svg',
+  COLOR: 'color.svg',
+  SHADING_RENDERED: 'shading_rendered.svg',
+  USER: 'user.svg',
+  REMOVE: 'remove.svg',
+  HIDE_OFF: 'hide_off.svg',
+  HIDE_ON: 'hide_on.svg',
+  STICKY_UVS_LOC: 'sticky_uvs_loc.svg',
+  STICKY_UVS_DISABLE: 'sticky_uvs_disable.svg',
+  RIGHTARROW: 'rightarrow.svg',
+  DOWNARROW_HLT: 'downarrow_hlt.svg',
+  OUTLINER_COLLECTION: 'outliner_collection.svg',
+  LOCKED: 'locked.svg',
+  CON_TRACKTO: 'con_trackto.svg',
+  EMPTY_AXIS: 'empty_axis.svg',
+  PINNED: 'pinned.svg',
+  UNPINNED: 'unpinned.svg',
+  RESTRICT_SELECT_OFF: 'restrict_select_off.svg',
+  RESTRICT_SELECT_ON: 'restrict_select_on.svg',
+  RESTRICT_RENDER_OFF: 'restrict_render_off.svg',
+  RESTRICT_RENDER_ON: 'restrict_render_on.svg',
+  OUTLINER_OB_MESH: 'outliner_ob_mesh.svg',
+  OUTLINER_OB_EMPTY: 'outliner_ob_empty.svg',
+  TRIA_UP: 'tria_up.svg',
+  TRIA_DOWN: 'tria_down.svg',
+  PREFERENCES: 'preferences.svg',
+  MOD_DYNAMICPAINT: 'mod_dynamicpaint.svg',
+};
+
+const addonIcons: Record<string, string> = {
+  icon_bouncer: 'icon_bouncer.webp',
+  icon_blocker: 'icon_blocker.webp',
+  icon_meshlight: 'icon_meshlight.webp',
+  icon_expand: 'icon_expand.webp',
+  icon_collapse: 'icon_collapse.webp',
+  icon_exposure_override: 'icon_exposure_override.webp',
+  LG_icon: 'LIGHT_GROUP.webp',
+  LIGHT_GROUP: 'LIGHT_GROUP.webp',
+  LL_icon: 'LIGHT_LINKING.webp',
+  LIGHT_LINKING: 'LIGHT_LINKING.webp',
+  SL_icon: 'SHADOW_LINKING.webp',
+  SHADOW_LINKING: 'SHADOW_LINKING.webp',
+};
+
+let src = "";
+let isBlender = false;
+
+if (blenderIcons[name]) {
+  src = `${base}icons/blender/${blenderIcons[name]}`;
+  isBlender = true;
+} else if (addonIcons[name]) {
+  src = `${base}icons/addon/${addonIcons[name]}`;
+} else {
+  // Fallback check
+  const lower = name.toLowerCase();
+  if (lower.endsWith('.webp') || lower.endsWith('.png')) {
+    src = `${base}icons/addon/${lower}`;
+  } else {
+    src = `${base}icons/blender/${lower}.svg`;
+    isBlender = true;
+  }
+}
+---
+
+<span class="inline-flex items-center justify-center p-1 bg-zinc-900 border border-white/5 rounded-md align-middle mr-1.5 hover:border-white/10 transition-colors" title={title || name}>
+  <img 
+    src={src} 
+    alt={name}
+    class={`w-4 h-4 select-none pointer-events-none ${isBlender ? 'brightness-0 invert opacity-80' : ''} ${className}`}
+    style={isBlender ? "image-rendering: pixelated;" : ""}
+    loading="lazy"
+  />
+</span>

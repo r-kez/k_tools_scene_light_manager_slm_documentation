@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import Search from '../components/Search.astro';
 
 interface Props {
   title: string;
@@ -16,12 +17,16 @@ const relLink = (path: string) => {
 };
 
 // Check if a path matches the current URL path
-const getLinkClass = (path: string) => {
+const getLinkClass = (path: string, isSubItem: boolean = false) => {
   const currentPath = Astro.url.pathname.replace(/\/$/, "");
   const targetPath = relLink(path).replace(/\/$/, "");
-  const isActive = currentPath === targetPath;
+  const isActive = currentPath === targetPath || currentPath.startsWith(targetPath + '/');
   
-  return `flex items-center px-4 py-3 text-xs font-mono uppercase tracking-widest border-l-2 transition-all duration-300 ${
+  const baseStyle = isSubItem
+    ? 'flex items-center pl-8 pr-4 py-2 text-[10px] font-mono border-l-2 transition-all duration-300'
+    : 'flex items-center px-4 py-3 text-xs font-mono uppercase tracking-widest border-l-2 transition-all duration-300';
+  
+  return `${baseStyle} ${
     isActive 
       ? 'text-white border-technical-amber bg-white/[0.03] shadow-[inset_4px_0_12px_rgba(245,158,11,0.05)]' 
       : 'text-zinc-500 border-transparent hover:text-zinc-200 hover:bg-white/[0.01]'
@@ -29,12 +34,14 @@ const getLinkClass = (path: string) => {
 };
 
 const menuItems = [
-  { label: 'Architecture & Guide', path: '' },
+  { label: 'Architecture & Guide', path: 'guide' },
+  { label: 'Main Panel UI', path: 'main-panel' },
   { label: 'Addon Preferences', path: 'preferences' },
   { label: 'Interactive Tools', path: 'interactive-tools' },
   { label: 'Linking & Overrides', path: 'linking-and-overrides' },
   { label: 'Mesh Lights & Helpers', path: 'mesh-lights-and-helpers' },
   { label: 'Presets & Studio Rigs', path: 'presets-and-rigs' },
+  { label: 'Keyboard Shortcuts', path: 'shortcuts' },
 ];
 ---
 
@@ -52,12 +59,16 @@ const menuItems = [
             <h2 class="text-xs font-mono tracking-[0.25em] uppercase text-zinc-500 mb-1">Documentation</h2>
             <p class="text-lg font-light text-white tracking-tight">Scene Light Manager</p>
           </div>
+
+          <!-- Search Input component -->
+          <Search />
           
           <div class="h-[1px] bg-white/5"></div>
           
           <nav class="flex flex-col gap-1">
             {menuItems.map(item => (
-              <a href={relLink(item.path)} class={getLinkClass(item.path)}>
+              <a href={relLink(item.path)} class={getLinkClass(item.path, item.isSubItem)}>
+                {item.isSubItem && <span class="text-zinc-600 mr-2">└</span>}
                 {item.label}
               </a>
             ))}
@@ -83,7 +94,7 @@ const menuItems = [
       </aside>
 
       <!-- Right Content Area -->
-      <section class="flex-grow max-w-4xl bg-zinc-900/20 backdrop-blur-sm border border-white/5 rounded-3xl p-8 md:p-12 overflow-hidden">
+      <section class="flex-grow bg-zinc-900/20 backdrop-blur-sm border border-white/5 rounded-3xl p-8 md:p-12 overflow-hidden">
         <div class="markdown-content">
           <slot />
         </div>
