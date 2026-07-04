@@ -1,0 +1,75 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Studio Rigs & Presets">
+  <h1>Parametric Studio Rigs & Presets</h1>
+  <p>
+    Scene Light Manager (SLM) features pre-calibrated, interactive studio lighting rigs. Spawning a rig automatically builds collection hierarchies, empty control handles, tracking targets, and constraints to let you manipulate professional setups instantly.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Spawning a Lighting Rig ──</h2>
+  <p>
+    Under the <strong>LIGHTS</strong> tab of the SLM sidebar, click the <strong>Presets</strong> dropdown. Selecting any rig preset automatically triggers the following pipeline:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-xs mb-6">
+    <li>Generates a dedicated collection named after the rig category.</li>
+    <li>Spawns a tracking Target empty at the 3D Cursor.</li>
+    <li>Applies <code>Track To</code> constraints to the spawned lights, forcing them to look at the target.</li>
+    <li>Spawns empty controller handles for global offsets, rotation, and distance parameters.</li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Built-in Rig Presets ──</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-6">
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">3-Point Light Rig (Classic Setup)</strong>
+      The gold standard for portraiture and product rendering. Spawns a Key light (primary exposure), a soft Fill light (shadow balance), and a Rim/Back light (separates subject silhouettes from dark backgrounds).
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Studio Duo</strong>
+      A clean, mirror-like dual-light configuration flanking both sides of the subject. Highly suited for minimalist layouts, vehicles, and clean product design presentations.
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Warm-Cool Split</strong>
+      Sets up opposing temperature light colors (amber/orange vs. cool blue) to create dramatic color contrasts. Fits stylized cinematic concepts or sci-fi environments.
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Dramatic Rim</strong>
+      Arranges intense directional lights behind and adjacent to the subject, casting hard silhouettes and tracing outline shapes, leaving the camera-facing surfaces dark.
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Butterfly (Beauty Setup)</strong>
+      Spawns the main emitter directly above and slightly in front of the camera path. Minimizes surface wrinkles and textures, classic in high-fashion modeling renders.
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-1">Double Sun</strong>
+      Mimics a binary star environment, generating stylized double directional highlights and shadow structures. Ideal for sci-fi desert landscapes and artistic concepts.
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 3. Controlling Rigs (Parametric Sliders) ──</h2>
+  <p>
+    Selecting a rig's collection or empty controller handle in the SLM list opens the <strong>Rig Properties</strong> sidebar panel, containing specialized sliders:
+  </p>
+
+  <ul class="space-y-4 mb-6">
+    <li class="bg-white/[0.01] border border-white/5 p-3 rounded-lg text-xs">
+      <strong class="text-white block mb-1">Global Scale & Distance:</strong>
+      Adjusts the distance of all emitters from the target, scaling the entire rig radius symmetrically.
+    </li>
+    <li class="bg-white/[0.01] border border-white/5 p-3 rounded-lg text-xs">
+      <strong class="text-white block mb-1">Base Energy & Contrast:</strong>
+      Base Energy acts as a global exposure multiplier for the entire rig. Contrast scales the energy ratio between Key and Fill lights to control shadow hardness.
+    </li>
+    <li class="bg-white/[0.01] border border-white/5 p-3 rounded-lg text-xs">
+      <strong class="text-white block mb-1">Height & Tracking Height:</strong>
+      Height raises or lowers the emitters vertically. Tracking Height moves the look-at target empty up or down to concentrate lights on specific features.
+    </li>
+  </ul>
+</DocLayout>

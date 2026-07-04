@@ -1,0 +1,289 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Addon Preferences">
+  <h1>Addon Preferences Configuration</h1>
+  <p>
+    Welcome to the Scene Light Manager (SLM) Preferences documentation. The addon's preferences are divided into five organized sections inside Blender's Addons panel (<strong>Edit &gt; Preferences &gt; Add-ons &gt; Scene Light Manager</strong>). Customize these settings to adapt the tool to your lighting pipeline.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. General & Sync Settings ──</h2>
+  <p>
+    These preferences control the integration level between SLM and Blender, configuration paths, and shader preview render loops.
+  </p>
+
+  <h3>User Interface & Selection Sync</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Show Debug Messages</strong> <code>show_debug_messages</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Prints system logging messages to Blender's console. Keep this disabled unless troubleshooting to avoid cluttering console logs.
+      </p>
+    </li>
+    <li>
+      <strong>Sync Selection</strong> <code>sync_selection</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Bidirectionally links selections in the SLM list to viewport selection. Selecting a light in the list selects its 3D object, and vice-versa.
+      </p>
+    </li>
+    <li>
+      <strong>Fallback to World on Deselect</strong> <code>sync_world_fallback</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Automatically highlights the active scene World settings in the SLM list if viewport selection is cleared, providing quick access to HDRI angles.
+      </p>
+    </li>
+    <li>
+      <strong>Sync Collection Selection</strong> <code>sync_collection_selection</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Synchronizes selection of light rig collections or parent groups in the list to highlight and select them in Blender's native Outliner.
+      </p>
+    </li>
+  </ul>
+
+  <h3>Render & Visibility Sync</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Show Selected Light in Camera Render</strong> <code>temp_visible_camera_on_select</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Temporarily forces the selected emitter's physical geometry to show up in test renders, allowing you to preview softbox scales and textures during active Cycles previews.
+      </p>
+    </li>
+    <li>
+      <strong>Sync Render Visibility</strong> <code>sync_visibility_drivers</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Binds viewport visibility (Eye icon) directly to render visibility (Camera icon). Resolves the common issue where hidden viewport objects still render in final outputs.
+      </p>
+    </li>
+  </ul>
+
+  <blockquote>
+    <p>
+      <strong>[TIP] Sync Drivers:</strong> Enabling "Sync Render Visibility" creates Blender drivers linking visibility properties. Moving or rendering scene lights will strictly adhere to viewport statuses.
+    </p>
+  </blockquote>
+
+  <h3>Shader Preview & Environment</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Shader Preview Auto Refresh Interval</strong> <code>preview_refresh_interval</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        The timer duration (in seconds) used to debounce and trigger the persistent scene preview render after shader properties are altered.
+      </p>
+    </li>
+    <li>
+      <strong>Preview Render Engine</strong> <code>preview_render_engine</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        The internal renderer used to build node thumbnails (EEVEE vs Cycles). Cycles is highly recommended for stable asynchronous processing.
+      </p>
+    </li>
+    <li>
+      <strong>Cycles Preview Device</strong> <code>preview_render_device</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Specifies device allocation (CPU or GPU Compute) for Cycles thumbnail rendering loops.
+      </p>
+    </li>
+    <li>
+      <strong>HDRI Folder Path</strong> <code>k_tools_hdri_folder</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        The target folder containing environment maps. SLM scans this directory for <code>.exr</code>, <code>.hdr</code>, and image textures to index in the environment panel.
+      </p>
+    </li>
+  </ul>
+
+  <h3>Sidebar Tab Mode</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Tab Mode</strong> <code>category_mode</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Controls where the N-Panel sidebar renders.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+        <div class="bg-white/[0.02] border border-white/5 p-3 rounded-lg text-xs">
+          <strong class="text-white block">Solo Tab (K-Tools)</strong>
+          Default cleaner setup. Renders in a designated 'K-Tools' category.
+        </div>
+        <div class="bg-white/[0.02] border border-white/5 p-3 rounded-lg text-xs">
+          <strong class="text-white block">Scene Properties</strong>
+          Appends panels to the native properties category.
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Light List & Component Detection ──</h2>
+  <p>
+    Settings under this category customize the hierarchy layout columns, isolation parameters, and tag keyword lists.
+  </p>
+
+  <h3>List Display Columns</h3>
+  <div class="bg-white/[0.02] border border-white/5 rounded-xl p-6 mb-6">
+    <p class="text-xs text-zinc-400 mb-4">Toggle columns to streamline UI footprints:</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+      <div>
+        <strong class="text-white block">Selectability Toggles</strong>
+        <code>show_hide_select</code>
+      </div>
+      <div>
+        <strong class="text-white block">Viewport Eye Icons</strong>
+        <code>show_hide_viewport</code>
+      </div>
+      <div>
+        <strong class="text-white block">Render Camera Icons</strong>
+        <code>show_hide_render</code>
+      </div>
+      <div>
+        <strong class="text-white block">Exposure Locks</strong>
+        <code>show_hide_exposure</code>
+      </div>
+      <div>
+        <strong class="text-white block">Light Group tags</strong>
+        <code>show_hide_lightgroup</code>
+      </div>
+      <div>
+        <strong class="text-white block">Linking Columns (LL / SL)</strong>
+        <code>show_hide_light_linking</code>
+      </div>
+    </div>
+  </div>
+
+  <h3>Solo Mode Viewport Isolation</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Isolate Current Collection Only</strong> <code>isolate_current_group_only</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        When turning Solo mode on, only lights within the active collection are muted, leaving external collection rigs untouched.
+      </p>
+    </li>
+    <li>
+      <strong>Disable World Nodes (Mute HDRI)</strong> <code>isolate_disable_world_nodes</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Toggles off environment backgrounds while Soloing lights to analyze precise shadowing shapes in total darkness.
+      </p>
+    </li>
+  </ul>
+
+  <h3>Keyword Scanners (Component Detection)</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>List Mesh Lights</strong> <code>enable_mesh_lights</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Enables background scene scans to trace mesh objects tagged as emitters. De-select in heavy architectural scenes to avoid depsgraph delays.
+      </p>
+    </li>
+    <li>
+      <strong>Search Keywords</strong>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Comma-separated suffix naming triggers used to catch custom components during automatic scene parsing:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2 font-mono text-[10px]">
+        <div class="bg-white/[0.01] border border-white/5 p-2 rounded">Mesh Lights: <code>glow,emit,led</code></div>
+        <div class="bg-white/[0.01] border border-white/5 p-2 rounded">Bouncers: <code>bouncer,reflector</code></div>
+        <div class="bg-white/[0.01] border border-white/5 p-2 rounded">Blockers: <code>blocker,flag,gobo</code></div>
+      </div>
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 3. Viewport Highlights & Gizmos ──</h2>
+  <p>
+    Adjust the visual representations of light properties overlayed in the 3D View.
+  </p>
+
+  <h3>GPU Outline Styles</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Highlight Linked Objects</strong> <code>enable_gpu_highlights</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Renders colored overlays around objects bound to the active light via Light/Shadow linking.
+      </p>
+    </li>
+    <li>
+      <strong>Highlights Customization</strong>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Set modes (Silhouette, Wireframe, or Both), colors, outline widths, and fill transparencies:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-xs">
+        <div class="bg-white/[0.01] border border-white/5 p-3 rounded">
+          <strong class="text-blue-400 block mb-1">Receivers Color</strong>
+          Highlights for Light Linking receivers (Default: Light Blue).
+        </div>
+        <div class="bg-white/[0.01] border border-white/5 p-3 rounded">
+          <strong class="text-amber-500 block mb-1">Blockers Color</strong>
+          Highlights for Shadow Linking blockers (Default: Orange/Amber).
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <h3>Interactive Viewport Gizmo Layout</h3>
+  <ul class="space-y-4">
+    <li>
+      <strong>Enable Viewport Gizmos</strong> <code>enable_viewport_gizmos</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Toggles draw loops of quick-buttons overlayed adjacent to active light sources.
+      </p>
+    </li>
+    <li>
+      <strong>Offsets & Styling</strong>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Tweak horizontal (X) and vertical (Y) offsets, button scales, row item counts, background colors, and hovered highlighting scales.
+      </p>
+    </li>
+    <li>
+      <strong>Value Overlay Position</strong> <code>gizmo_overlay_position</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Determines where floating slider readouts display: following the mouse cursor or anchored below the viewport buttons.
+      </p>
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 4. Library & Keybindings ──</h2>
+  <ul class="space-y-4">
+    <li>
+      <strong>Auto-Assign Softbox</strong> <code>auto_assign_softbox</code>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Automatically links the custom Softbox shader node group to any newly created Area Light, bypassing manual node additions.
+      </p>
+    </li>
+    <li>
+      <strong>Keybindings Customization</strong>:
+      <p class="text-zinc-500 mt-1 text-xs">
+        Tweak global shortcut parameters:
+      </p>
+      <table class="mt-2">
+        <thead>
+          <tr>
+            <th>Operator</th>
+            <th>Default Shortcut</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>k_tools.quick_popup</code></td>
+            <td><strong>Y</strong></td>
+            <td>Floating popup properties card.</td>
+          </tr>
+          <tr>
+            <td><code>k_tools.rotate_hdri</code></td>
+            <td><strong>Ctrl + Alt + RMB</strong> (Drag)</td>
+            <td>Modal Z-axis rotation of environments.</td>
+          </tr>
+          <tr>
+            <td><code>k_tools.light_at_point</code></td>
+            <td><em>Not Set</em></td>
+            <td>Interact/project light coordinate to mesh point.</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</DocLayout>

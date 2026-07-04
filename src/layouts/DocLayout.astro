@@ -1,0 +1,93 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+// Helper to resolve links relative to base URL
+const relLink = (path: string) => {
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${base}${cleanPath}`;
+};
+
+// Check if a path matches the current URL path
+const getLinkClass = (path: string) => {
+  const currentPath = Astro.url.pathname.replace(/\/$/, "");
+  const targetPath = relLink(path).replace(/\/$/, "");
+  const isActive = currentPath === targetPath;
+  
+  return `flex items-center px-4 py-3 text-xs font-mono uppercase tracking-widest border-l-2 transition-all duration-300 ${
+    isActive 
+      ? 'text-white border-technical-amber bg-white/[0.03] shadow-[inset_4px_0_12px_rgba(245,158,11,0.05)]' 
+      : 'text-zinc-500 border-transparent hover:text-zinc-200 hover:bg-white/[0.01]'
+  }`;
+};
+
+const menuItems = [
+  { label: 'Architecture & Guide', path: '' },
+  { label: 'Addon Preferences', path: 'preferences' },
+  { label: 'Interactive Tools', path: 'interactive-tools' },
+  { label: 'Linking & Overrides', path: 'linking-and-overrides' },
+  { label: 'Mesh Lights & Helpers', path: 'mesh-lights-and-helpers' },
+  { label: 'Presets & Studio Rigs', path: 'presets-and-rigs' },
+];
+---
+
+<Layout title={`${title} | K-Tools SLM Documentation`}>
+  <!-- Ambient Amber Glow Background -->
+  <div class="fixed top-[20%] left-[50%] -translate-x-[50%] w-[600px] h-[600px] rounded-full pointer-events-none -z-10 blur-[120px]" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.04) 0%, transparent 70%);"></div>
+
+  <div class="max-w-[1920px] mx-auto px-6 md:px-12 py-12">
+    <div class="flex flex-col lg:flex-row gap-12 relative">
+      
+      <!-- Left Sidebar (Sticky) -->
+      <aside class="w-full lg:w-[320px] flex-shrink-0 lg:sticky lg:top-[100px] lg:h-[calc(100vh-140px)] overflow-y-auto pr-2 scrollbar-custom">
+        <div class="bg-zinc-900/30 backdrop-blur-md border border-white/5 rounded-2xl p-6 flex flex-col gap-6">
+          <div>
+            <h2 class="text-xs font-mono tracking-[0.25em] uppercase text-zinc-500 mb-1">Documentation</h2>
+            <p class="text-lg font-light text-white tracking-tight">Scene Light Manager</p>
+          </div>
+          
+          <div class="h-[1px] bg-white/5"></div>
+          
+          <nav class="flex flex-col gap-1">
+            {menuItems.map(item => (
+              <a href={relLink(item.path)} class={getLinkClass(item.path)}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div class="h-[1px] bg-white/5"></div>
+
+          <!-- Quick Repository Links -->
+          <div class="flex flex-col gap-3">
+            <span class="text-[10px] font-mono tracking-[0.2em] uppercase text-zinc-500">Addon Info</span>
+            <div class="flex flex-col gap-2">
+              <a href="https://kezives.gumroad.com/l/k-tools-mode-highlight" target="_blank" class="flex items-center justify-between text-xs text-zinc-400 hover:text-white transition-colors duration-200 p-2 bg-white/[0.02] border border-white/5 rounded-lg">
+                <span>Gumroad Store</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+              <a href="https://github.com/r-kez" target="_blank" class="flex items-center justify-between text-xs text-zinc-400 hover:text-white transition-colors duration-200 p-2 bg-white/[0.02] border border-white/5 rounded-lg">
+                <span>GitHub Profile</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Content Area -->
+      <section class="flex-grow max-w-4xl bg-zinc-900/20 backdrop-blur-sm border border-white/5 rounded-3xl p-8 md:p-12 overflow-hidden">
+        <div class="markdown-content">
+          <slot />
+        </div>
+      </section>
+      
+    </div>
+  </div>
+</Layout>

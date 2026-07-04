@@ -1,0 +1,221 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  disableTransition?: boolean;
+}
+
+const {
+  title,
+  description = "Scene Light Manager (SLM) Documentation — The ultimate companion for lighting in Blender. Enhance your workflows with interactive gizmos, collection locks, and real-time previews.",
+  disableTransition = false
+} = Astro.props;
+
+const canonicalUrl = Astro.url.href;
+const base = import.meta.env.BASE_URL;
+
+// Helper to resolve links relative to base URL
+const relLink = (path: string) => {
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${base}${cleanPath}`;
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- ═══ Primary SEO ═══ -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Robert Kezives — Gyeol Studio" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- ═══ OpenGraph ═══ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gyeol Studio" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <!-- ═══ Favicons ═══ -->
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+
+    <!-- ═══ Google Fonts ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-zinc-950 text-zinc-400 font-sans antialiased overflow-x-hidden selection:bg-technical-amber selection:text-black">
+    
+    <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+    <nav id="main-nav" class="sticky top-0 w-full z-50 transition-all duration-300">
+      <div class="absolute inset-0 bg-zinc-950/70 backdrop-blur-[20px] backdrop-saturate-[180%] backdrop-brightness-[120%] border-b border-white/5 opacity-100"></div>
+      <!-- Technical Indicator Line -->
+      <div class="absolute bottom-0 left-0 right-0 indicator-line-h"></div>
+      
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 py-4 md:py-3 flex flex-row justify-between items-center relative z-10">
+        <!-- Logo -->
+        <a href="https://gyeol.studio/" class="nav-logo flex items-center h-8 group transition-all duration-300">
+          <img 
+            src={`${base}gyeol-logo.svg`} 
+            alt="Gyeol Studio" 
+            class="select-none pointer-events-none transition-all duration-300 group-hover:brightness-125 h-8 w-auto"
+            loading="eager"
+          />
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="flex items-center gap-6">
+          <ul class="hidden md:flex flex-row items-center gap-8">
+            <li>
+              <a href="https://gyeol.studio/" class="nav-link font-mono text-[10px] md:text-xs hover:text-white transition-colors uppercase tracking-widest font-medium text-zinc-400">Home</a>
+            </li>
+            <li>
+              <a href="https://gyeol.studio/work" class="nav-link font-mono text-[10px] md:text-xs hover:text-white transition-colors uppercase tracking-widest font-medium text-zinc-400">Work</a>
+            </li>
+            <li>
+              <a href="https://r-kez.github.io/k_tools_free_tier/" class="nav-link font-mono text-[10px] md:text-xs hover:text-white transition-colors uppercase tracking-widest font-medium text-zinc-400">K-Tools</a>
+            </li>
+            <li>
+              <a href={relLink('')} class="nav-link font-mono text-[10px] md:text-xs text-white hover:text-white transition-colors uppercase tracking-widest font-medium">SLM Doc</a>
+            </li>
+            <li>
+              <a href="https://gyeol.studio/about" class="nav-link font-mono text-[10px] md:text-xs hover:text-white transition-colors uppercase tracking-widest font-medium text-zinc-400">About</a>
+            </li>
+            <li>
+              <a href="https://gyeol.studio/contact" class="nav-link font-mono text-[10px] md:text-xs hover:text-white transition-colors uppercase tracking-widest font-medium text-zinc-400">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-toggle" class="hamburger-btn md:hidden" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Overlay -->
+      <div id="mobile-nav-menu" class="mobile-nav-container md:hidden">
+        <ul class="flex flex-col items-center gap-8">
+          <li>
+            <a href="https://gyeol.studio/" class="nav-link font-mono text-xl hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-zinc-400">Home</a>
+          </li>
+          <li>
+            <a href="https://gyeol.studio/work" class="nav-link font-mono text-xl hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-zinc-400">Work</a>
+          </li>
+          <li>
+            <a href="https://r-kez.github.io/k_tools_free_tier/" class="nav-link font-mono text-xl hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-zinc-400">K-Tools</a>
+          </li>
+          <li>
+            <a href={relLink('')} class="nav-link font-mono text-xl text-white transition-colors uppercase tracking-[0.2em] font-medium">SLM Doc</a>
+          </li>
+          <li>
+            <a href="https://gyeol.studio/about" class="nav-link font-mono text-xl hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-zinc-400">About</a>
+          </li>
+          <li>
+            <a href="https://gyeol.studio/contact" class="nav-link font-mono text-xl hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-zinc-400">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Script for mobile toggle -->
+    <script>
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-nav-menu');
+      
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', () => {
+          mobileToggle.classList.toggle('is-active');
+          mobileMenu.classList.toggle('is-active');
+          document.body.style.overflow = mobileMenu.classList.contains('is-active') ? 'hidden' : '';
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileToggle.classList.remove('is-active');
+            mobileMenu.classList.remove('is-active');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    </script>
+
+    <style>
+      /* Mobile Hamburguer Styling */
+      .hamburger-btn {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 100;
+        padding: 0;
+      }
+      
+      .hamburger-line {
+        width: 20px;
+        height: 1.5px;
+        background-color: white;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 99px;
+        transform-origin: center;
+      }
+      
+      .hamburger-btn.is-active .hamburger-line:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+      
+      .hamburger-btn.is-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      
+      .hamburger-btn.is-active .hamburger-line:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+      
+      .mobile-nav-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100dvh;
+        background: rgba(9, 9, 11, 0.98);
+        backdrop-filter: blur(20px);
+        z-index: 40;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .mobile-nav-container.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </body>
+</html>

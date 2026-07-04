@@ -1,0 +1,85 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Mesh Lights & Helpers">
+  <h1>Mesh Emitters & Studio Helpers</h1>
+  <p>
+    Scene Light Manager (SLM) supports converting custom geometry meshes into light emitters, alongside spawning physical helpers like diffuse reflectors, absorption flags, and shadow catchers.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Mesh Lights (Object Emitters) ──</h2>
+  <p>
+    Convert any Blender geometry (LED strips, neon signs, monitors, light bulbs, screens, or customized fixtures) into a light source that integrates into the SLM list.
+  </p>
+
+  <div class="bg-white/[0.02] border border-white/5 rounded-2xl p-6 mb-6">
+    <h3 class="text-white mt-0 mb-4 text-sm font-mono tracking-wider">How to Tag and Untag Mesh Lights</h3>
+    <ol class="list-decimal pl-5 space-y-3 text-xs text-zinc-400">
+      <li>
+        <strong class="text-white">Selection:</strong> Select any geometric mesh inside the 3D Viewport.
+      </li>
+      <li>
+        <strong class="text-white">Mark as Emitter:</strong> Click <strong>Mark as Mesh Light / Emitter</strong> in the SLM properties tab. The addon will automatically register the mesh inside the hierarchy database, link a custom emissive material node tree, and present exposure/temperature sliders.
+      </li>
+      <li>
+        <strong class="text-white">Revert:</strong> Click <strong>Untag Mesh Light</strong> to wipe the emitter metadata, returning the mesh to standard geometry.
+      </li>
+    </ol>
+  </div>
+
+  <h3>Keyword Auto-Detection</h3>
+  <p>
+    SLM automatically parses and detects meshes with names or material slots containing specific keywords (like <code>glow</code>, <code>emit</code>, or <code>led</code>). You can configure or append your own target detection keywords inside the Addon Preferences.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Light Bouncers (Reflector Cards) ──</h2>
+  <p>
+    Bouncers spawn a white, diffuse flat mesh plane in the viewport, replicating realistic photography studio reflector boards.
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-xs mb-6">
+    <li>
+      <strong>Mechanism:</strong> Light rays bounce off the card's matte surface, creating subtle, scattered secondary lighting.
+    </li>
+    <li>
+      <strong>Use Case:</strong> Perfect for adding soft, natural fills in deep shadows on characters or product renders without adding new direct light sources.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 3. Light Blockers (Flags / Gobos) ──</h2>
+  <p>
+    Blockers spawn a dark, matte, light-absorbing card in your scene to cut off or frame light pools.
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-xs mb-6">
+    <li>
+      <strong>Mechanism:</strong> Completely absorbs incoming ray paths, acting as physical barn doors or studio flags.
+    </li>
+    <li>
+      <strong>Use Case:</strong> Prevents spill lights from washing out dark background walls, or projects crisp, customized shadow silhouettes.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 4. Shadow Catchers ──</h2>
+  <p>
+    Spawns a specialized ground plane configured for alpha-channel compositing.
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-xs mb-6">
+    <li>
+      <strong>Mechanism:</strong> The ground geometry becomes completely invisible during renders, capturing and outputting only the shadows projected onto it.
+    </li>
+    <li>
+      <strong>Use Case:</strong> Renders characters or models on transparent backgrounds (for web layouts or compositing) while retaining realistic ground contact shadows.
+    </li>
+    <li>
+      <strong>Engine Support:</strong> Automatically links with native Cycles Shadow Catcher systems on creation.
+    </li>
+  </ul>
+</DocLayout>

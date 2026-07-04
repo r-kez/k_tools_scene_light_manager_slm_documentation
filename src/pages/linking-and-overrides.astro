@@ -1,0 +1,108 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Light & Shadow Linking Overrides">
+  <h1>Light Linking, Shadow Linking, & Overrides</h1>
+  <p>
+    Scene Light Manager (SLM) provides an intuitive, high-level interface to handle Cycles' advanced relationship configurations: <strong>Light Linking</strong>, <strong>Shadow Linking</strong>, multi-pass <strong>Light Groups</strong>, and <strong>Collection-Level overrides</strong>.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Light Linking (Cycles Only) ──</h2>
+  <p>
+    Light Linking allows artists to isolate the illumination contribution of a light to a specific subset of objects, ignoring others entirely.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Use Cases</strong>
+      <ul class="list-disc pl-4 space-y-2 text-zinc-400">
+        <li>Apply a sharp specular outline to a character's hair without washing out background elements.</li>
+        <li>Illuminate products or packages without projecting bright pools on the tabletop base.</li>
+      </ul>
+    </div>
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Setup Workflow</strong>
+      <ol class="list-decimal pl-4 space-y-2 text-zinc-400">
+        <li>Switch the N-Panel mode selector to <strong>LINKS</strong>.</li>
+        <li>Select the target light from the list.</li>
+        <li>Under <strong>Light Linking</strong>, create a receiver collection and click <strong>Link Objects</strong> to assign selected meshes.</li>
+      </ol>
+    </div>
+  </div>
+
+  <blockquote>
+    <p>
+      <strong>[NOTE] Viewport Visualizers:</strong> Enabling GPU Highlights in Preferences renders a clear, light-blue outline in the 3D viewport around all objects that are actively receiving illumination from the selected light.
+    </p>
+  </blockquote>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Shadow Linking (Cycles Only) ──</h2>
+  <p>
+    Shadow Linking allows you to control which objects physically block light and cast shadows for a specific emitter.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Use Cases</strong>
+      <ul class="list-disc pl-4 space-y-2 text-zinc-400">
+        <li>Pass light rays cleanly through ceiling panels, window frames, or camera rigs without creating unwanted shadows.</li>
+        <li>Selectively exclude specific props from casting blocky shadow silhouettes.</li>
+      </ul>
+    </div>
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Setup Workflow</strong>
+      <ol class="list-decimal pl-4 space-y-2 text-zinc-400">
+        <li>Select the emitter in the <strong>LINKS</strong> panel.</li>
+        <li>Under <strong>Shadow Linking</strong>, add or link a blocker collection.</li>
+        <li>Light will pass through any unlisted scene meshes, casting shadows only from the explicitly assigned objects.</li>
+      </ol>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 3. Light Groups (Compositing & Post-Production) ──</h2>
+  <p>
+    Isolate light contributions during final rendering, outputting independent image passes for different lights (e.g., Key, Fill, Rim, Environmental) to tweak colors and intensities in post-production without re-rendering.
+  </p>
+
+  <ul class="space-y-4 mb-6">
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Color Tagged Management:</strong>
+      Create custom Light Groups directly in the SLM links interface and assign descriptive colors to visually categorize your lights in the outliner list.
+    </li>
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Instant Re-assignment:</strong>
+      Quickly shift select multiple lights in the list and assign them to a specified Light Group using the gear actions popup.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 4. Collection-Level Overrides & State Memory ──</h2>
+  <p>
+    Configure properties globally at the collection or rig level, applying rules to all nested lights automatically.
+  </p>
+
+  <div class="bg-white/[0.02] border border-white/5 rounded-2xl p-6 mb-6">
+    <h3 class="text-white mt-0 mb-4 text-sm font-mono tracking-wider">State Memory & Non-Destructive Actions</h3>
+    <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+      Before overriding properties, SLM automatically caches the original values (original exposure, light group, and linking target collections) inside custom attributes on each object data block.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+      <div class="bg-white/[0.01] border border-white/5 p-3 rounded-lg">
+        <strong class="text-white block mb-1">Dynamic Recovery</strong>
+        Moving a light out of an overridden collection instantly restores its original exposure, light groups, and linking settings.
+      </div>
+      <div class="bg-white/[0.01] border border-white/5 p-3 rounded-lg">
+        <strong class="text-white block mb-1">Toggle Locks</strong>
+        Disabling or deleting the collection-level override immediately reverts all nested lights to their unique pre-override configurations.
+      </div>
+    </div>
+  </div>
+</DocLayout>

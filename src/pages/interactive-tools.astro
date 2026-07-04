@@ -1,0 +1,142 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Interactive Viewport Tools">
+  <h1>Interactive Viewport Tools</h1>
+  <p>
+    Scene Light Manager (SLM) features high-performance viewport tools that allow you to adjust lights, rotate HDRI skies, and isolate illumination sources directly in the 3D viewport under your mouse cursor, avoiding N-Panel slider hunting.
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 1. Interactive HDRI & Sky Rotation ──</h2>
+  <p>
+    Instead of editing shader mapping nodes or diving into World tabs to rotate environment maps, SLM provides real-time Z-axis rotation shortcuts directly in the viewport.
+  </p>
+
+  <div class="bg-white/[0.02] border border-white/5 rounded-2xl p-6 mb-6">
+    <h3 class="text-white mt-0 mb-4 text-sm font-mono tracking-wider">Keyboard & Mouse Controls</h3>
+    <ul class="space-y-4 text-xs">
+      <li class="flex items-start gap-4">
+        <span class="bg-technical-amber/20 text-technical-amber border border-technical-amber/30 px-2 py-1 rounded font-mono text-[10px] shrink-0">Ctrl + Alt + RMB (Drag)</span>
+        <div>
+          <strong class="text-white block">Trigger Rotation</strong>
+          Hold the keys and drag the mouse horizontally in the viewport to rotate the active sky coordinate system.
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <span class="bg-white/10 text-white border border-white/10 px-2 py-1 rounded font-mono text-[10px] shrink-0">Left Click or Enter</span>
+        <div>
+          <strong class="text-white block">Confirm Action</strong>
+          Saves the current rotation angle.
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-1 rounded font-mono text-[10px] shrink-0">Escape or Right Click</span>
+        <div>
+          <strong class="text-white block">Cancel & Reset</strong>
+          Discards changes and resets coordinates to their initial values.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <h3>Smart Context Detection</h3>
+  <p>
+    The rotation operator dynamically evaluates the active scene setup:
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white/[0.01] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Nishita Sky Active</strong>
+      Rotates the native Sun Angle coordinate.
+    </div>
+    <div class="bg-white/[0.01] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Custom HDRI mapping</strong>
+      Drives rotation of Z-axis inputs in the Mapping Node.
+    </div>
+    <div class="bg-white/[0.01] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Material Preview Mode</strong>
+      Drives native viewport studio HDRI rotation values.
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 2. Viewport Gizmo Buttons ──</h2>
+  <p>
+    Selecting any light source in the scene reveals a row of floating, transparent viewport button overlays next to the object pivot.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-6">
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-2 font-mono">Type Selector (Lightbulb)</strong>
+      Cycles the light source type (Area, Point, Spot, Sun).
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-2 font-mono">Shape Cycles (Square/Circle)</strong>
+      Toggles Area light geometries (Square, Disk, Rectangle, Ellipse).
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-2 font-mono">Size Controller (Arrows)</strong>
+      Click and drag to scale physical dimensions or radius.
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl">
+      <strong class="text-white block mb-2 font-mono">Beam/Spread (Concentric Circles)</strong>
+      Click and drag to scale Area spread angles or Spot blending limits.
+    </div>
+  </div>
+
+  <blockquote>
+    <p>
+      <strong>[NOTE] Customizing Gizmos:</strong> You can toggle individual button visibility, change sizes, spaces, offsets, and transparency settings under the Addon Preferences.
+    </p>
+  </blockquote>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 3. Quick Popup Menu (Y Key) ──</h2>
+  <p>
+    Pressing <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-white font-mono text-xs border border-white/10">Y</kbd> in the 3D viewport spawns a complete parameters editor card directly at your mouse coordinates:
+  </p>
+
+  <ul class="space-y-4 mb-6">
+    <li>
+      <strong class="text-white block">SETTINGS Tab</strong>
+      Offers quick adjustments for color temperatures, exposures, intensities, rig controls, constraints, and visibility toggles.
+    </li>
+    <li>
+      <strong>NODES Tab</strong>
+      Enables nodes, binds Gobo structures, loads projection maps, and displays shader preview rendering thumbnails.
+    </li>
+    <li>
+      <strong>WORLD Tab</strong>
+      Swaps background HDRI maps, manages Nishita Sky presets, and drives Z-rotations.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 4. Smart Light Isolation (Solo Mode) ──</h2>
+  <p>
+    Mutes all other lights in the scene instantly to isolate and tweak the active light source's shadows and color bounces.
+  </p>
+  <ul class="list-disc pl-6 space-y-2 mb-6">
+    <li>
+      <strong>Activation:</strong> Click the Star/Solo button on the sidebar list or click the Star icon in the Viewport Gizmo.
+    </li>
+    <li>
+      <strong>State Preservation:</strong> All original visibility statuses are cached. Toggling solo mode off returns the scene to its exact prior visibility layout.
+    </li>
+    <li>
+      <strong>Mute HDRI:</strong> Configurable preference to automatically black out world backgrounds while soloing lights to analyze light leaks.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>── 5. Interactive Light Placement (Pointer) ──</h2>
+  <p>
+    Project lights precisely onto your geometry. Selecting a light and running pointer placement will cause the light source to snap and align along the normals of surfaces under your cursor, pointing directly at the target highlight area. Useful for creating cinematic hair highlights, precise rim accents, and character eye specular spots.
+  </p>
+</DocLayout>
