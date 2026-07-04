@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2048 2048" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-9468.395026,-6826.158855)">
+        <g id="gyeol-logo" transform="matrix(1,0,0,1,9468.395026,6826.158855)">
+            <rect x="0" y="0" width="2048" height="2048" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="0" y="0" width="2048" height="2048"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1.670908,0,0,1.670908,-418.242519,-687.00969)">
+                    <g transform="matrix(1.278467,0,0,1.278467,-139.979456,-379.401783)">
+                        <g transform="matrix(0.677329,0,0,0.677329,-6969.370756,-220.260626)">
+                            <g transform="matrix(0.127973,0,0,0.127973,10541.915341,1741.215861)">
+                                <g transform="matrix(1333,0,0,1333,12666.476428,961.883183)">
+                                </g>
+                                <text x="6903.204px" y="961.883px" style="font-family:'PyeojinGothic-Light', 'Pyeojin Gothic';font-weight:300;font-size:1333px;fill:rgb(244,244,244);">G<tspan x="8241.671px 9457.123px 10602.93px 11960.273px " y="961.883px 961.883px 961.883px 961.883px ">YEOL</tspan></text>
+                            </g>
+                        </g>
+                        <g transform="matrix(0.677329,0,0,0.677329,-7264.262015,-28.386183)">
+                            <g transform="matrix(0.127973,0,0,0.127973,10978.288802,1741.215861)">
+                                <g transform="matrix(1333,0,0,1333,12473.295568,961.883183)">
+                                </g>
+                                <text x="7096.385px" y="961.883px" style="font-family:'PyeojinGothic-Light', 'Pyeojin Gothic';font-weight:300;font-size:1333px;fill:rgb(244,244,244);">S<tspan x="8022.455px 8952.431px 10028.204px 11068.829px 11515.853px " y="961.883px 961.883px 961.883px 961.883px 961.883px ">TUDIO</tspan></text>
+                            </g>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-7068.204541,-2732.543517)">
+                            <circle cx="8088" cy="3830" r="10" style="fill:rgb(235,47,49);"/>
+                        </g>
+                    </g>
+                    <g transform="matrix(53.651144,0,0,53.651144,-158129.93532,-42519.150542)">
+                        <path d="M2960.75,811.697L2959.424,811.697L2959.424,806.374L2960.75,806.374L2960.75,811.697ZM2957.385,806.818C2957.385,807.722 2957.199,808.514 2956.827,809.193C2956.455,809.873 2955.906,810.442 2955.179,810.9C2954.453,811.357 2953.556,811.707 2952.488,811.948L2952.039,810.879C2952.919,810.692 2953.651,810.435 2954.235,810.108C2954.82,809.781 2955.251,809.398 2955.53,808.96C2955.808,808.522 2955.947,807.508 2955.947,807.508L2955.947,806.818L2957.385,806.818ZM2956.514,807.858L2952.629,807.858L2952.629,806.818L2956.514,806.818L2956.514,807.858ZM2959.611,808.77L2956.982,808.77L2956.982,807.765L2959.611,807.765L2959.611,808.77ZM2959.558,810.803L2956.906,810.803L2956.906,809.804L2959.558,809.804L2959.558,810.803ZM2960.75,814.917L2955.118,814.917L2955.118,816.354L2953.803,816.354L2953.803,813.929L2959.43,813.929L2959.43,813.158L2953.786,813.158L2953.786,812.124L2960.75,812.124L2960.75,814.917ZM2961.013,816.821L2953.803,816.821L2953.803,815.781L2961.013,815.781L2961.013,816.821Z" style="fill:rgb(245,245,245);fill-rule:nonzero;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
