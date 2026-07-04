@@ -18,8 +18,9 @@ const base = import.meta.env.BASE_URL;
 
 // Helper to resolve links relative to base URL
 const relLink = (path: string) => {
+  const safeBase = base.endsWith('/') ? base : `${base}/`;
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  return `${base}${cleanPath}`;
+  return `${safeBase}${cleanPath}`;
 };
 ---
 
