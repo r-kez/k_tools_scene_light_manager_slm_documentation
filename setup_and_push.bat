@@ -1,25 +1,8 @@
 @echo off
+cd /d "%~dp0"
 echo ====================================================
-echo Scene Light Manager Doc Setup and Push
+echo Scene Light Manager Doc Setup and Push (GitHub Actions Version)
 echo ====================================================
-echo.
-echo Installing npm packages...
-call npm install
-if %ERRORLEVEL% neq 0 (
-    echo Error during npm install. Make sure Node.js is installed.
-    pause
-    exit /b %ERRORLEVEL%
-)
-
-echo.
-echo Building Astro project...
-call npm run build
-if %ERRORLEVEL% neq 0 (
-    echo Error during npm build.
-    pause
-    exit /b %ERRORLEVEL%
-)
-
 echo.
 echo Initializing Git repository...
 git init
@@ -38,6 +21,6 @@ if %ERRORLEVEL% neq 0 (
     echo and that your Git credentials are set up correctly.
 ) else (
     echo.
-    echo Done! Documentation has been set up and pushed successfully.
+    echo Done! Code pushed successfully. GitHub Actions will now build and deploy the site.
 )
 pause
