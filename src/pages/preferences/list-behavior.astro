@@ -1,0 +1,111 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import PreferencesTabs from "../../components/PreferencesTabs.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<DocLayout title="Preferences Ã¢â¬â List Behavior">
+  <h1>Addon Preferences Configuration</h1>
+  <PreferencesTabs
+    activeTab="preferences/list-behavior"
+    description="Configure automatic expansion and World entry visibility in the main light list."
+  />
+
+  <div class="space-y-12">
+    <!-- SECTION 1: ADVANCED LIST BEHAVIOR -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div
+          class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-white text-base font-semibold m-0">
+            Advanced List Behavior
+          </h2>
+          <p class="text-zinc-500 text-xs mt-0.5">
+            Configure automated behaviors when selecting or displaying list
+            items
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Card: Auto-Expand Selected Light -->
+        <div
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
+          <div>
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
+              <strong class="text-white text-sm"
+                >Auto-Expand Selected Light</strong
+              >
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >auto_expand_active_light</span
+              >
+            </div>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              Automatically unfolds the selected light's nested properties row
+              (revealing direct power sliders, color swatches, and node inputs)
+              the moment you click or select it.
+            </p>
+          </div>
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
+            <span>Type: <span class="text-amber-500/80">Boolean</span></span>
+            <span>â¢</span>
+            <span>Default: <span class="text-red-500/80">False</span></span>
+          </div>
+        </div>
+
+        <!-- Card: Show World in Outliner/List -->
+        <div
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
+          <div>
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
+              <strong class="text-white text-sm">Show World in Outliner</strong>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >show_world_in_list</span
+              >
+            </div>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              Appends a permanent "World Shader" entry at the top of the UI
+              list, giving you instant access to rotate HDRIs, change sky
+              colors, or toggle environmental ray visibility without navigating
+              elsewhere.
+            </p>
+          </div>
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
+            <span>Type: <span class="text-amber-500/80">Boolean</span></span>
+            <span>â¢</span>
+            <span>Default: <span class="text-green-500/80">True</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</DocLayout>

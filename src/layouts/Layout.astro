@@ -212,11 +212,66 @@ const relLink = (path: string) => {
         visibility: hidden;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      
       .mobile-nav-container.is-active {
         opacity: 1;
         visibility: visible;
       }
+      
+      /* Lightbox Animation */
+      @keyframes modal-fade-in {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-zoom-in {
+        animation: modal-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
     </style>
+
+    <!-- Global Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out select-none">
+      <div class="relative max-w-4xl max-h-[85vh] flex flex-col items-center">
+        <img id="lightbox-img" src="" alt="Zoomed Image" class="max-w-full max-h-[80vh] rounded-lg border border-white/10 object-contain shadow-2xl animate-zoom-in" />
+        <span id="lightbox-caption" class="text-zinc-400 text-xs font-mono mt-4"></span>
+      </div>
+    </div>
+
+    <!-- Script for Global Lightbox Zoom -->
+    <script>
+      const modal = document.getElementById('lightbox-modal');
+      const modalImg = document.getElementById('lightbox-img');
+      const modalCaption = document.getElementById('lightbox-caption');
+
+      if (modal && modalImg && modalCaption) {
+        // Event delegation to capture clicks on any .zoomable-img on the page
+        document.body.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          if (target && target.classList.contains('zoomable-img')) {
+            e.stopPropagation();
+            const src = target.getAttribute('src');
+            const alt = target.getAttribute('alt') || 'Image Preview';
+            if (src) {
+              modalImg.setAttribute('src', src);
+              modalCaption.textContent = alt;
+              modal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden'; // Lock background scroll
+            }
+          }
+        });
+
+        // Close modal when clicking the modal itself
+        modal.addEventListener('click', () => {
+          modal.classList.add('hidden');
+          document.body.style.overflow = ''; // Unlock background scroll
+        });
+
+        // Close modal when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Unlock background scroll
+          }
+        });
+      }
+    </script>
   </body>
 </html>

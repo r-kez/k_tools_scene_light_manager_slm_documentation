@@ -1,376 +1,191 @@
 ---
-import DocLayout from '../layouts/DocLayout.astro';
-import PreferencesTabs from '../components/PreferencesTabs.astro';
+import DocLayout from "../layouts/DocLayout.astro";
+import PreferencesTabs from "../components/PreferencesTabs.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
-<DocLayout title="Preferences — General & Sync">
+<DocLayout title="Preferences Ã¢â¬â Selection Sync">
   <h1>Addon Preferences Configuration</h1>
-  <p class="text-zinc-400 text-sm leading-relaxed mb-6 font-light">
-    Customize Scene Light Manager's global integration, viewport selection behaviors, render-driver synchronizations, and environment preview generation to fit your specific workflow.
-  </p>
+  <PreferencesTabs
+    activeTab="preferences"
+    description="Configure how selections in the SLM light list stay in sync with Blender viewport, outliner, and collection hierarchies."
+  />
 
-  <PreferencesTabs activeTab="preferences" />
+  <!-- General Preferences Image -->
+  <div
+    class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300"
+  >
+    <div
+      class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center"
+    >
+      <img
+        src={`${base}panel_images/preferences-general_and_sync.png`}
+        alt="General Preferences & Sync Configuration"
+        class="h-auto max-h-[350px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center"
+      >Addon Preferences Ã¢â¬â General Settings & Scene Sync Options</span
+    >
+  </div>
 
-  <!-- ── 1. General & Sync Settings ── -->
   <div class="space-y-12">
-    
     <!-- SECTION 1: SELECTION & OUTLINER SYNC -->
     <section class="space-y-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+        <div
+          class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+            ></path>
           </svg>
         </div>
         <div>
-          <h2 class="text-white text-base font-semibold m-0">Selection & Outliner Sync</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Control how viewport selections synchronize with list hierarchies</p>
+          <h2 class="text-white text-base font-semibold m-0">
+            Selection & Outliner Sync
+          </h2>
+          <p class="text-zinc-500 text-xs mt-0.5">
+            Control how viewport selections synchronize with list hierarchies
+          </p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 gap-4">
         <!-- Card: Sync Selection -->
-        <div id="sync_selection" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          id="sync_selection"
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
               <strong class="text-white text-sm">Sync Selection</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">sync_selection</span>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >sync_selection</span
+              >
             </div>
             <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Maintains exact synchronization between selections in the SLM list and Blender's viewport/outliner. Selecting a light in the list selects it in the 3D scene, and vice-versa.
+              Maintains exact synchronization between selections in the SLM list
+              and Blender's viewport/outliner. Selecting a light in the list
+              selects it in the 3D scene, and vice-versa.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
 
         <!-- Card: Fallback to World on Deselect -->
-        <div id="sync_world_fallback" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          id="sync_world_fallback"
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Fallback to World on Deselect</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">sync_world_fallback</span>
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
+              <strong class="text-white text-sm"
+                >Fallback to World on Deselect</strong
+              >
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >sync_world_fallback</span
+              >
             </div>
             <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Automatically selects the World/HDRI settings inside the light list whenever you clear your active viewport selection. Provides instant access to global environment rotation.
+              Automatically selects the World/HDRI settings inside the light
+              list whenever you clear your active viewport selection. Provides
+              instant access to global environment rotation.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-red-500/80">False</span></span>
           </div>
         </div>
 
         <!-- Card: Sync Collection Selection -->
-        <div id="sync_collection_selection" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          id="sync_collection_selection"
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Sync Collection Selection</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">sync_collection_selection</span>
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
+              <strong class="text-white text-sm"
+                >Sync Collection Selection</strong
+              >
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >sync_collection_selection</span
+              >
             </div>
             <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Links collection folder highlights. Clicking a light rig collection header inside the list automatically selects the corresponding collection within the native Blender Outliner.
+              Links collection folder highlights. Clicking a light rig
+              collection header inside the list automatically selects the
+              corresponding collection within the native Blender Outliner.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-red-500/80">False</span></span>
           </div>
         </div>
 
         <!-- Card: Show Debug Messages -->
-        <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
               <strong class="text-white text-sm">Show Debug Messages</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">show_debug_messages</span>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >show_debug_messages</span
+              >
             </div>
             <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Enables granular debug prints inside Blender's system console. Highly recommended to keep disabled during daily lighting sessions to avoid performance clutter.
+              Enables granular debug prints inside Blender's system console.
+              Highly recommended to keep disabled during daily lighting sessions
+              to avoid performance clutter.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-red-500/80">False</span></span>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- SECTION 2: RENDER & VISIBILITY DRIVERS -->
-    <section class="space-y-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-          </svg>
-        </div>
-        <div>
-          <h2 class="text-white text-base font-semibold m-0">Render & Visibility Sync</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Maintain perfect sync between Blender's viewport and final render visibility states</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Card: Sync Render Visibility -->
-        <div id="sync_visibility_drivers" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Sync Render Visibility</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">sync_visibility_drivers</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Automatically creates Python-driven data links between <code>hide_viewport</code> and <code>hide_render</code>. Prevents the common Blender issue where objects hidden in the viewport still appear in final renders.
-            </p>
-          </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
-            <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
-            <span>Default: <span class="text-red-500/80">False</span></span>
-          </div>
-        </div>
-
-        <!-- Card: Show Selected Light in Camera Render -->
-        <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Show Selected Light in Camera Render</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">temp_visible_camera_on_select</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Forces <code>visible_camera</code> to be active temporarily for the selected light shape/emitter. Makes the physical softbox card geometry visible to camera rays exclusively during viewport selection adjustments.
-            </p>
-          </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
-            <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
-            <span>Default: <span class="text-red-500/80">False</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-amber-500/5 border border-amber-500/10 rounded-2xl p-5 mt-4">
-        <div class="flex gap-3">
-          <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <div class="space-y-1">
-            <h4 class="text-xs font-semibold text-white">How Visibility Drivers Work</h4>
-            <p class="text-zinc-400 text-xs leading-relaxed font-light">
-              When <strong>Sync Render Visibility</strong> is enabled, SLM injects Blender drivers linking the object properties directly. If you toggle the Eye icon in the light list, Blender's dependency graph immediately updates the Camera render state as well, ensuring absolute safety for final outputs.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: SHADER PREVIEW ENGINE -->
-    <section class="space-y-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-          </svg>
-        </div>
-        <div>
-          <h2 class="text-white text-base font-semibold m-0">Shader Preview Engine</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Control compute devices and refresh loops for emissive material previews</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Card: Auto Refresh Interval -->
-        <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Refresh Interval</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">preview_refresh_interval</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Timer delay (in seconds) used to debounce and trigger the persistent scene preview render updates after modifying shader nodes or parameters.
-            </p>
-          </div>
-          <div class="flex flex-col gap-1 mt-4 text-[10px] text-zinc-500 font-mono">
-            <div>Type: <span class="text-amber-500/80">Float</span></div>
-            <div>Default: <span class="text-zinc-300">1.5s</span> <span class="text-zinc-600">(0.2s - 10.0s)</span></div>
-          </div>
-        </div>
-
-        <!-- Card: Preview Render Engine -->
-        <div id="preview_render_engine" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Render Engine</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">preview_render_engine</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              The internal engine used to render shader thumbnail material maps. Cycles is strongly recommended as it runs asynchronously in the background.
-            </p>
-          </div>
-          <div class="flex flex-col gap-1 mt-4 text-[10px] text-zinc-500 font-mono">
-            <div>Type: <span class="text-amber-500/80">Enum</span></div>
-            <div>Default: <span class="text-zinc-300">CYCLES</span> <span class="text-zinc-600">(EEVEE / CYCLES)</span></div>
-          </div>
-        </div>
-
-        <!-- Card: Cycles Preview Device -->
-        <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <strong class="text-white text-sm">Cycles Device</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">preview_render_device</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Allocates CPU or GPU compute hardware to render the Cycles thumbnail previews. Only visible/active when Preview Render Engine is set to Cycles.
-            </p>
-          </div>
-          <div class="flex flex-col gap-1 mt-4 text-[10px] text-zinc-500 font-mono">
-            <div>Type: <span class="text-amber-500/80">Enum</span></div>
-            <div>Default: <span class="text-zinc-300">GPU</span> <span class="text-zinc-600">(CPU / GPU)</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: ENVIRONMENT & HDRI MAPPING -->
-    <section class="space-y-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-          </svg>
-        </div>
-        <div>
-          <h2 class="text-white text-base font-semibold m-0">Environment & HDRI Mapping</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Scan, index, and cache world map thumbnails in your asset pipeline</p>
-        </div>
-      </div>
-
-      <div id="k_tools_hdri_folder" class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 space-y-4">
-        <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
-              <strong class="text-white text-sm">HDRI Folder Path</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">k_tools_hdri_folder</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Select the directory storing environment maps (<code>.hdr</code>, <code>.exr</code>, <code>.jpg</code>, <code>.png</code>). SLM parses this target path dynamically, linking environments to the World rotation presets.
-            </p>
-          </div>
-          <div class="text-[10px] text-zinc-500 font-mono flex-shrink-0">
-            <span>Type: <span class="text-amber-500/80">String (Directory Path)</span></span>
-          </div>
-        </div>
-
-        <div class="h-[1px] bg-white/5"></div>
-
-        <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
-              <strong class="text-white text-sm">Generate Previews</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-500 self-start sm:self-auto break-all">k_tools.generate_hdri_previews</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              A manual operator that executes background scans. It computes and caches lightweight viewport thumbnails for every HDRI file indexed inside your selected path.
-            </p>
-          </div>
-          <div class="flex-shrink-0">
-            <span class="px-3 py-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-zinc-300 text-[10px] font-semibold flex items-center gap-1">
-              <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2" />
-              </svg>
-              Operator
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: SIDEBAR TAB CONFIGURATION -->
-    <section class="space-y-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
-          </svg>
-        </div>
-        <div>
-          <h2 class="text-white text-base font-semibold m-0">Sidebar Tab Configuration</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Control the location and naming of the N-Panel sidebar interface</p>
-        </div>
-      </div>
-
-      <div id="category_mode" class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 space-y-6">
-        <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
-          <div>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
-              <strong class="text-white text-sm">Tab Mode</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">category_mode</span>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light">
-              Determines where the Scene Light Manager UI panels are registered. Allows you to merge SLM into custom folders or native Blender properties categories.
-            </p>
-          </div>
-          <div class="text-[10px] text-zinc-500 font-mono flex-shrink-0">
-            <span>Type: <span class="text-amber-500/80">Enum</span></span>
-          </div>
-        </div>
-
-        <!-- Tab Options Visualizer -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-          <!-- SOLO -->
-          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <strong class="text-white text-xs">Solo Tab (K-Tools)</strong>
-              <span class="px-1.5 py-0.5 rounded bg-green-500/10 text-green-400 border border-green-500/20 text-[9px] font-mono">SOLO</span>
-            </div>
-            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
-              Creates a dedicated <strong>K-Tools</strong> category tab on Blender's 3D Viewport N-Panel. Highly recommended for a clean layout.
-            </p>
-          </div>
-
-          <!-- DEFAULT -->
-          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <strong class="text-white text-xs">Default Categories</strong>
-              <span class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 text-[9px] font-mono">DEFAULT</span>
-            </div>
-            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
-              Injects the SLM panels into Blender's standard tabs. You can select either the <strong>View</strong>, <strong>Tool</strong>, or <strong>Item</strong> tab.
-            </p>
-          </div>
-
-          <!-- CUSTOM -->
-          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <strong class="text-white text-xs">Custom Category</strong>
-              <span class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 text-[9px] font-mono">CUSTOM</span>
-            </div>
-            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
-              Appends panels to a user-defined category name (via <code>custom_category</code>). Integrates with custom UI organization schemes.
-            </p>
-          </div>
-
-          <!-- PROPERTIES -->
-          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <strong class="text-white text-xs">Scene Properties</strong>
-              <span class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 text-[9px] font-mono">PROPERTIES</span>
-            </div>
-            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
-              Moves the entire UI out of the N-Panel sidebar and attaches it to the native Blender <strong>Scene Properties</strong> tab instead.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </div>
 </DocLayout>

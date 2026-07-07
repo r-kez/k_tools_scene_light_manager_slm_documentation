@@ -9,9 +9,7 @@ const base = import.meta.env.BASE_URL;
     Scene Light Manager (SLM) features pre-calibrated, interactive studio lighting rigs. Spawning a rig automatically builds collection hierarchies, empty control handles, tracking targets, and constraints to let you manipulate professional setups instantly.
   </p>
 
-  <hr class="my-8 border-white/5" />
-
-  <h2>── 1. Spawning a Lighting Rig ──</h2>
+  <h2>1. Spawning a Lighting Rig</h2>
   <p>
     Under the <strong>LIGHTS</strong> tab of the SLM sidebar, click the <strong>Presets</strong> dropdown. Selecting any rig preset automatically triggers the following pipeline:
   </p>
@@ -24,14 +22,14 @@ const base = import.meta.env.BASE_URL;
 
   <hr class="my-8 border-white/5" />
 
-  <h2>── 2. Built-in Rig Presets ──</h2>
+  <h2>2. Built-in Rig Presets</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-6">
     <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300 flex flex-col gap-3 group">
       <div class="aspect-square w-full overflow-hidden rounded-lg bg-black/40 border border-white/5">
         <img 
           src={`${base}light_rigs_images/Rig%2001%20(3-Point).webp`} 
           alt="3-Point Light Rig" 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in" 
           loading="lazy"
         />
       </div>
@@ -48,7 +46,7 @@ const base = import.meta.env.BASE_URL;
         <img 
           src={`${base}light_rigs_images/Rig%2002%20(Studio%20Duo).webp`} 
           alt="Studio Duo" 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in" 
           loading="lazy"
         />
       </div>
@@ -65,7 +63,7 @@ const base = import.meta.env.BASE_URL;
         <img 
           src={`${base}light_rigs_images/Rig%2003%20(Warm-Cool).webp`} 
           alt="Warm-Cool Split" 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in" 
           loading="lazy"
         />
       </div>
@@ -82,7 +80,7 @@ const base = import.meta.env.BASE_URL;
         <img 
           src={`${base}light_rigs_images/Rig%2004%20(Dramatic%20Rim).webp`} 
           alt="Dramatic Rim" 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in" 
           loading="lazy"
         />
       </div>
@@ -99,7 +97,7 @@ const base = import.meta.env.BASE_URL;
         <img 
           src={`${base}light_rigs_images/Rig%2005%20(Butterfly).webp`} 
           alt="Butterfly" 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in" 
           loading="lazy"
         />
       </div>
@@ -116,7 +114,7 @@ const base = import.meta.env.BASE_URL;
         <img 
           src={`${base}light_rigs_images/Rig%2006%20(Double%20Sun).webp`} 
           alt="Double Sun" 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in" 
           loading="lazy"
         />
       </div>
@@ -131,7 +129,7 @@ const base = import.meta.env.BASE_URL;
 
   <hr class="my-8 border-white/5" />
 
-  <h2>── 3. Controlling Rigs (Parametric Sliders) ──</h2>
+  <h2>3. Controlling Rigs (Parametric Sliders)</h2>
   <p>
     Selecting a rig's collection or empty controller handle in the SLM list opens the <strong>Rig Properties</strong> sidebar panel, containing specialized sliders:
   </p>
@@ -150,4 +148,62 @@ const base = import.meta.env.BASE_URL;
       Height raises or lowers the emitters vertically. Tracking Height moves the look-at target empty up or down to concentrate lights on specific features.
     </li>
   </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2 id="custom-presets">4. Custom Presets (Saving & Loading)</h2>
+  <p class="mb-6">
+    In addition to the built-in lighting rigs, Scene Light Manager allows you to save your own custom lighting setups, rigs, controllers, and shaders as reusable presets.
+  </p>
+
+  <div class="flex flex-col gap-4 text-xs mb-6">
+    <!-- Saving a Custom Preset -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <strong class="text-white text-xs block mb-3">💾 Saving a Custom Preset</strong>
+      <ol class="space-y-2 text-[11px] text-zinc-400 font-light list-decimal pl-4">
+        <li>Group your custom lights, rigs, targets, and helper objects (like blockers/bouncers) into a <strong>Collection</strong>.</li>
+        <li>Select that collection in the Scene Light Manager list or keep one of its objects active.</li>
+        <li>Open the <strong>Presets...</strong> menu at the top of the interface and click <strong>Save Selected Collection as Preset...</strong>.</li>
+        <li>Enter a name for your preset in the popup dialog and click <strong>OK</strong>.</li>
+      </ol>
+    </div>
+
+    <!-- Loading a Preset -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <strong class="text-white text-xs block mb-3">📂 Loading a Preset</strong>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        Once saved, your custom presets will dynamically populate in the following menus under the <strong>Custom Presets</strong> header:
+      </p>
+      <ul class="text-[11px] text-zinc-400 font-light mt-2 space-y-1 list-disc pl-4">
+        <li>The <strong>Presets...</strong> menu in the Scene Light Manager N-Panel.</li>
+        <li>The <strong>Light Presets</strong> column in the Quick Pie Menu (<code>Shift + L</code> or custom shortcut).</li>
+      </ul>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed mt-2">
+        Clicking a custom preset will instantly load the saved collection, restore all parent-child relationships, drivers, and constraints, and add the objects back to your scene.
+      </p>
+    </div>
+
+    <!-- Deleting a Preset -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <strong class="text-white text-xs block mb-3">❌ Deleting a Preset</strong>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        If you no longer need a custom preset:
+      </p>
+      <ol class="space-y-2 text-[11px] text-zinc-400 font-light list-decimal pl-4 mt-2">
+        <li>Open the <strong>Presets...</strong> menu (or Pie Menu).</li>
+        <li>Click <strong>Delete Custom Preset...</strong>.</li>
+        <li>Select the preset you wish to remove from the drop-down menu in the dialog.</li>
+        <li>Click <strong>OK</strong> to permanently delete the preset file from your disk.</li>
+      </ol>
+    </div>
+  </div>
+
+  <blockquote class="border-l-4 border-amber-500/50 bg-white/[0.02] p-4 rounded-r-xl text-xs mb-6">
+    <p class="text-zinc-400">
+      <strong class="text-amber-500">📁 How Presets are Saved:</strong><br />
+      Your presets are stored as native Blender <code>.blend</code> files inside Blender's user configuration folder:
+      <code class="block mt-1 p-1 bg-black/40 border border-white/5 rounded text-[10px] select-all font-mono">.../config/scene_light_manager/presets/</code>
+      Because presets are stored in your user configuration directory, they are <strong>fully persistent</strong> across addon updates and will not be deleted when reinstalling or updating Scene Light Manager.
+    </p>
+  </blockquote>
 </DocLayout>

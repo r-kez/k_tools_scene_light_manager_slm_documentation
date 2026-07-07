@@ -1,0 +1,329 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+import Icon from '../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const colors = [
+  { name: 'orange', hex: '#e26a2c' },
+  { name: 'apricot', hex: '#e29b2c' },
+  { name: 'yellow', hex: '#d6c823' },
+  { name: 'lime', hex: '#8be22c' },
+  { name: 'olive', hex: '#5f822e' },
+  { name: 'green', hex: '#32e22c' },
+  { name: 'teal', hex: '#2ce2b5' },
+  { name: 'navy', hex: '#2c6ee2' },
+  { name: 'blue', hex: '#2cb5e2' },
+  { name: 'purple', hex: '#8b2ce2' },
+  { name: 'violet', hex: '#b52ce2' },
+  { name: 'pink', hex: '#e22c9b' },
+  { name: 'tan', hex: '#c0a080' },
+  { name: 'beige', hex: '#d8d0c0' },
+  { name: 'brown', hex: '#825f2e' },
+  { name: 'chocolate', hex: '#523f2e' }
+];
+---
+
+<DocLayout title="Link Manager">
+  <h1>Link Manager & Relationship Overrides</h1>
+
+  <p class="mb-4">
+    The <strong>Link Manager</strong> is a dedicated top-level section of Scene Light Manager. It coordinates Blender's advanced relationship configurations: <strong>Light Linking</strong>, <strong>Shadow Linking</strong>, multi-pass <strong>Light Groups</strong>, and <strong>Collection-Level overrides</strong>. By toggling the N-Panel mode selector to <strong>LINKS</strong>, you bypass native property editors, handling compositing tags and receiver groups directly next to each light.
+  </p>
+
+  <!-- Linking Manager Panel Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/link_manager.png`} 
+        alt="Link Manager Panel" 
+        class="h-auto max-h-[350px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Link Manager Mode inside the main panel list</span>
+  </div>
+
+  <div class="mb-6 flex flex-wrap gap-x-4 gap-y-2 text-xs">
+    <span class="text-zinc-500 font-mono">Official Blender References:</span>
+    <a href="https://docs.blender.org/manual/en/latest/render/lights/light_linking.html" target="_blank" rel="noopener noreferrer" class="text-amber-500 hover:underline flex items-center gap-1 font-mono">
+      <Icon name="LINK_BLEND" class="w-3.5 h-3.5" /> Light & Shadow Linking
+    </a>
+    <span class="text-white/10 font-mono">|</span>
+    <a href="https://docs.blender.org/manual/en/latest/render/cycles/object_settings/object_data.html#light-group" target="_blank" rel="noopener noreferrer" class="text-amber-500 hover:underline flex items-center gap-1 font-mono">
+      <Icon name="LINK_BLEND" class="w-3.5 h-3.5" /> Cycles Light Groups
+    </a>
+  </div>
+
+  <h2>1. The Core Relationship Columns (LG, LL, SL)</h2>
+  <p class="mb-4">
+    The Link Manager displays three assigner icons on the right side of every light row:
+  </p>
+
+  <div class="grid grid-cols-1 gap-4 mb-8 text-xs">
+    <!-- Light Group (LG) Card -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2 font-mono text-white">
+          <div class="flex items-center gap-2">
+            <Icon name="LIGHT_GROUP" />
+            <span>Light Group (LG)</span>
+          </div>
+          <span class="text-[10px] text-zinc-500 bg-white/[0.02] px-2 py-0.5 rounded border border-white/5">Circle Shape (⚪)</span>
+        </div>
+        <p class="text-zinc-400 leading-relaxed font-light mb-3">
+          Cycles compositor routing tag. Directs the active light's output into a dedicated image pass during rendering.
+        </p>
+        <span class="text-[10px] text-amber-500/80 font-mono">Use Case: Separate key/fill passes in post</span>
+
+        <div class="mt-4 pt-4 border-t border-white/5">
+          <span class="text-[10px] text-zinc-500 block mb-2.5 font-mono uppercase tracking-wider">Color Assignment Order:</span>
+          <div class="flex flex-wrap gap-2.5 items-center">
+            {colors.map(color => (
+              <div 
+                class="w-3.5 h-3.5 rounded-full border border-white/10 transition-all duration-300 hover:scale-125 cursor-help hover:border-white/30" 
+                style={`background-color: ${color.hex};`}
+                title={`${color.name} (Circle)`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Light Linking (LL) Card -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2 font-mono text-white">
+          <div class="flex items-center gap-2">
+            <Icon name="LIGHT_LINKING" />
+            <span>Light Linking (LL)</span>
+          </div>
+          <span class="text-[10px] text-zinc-500 bg-white/[0.02] px-2 py-0.5 rounded border border-white/5">Diamond Shape (🔶)</span>
+        </div>
+        <p class="text-zinc-400 leading-relaxed font-light mb-3">
+          Illumination receiver control. Choose exactly which meshes or collections are affected by this specific light source.
+        </p>
+        <span class="text-[10px] text-amber-500/80 font-mono">Use Case: Add character rim highlight only</span>
+
+        <div class="mt-4 pt-4 border-t border-white/5">
+          <span class="text-[10px] text-zinc-500 block mb-2.5 font-mono uppercase tracking-wider">Color Assignment Order:</span>
+          <div class="flex flex-wrap gap-2.5 items-center">
+            {colors.map(color => (
+              <div 
+                class="w-3.5 h-3.5 flex items-center justify-center transition-all duration-300 hover:scale-125 cursor-help" 
+                title={`${color.name} (Diamond)`}
+              >
+                <div 
+                  class="w-2.5 h-2.5 rotate-45 border border-white/10 transition-all duration-300 hover:border-white/30" 
+                  style={`background-color: ${color.hex};`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shadow Linking (SL) Card -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2 font-mono text-white">
+          <div class="flex items-center gap-2">
+            <Icon name="SHADOW_LINKING" />
+            <span>Shadow Linking (SL)</span>
+          </div>
+          <span class="text-[10px] text-zinc-500 bg-white/[0.02] px-2 py-0.5 rounded border border-white/5">Rounded Square Shape (⬜)</span>
+        </div>
+        <p class="text-zinc-400 leading-relaxed font-light mb-3">
+          Shadow blocking override. Designate which meshes cast shadows or let rays pass through them invisibly.
+        </p>
+        <span class="text-[10px] text-amber-500/80 font-mono">Use Case: Remove ceiling/rig shadows</span>
+
+        <div class="mt-4 pt-4 border-t border-white/5">
+          <span class="text-[10px] text-zinc-500 block mb-2.5 font-mono uppercase tracking-wider">Color Assignment Order:</span>
+          <div class="flex flex-wrap gap-2.5 items-center">
+            {colors.map(color => (
+              <div 
+                class="w-3.5 h-3.5 rounded border border-white/10 transition-all duration-300 hover:scale-125 cursor-help hover:border-white/30" 
+                style={`background-color: ${color.hex};`}
+                title={`${color.name} (Rounded Square)`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>2. Expanded Relationship Sub-panels</h2>
+  <p class="mb-6">
+    Clicking any of the relationship icons (LL, SL) in the list expands the selected item, revealing the inline relationship management sub-panel directly within the list row:
+  </p>
+
+  <!-- Light Linking Example Menu Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/link_manager-light_linking_example.png`} 
+        alt="Expanded Link Manager Item" 
+        class="h-auto max-h-[300px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Expanded inline sub-panel for managing Light/Shadow Linking object assignments</span>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <div class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <strong class="text-white flex items-center gap-1.5 mb-1"><Icon name="LINK_BLEND" class="w-3.5 h-3.5" /> Create & Link Collections</strong>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        Instantly create new receiver/blocker collections, name them, and add selected 3D viewport objects with a single click.
+      </p>
+    </div>
+    <div class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <strong class="text-white flex items-center gap-1.5 mb-1"><Icon name="RESTRICT_SELECT_OFF" class="w-3.5 h-3.5" /> Quick Selection Toggles</strong>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        Select all linked receiver objects in the 3D viewport directly from the expanded list row, or wipe relationships instantly using the clear (<strong>X</strong>) buttons.
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>3. <Icon name="LIGHT_LINKING" /> Light Linking Deep-Dive</h2>
+  <p class="mb-4">
+    Light Linking allows artists to isolate the illumination contribution of a light to a specific subset of objects, ignoring others entirely.
+  </p>
+
+  <!-- Light Linking Properties Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/light_property-light_linking.png`} 
+        alt="Light Linking Panel Properties" 
+        class="h-auto max-h-[250px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Light Linking collection properties panel and object assignments</span>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 mb-6">
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Use Cases</strong>
+      <ul class="list-disc pl-4 space-y-2 text-zinc-400">
+        <li>Apply a sharp specular outline to a character's hair without washing out background elements.</li>
+        <li>Illuminate products or packages without projecting bright pools on the tabletop base.</li>
+      </ul>
+    </div>
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Setup Workflow</strong>
+      <ol class="list-decimal pl-4 space-y-2 text-zinc-400">
+        <li>Switch the N-Panel mode selector to <strong>LINKS</strong>.</li>
+        <li>Select the target light from the list.</li>
+        <li>Under <strong>Light Linking</strong>, create a receiver collection and click <strong>Link Objects</strong> to assign selected meshes.</li>
+      </ol>
+    </div>
+  </div>
+
+  <blockquote>
+    <p>
+      <strong>[NOTE] Engine Support & Visualizers:</strong> Light Linking and Shadow Linking are supported in Cycles, and in newer Blender versions (4.2+), they are also fully compatible with EEVEE (EEVEE Next). Note that mesh lights (geometry emitters) still require the Cycles engine to render ray-traced emission. Enabling GPU Highlights in Preferences renders a clear, light-blue outline in the 3D viewport around all objects that are actively receiving illumination from the selected light.
+    </p>
+    <!-- Light Linking and Shadow Linking Viewport Highlight Outline -->
+    <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl mt-4 flex flex-col items-center">
+      <div class="overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2 flex justify-center">
+        <img 
+          src={`${base}overlay_gizmos/ll_and_sl_obkect_outline.png`} 
+          alt="Light & Shadow Linking Object Outline" 
+          class="h-auto max-h-[180px] object-contain zoomable-img cursor-zoom-in"
+          loading="lazy"
+        />
+      </div>
+      <span class="text-zinc-500 text-[10px] font-mono block text-center">Viewport highlight outlines showing objects linked to the active light source</span>
+    </div>
+  </blockquote>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>4. <Icon name="SHADOW_LINKING" /> Shadow Linking Deep-Dive</h2>
+  <p class="mb-4">
+    Shadow Linking allows you to control which objects physically block light and cast shadows for a specific emitter.
+  </p>
+
+  <!-- Shadow Linking Properties Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/light_property-shadow_linking.png`} 
+        alt="Shadow Linking Panel Properties" 
+        class="h-auto max-h-[250px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Shadow Linking collection properties panel and object assignments</span>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 mb-6">
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Use Cases</strong>
+      <ul class="list-disc pl-4 space-y-2 text-zinc-400">
+        <li>Pass light rays cleanly through ceiling panels, window frames, or camera rigs without creating unwanted shadows.</li>
+        <li>Selectively exclude specific props from casting blocky shadow silhouettes.</li>
+      </ul>
+    </div>
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-xl text-xs">
+      <strong class="text-white block mb-2 font-mono">Setup Workflow</strong>
+      <ol class="list-decimal pl-4 space-y-2 text-zinc-400">
+        <li>Select the emitter in the <strong>LINKS</strong> panel.</li>
+        <li>Under <strong>Shadow Linking</strong>, add or link a blocker collection.</li>
+        <li>Light will pass through any unlisted scene meshes, casting shadows only from the explicitly assigned objects.</li>
+      </ol>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>5. <Icon name="LIGHT_GROUP" /> Light Groups Deep-Dive (Compositing)</h2>
+  <p>
+    Isolate light contributions during final rendering, outputting independent image passes for different lights (e.g., Key, Fill, Rim, Environmental) to tweak colors and intensities in post-production without re-rendering.
+  </p>
+
+  <ul class="space-y-4 mb-6">
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Color Tagged Management:</strong>
+      Create custom Light Groups directly in the SLM links interface and assign descriptive colors to visually categorize your lights in the outliner list.
+    </li>
+    <li class="bg-white/[0.02] border border-white/5 p-4 rounded-xl text-xs">
+      <strong class="text-white block mb-1">Instant Re-assignment:</strong>
+      Quickly shift select multiple lights in the list and assign them to a specified Light Group using the gear actions popup.
+    </li>
+  </ul>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>6. Collection-Level Overrides & State Memory</h2>
+  <p>
+    Configure properties globally at the collection or rig level, applying rules to all nested lights automatically.
+  </p>
+
+  <div class="bg-white/[0.02] border border-white/5 rounded-2xl p-6 mb-6">
+    <h3 class="text-white mt-0 mb-4 text-sm font-mono tracking-wider">State Memory & Non-Destructive Actions</h3>
+    <p class="text-xs text-zinc-400 leading-relaxed mb-4">
+      Before overriding properties, SLM automatically caches the original values (original exposure, light group, and linking target collections) inside custom attributes on each object data block.
+    </p>
+    <div class="grid grid-cols-1 gap-4 text-xs">
+      <div class="bg-white/[0.01] border border-white/5 p-3 rounded-lg">
+        <strong class="text-white block mb-1">Dynamic Recovery</strong>
+        Moving a light out of an overridden collection instantly restores its original exposure, light groups, and linking settings.
+      </div>
+      <div class="bg-white/[0.01] border border-white/5 p-3 rounded-lg">
+        <strong class="text-white block mb-1">Toggle Locks</strong>
+        Disabling or deleting the collection-level override immediately reverts all nested lights to their unique pre-override configurations.
+      </div>
+    </div>
+  </div>
+</DocLayout>

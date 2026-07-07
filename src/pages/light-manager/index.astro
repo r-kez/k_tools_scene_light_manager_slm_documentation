@@ -1,0 +1,450 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import LightManagerTabs from '../../components/LightManagerTabs.astro';
+import Icon from '../../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<DocLayout title="Light Manager UI">
+  <h1>The Light Manager Interface</h1>
+  <LightManagerTabs activeTab="light-manager" />
+  <p>
+    The <strong>Light Manager</strong> acts as the central command center of Scene Light Manager. It consolidates all active lights, mesh emitters, blockers, and world environments in your scene into a single, unified list. From here, you can drive values, control visibility, lock exposure metrics, and configure light groups without diving into the Outliner or property panels.
+  </p>
+
+  <h2>1. Main Mode Switcher</h2>
+  <p>
+    At the top of the Scene Light Manager panel, you can toggle between two core management modes:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-xs text-left border-collapse">
+      <thead>
+        <tr class="border-b border-white/5 text-zinc-400 font-mono">
+          <th class="py-3 px-4 font-normal">Mode</th>
+          <th class="py-3 px-4 font-normal text-center">Icon</th>
+          <th class="py-3 px-4 font-normal">Description</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/5">
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Light Manager</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="LIGHT" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400 leading-relaxed">
+            Standard list mode for managing your lights, environment (World), collection hierarchies, helper objects, and direct properties.
+          </td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Link Manager</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="LINK_BLEND" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400 leading-relaxed">
+            Dedicated overview panel to manage relationship overrides: <strong>Light Groups (LG)</strong>, <strong>Light Linking (LL)</strong>, and <strong>Shadow Linking (SL)</strong> at a global level.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>2. Toolbar Row 1: Visibility & Filters</h2>
+  <p class="mb-6">
+    Just below the mode switcher, you'll find visibility controls and a quick-filter system to isolate specific assets:
+  </p>
+
+  <div class="grid grid-cols-1 gap-4 mb-6">
+    <!-- Card: Visibility Mode Selection -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div>
+        <div class="flex items-center gap-2 mb-2 font-mono text-white text-xs">
+          <span>Visibility Mode Selection</span>
+        </div>
+        <p class="text-xs text-zinc-400 leading-relaxed font-light mb-4">
+          Toggle whether visibility changes affect the global scene settings (<code>GLOBAL</code>) or are limited to the active view layer (<code>VIEW_LAYER</code>).
+        </p>
+
+        <!-- Comparative Layout for Visibility Modes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-zinc-950/40 border border-white/5 p-2 rounded-xl flex flex-col justify-between group">
+            <div class="overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-1.5 flex items-center justify-center">
+              <img 
+                src={`${base}panel_images/ui_list-global_mode.png`} 
+                alt="Global Mode Header" 
+                class="h-auto max-h-[120px] object-contain transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+                loading="lazy"
+              />
+            </div>
+            <span class="text-zinc-500 text-[10px] font-mono block text-center">Global Mode List Header</span>
+          </div>
+          <div class="bg-zinc-950/40 border border-white/5 p-2 rounded-xl flex flex-col justify-between group">
+            <div class="overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-1.5 flex items-center justify-center">
+              <img 
+                src={`${base}panel_images/ui_list-view_layer_mode.png`} 
+                alt="View Layer Mode Header" 
+                class="h-auto max-h-[120px] object-contain transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+                loading="lazy"
+              />
+            </div>
+            <span class="text-zinc-500 text-[10px] font-mono block text-center">View Layer Mode List Header</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Filter Toggle -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div>
+        <div class="flex items-center gap-2 mb-2 font-mono text-white text-xs">
+          <Icon name="FILTER" />
+          <span>Filter Toggle (FILTER)</span>
+        </div>
+        <p class="text-xs text-zinc-400 leading-relaxed font-light">
+          Opens/closes the advanced search and filtering foldout panel to quickly refine active list components.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-1.5"><Icon name="FILTER" /> Advanced Filters Foldout</h3>
+  <p class="mb-4">
+    When the filter panel is toggled open, the following options are available:
+  </p>
+
+  <!-- Filter Panel Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/ui_list-filter.png`} 
+        alt="Advanced Filters Foldout" 
+        class="h-auto max-h-[200px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Advanced filters and search foldout panel</span>
+  </div>
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2">
+        <Icon name="VIEWZOOM" />
+        <span class="font-mono text-white">Search Bar</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Search and filter elements in the list by name. Clear the search instantly with the <strong>X</strong> button.</p>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2 font-mono text-white">
+        <span>Type Filter</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Filter items by their light category (<em>Point, Sun, Spot, Area, Bouncer, Blocker, Mesh Light, Catcher, HDRI Sphere</em>).</p>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2">
+        <Icon name="OUTLINER" />
+        <span class="font-mono text-white">Flat List</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Flatten the collection hierarchy. Shows all objects as a single list, hiding parent collection folders.</p>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-2 font-mono text-white">
+        <span>Relationship Dropdowns</span>
+      </div>
+      <p class="text-zinc-400 leading-relaxed">Filter elements based on whether they belong to a specific Light Group (LG), Light Linking collection (LL), or Shadow Linking collection (SL).</p>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>3. Toolbar Row 2: Creation & Rigs</h2>
+  <p>
+    This row contains the creation tools, parametric rigs, and deletion operators.
+  </p>
+
+  <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-1.5"><Icon name="ADD" /> The Add Menu (<code>+ Add...</code>)</h3>
+  <p class="mb-4">Allows spawning custom lights, calibrated rigs, and special studio tools directly at the 3D cursor:</p>
+
+  <!-- Add Menu Images Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-zinc-950/40 border border-white/5 p-3 rounded-xl flex flex-col justify-between hover:border-white/10 transition-all duration-300 group">
+      <div class="overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2 flex items-center justify-center p-2">
+        <img 
+          src={`${base}panel_images/add_menu.png`} 
+          alt="Main Add Menu" 
+          class="h-auto max-h-[220px] object-contain transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+          loading="lazy"
+        />
+      </div>
+      <span class="text-zinc-500 text-[10px] font-mono block text-center">Main Add Menu in Sidebar</span>
+    </div>
+    <div class="bg-zinc-950/40 border border-white/5 p-3 rounded-xl flex flex-col justify-between hover:border-white/10 transition-all duration-300 group">
+      <div class="overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2 flex items-center justify-center p-2">
+        <img 
+          src={`${base}panel_images/quick_menu-add.png`} 
+          alt="Quick Add Menu Popover" 
+          class="h-auto max-h-[220px] object-contain transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+          loading="lazy"
+        />
+      </div>
+      <span class="text-zinc-500 text-[10px] font-mono block text-center">Quick Add Menu Popover</span>
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 gap-4 mb-8">
+    <!-- Set -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="COLLECTION_NEW" />
+        <strong class="text-white text-xs">Set Creation</strong>
+      </div>
+      <p class="text-[11px] text-zinc-400 leading-relaxed font-light">
+        Creates a new pre-structured light group collection containing default area and point light configurations.
+      </p>
+    </div>
+
+    <!-- Standard Lights -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="LIGHT" />
+        <strong class="text-white text-xs">Standard Lights</strong>
+      </div>
+      <ul class="space-y-2 text-[11px] text-zinc-400">
+        <li class="flex items-center gap-1.5"><Icon name="LIGHT_POINT" class="w-3.5 h-3.5" /> Point Light — Omni</li>
+        <li class="flex items-center gap-1.5"><Icon name="LIGHT_POINT" class="w-3.5 h-3.5" /> IES Light — Calibrated</li>
+        <li class="flex items-center gap-1.5"><Icon name="LIGHT_SUN" class="w-3.5 h-3.5" /> Sun Light — Parallel</li>
+        <li class="flex items-center gap-1.5"><Icon name="LIGHT_SPOT" class="w-3.5 h-3.5" /> Spot Light — Conical</li>
+        <li class="flex items-center gap-1.5"><Icon name="LIGHT_AREA" class="w-3.5 h-3.5" /> Area Light — Surface</li>
+      </ul>
+    </div>
+
+    <!-- Advanced Lights -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="LIGHT_DATA" />
+        <strong class="text-white text-xs">Special Lights</strong>
+      </div>
+      <ul class="space-y-2 text-[11px] text-zinc-400 font-light">
+        <li class="flex items-start gap-1.5">
+          <Icon name="LIGHT_SUN" class="w-3.5 h-3.5 mt-0.5" />
+          <span><strong>Realistic Sun:</strong> Geo-coordinated sun/sky cycle.</span>
+        </li>
+        <li class="flex items-start gap-1.5">
+          <Icon name="LIGHT_SUN" class="w-3.5 h-3.5 mt-0.5" />
+          <span><strong>Aligned Sun:</strong> Sun tracking via HDRI mapping.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Helpers -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="WORLD" />
+        <strong class="text-white text-xs">Helper Objects</strong>
+      </div>
+      <ul class="space-y-1.5 text-[10px] text-zinc-400 font-light">
+        <li class="flex items-center gap-1"><Icon name="icon_bouncer" class="w-3 h-3" /> Bouncer — Reflector card</li>
+        <li class="flex items-center gap-1"><Icon name="icon_blocker" class="w-3 h-3" /> Blocker — Dark black flag</li>
+        <li class="flex items-center gap-1"><Icon name="icon_meshlight" class="w-3 h-3" /> Mesh Light — Emissive plane</li>
+        <li class="flex items-center gap-1"><Icon name="MOD_DYNAMICPAINT" class="w-3 h-3" /> Catcher — Shadow catcher</li>
+        <li class="flex items-center gap-1"><Icon name="WORLD" class="w-3 h-3" /> HDRI Sphere — Preview sphere</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-1.5"><Icon name="LIGHT_DATA" /> The Presets Menu (<code>Presets...</code>)</h3>
+  <p class="mb-4">Spawns parametric studio lighting setups pre-parented to controller empties with unified controls:</p>
+
+  <!-- Preset Menu Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/preset_menu.png`} 
+        alt="Presets Menu" 
+        class="h-auto max-h-[220px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Parametric Presets Dropdown Menu</span>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="LIGHT" />
+      <div>
+        <strong class="text-white block mb-0.5">3-Point Light Setup</strong>
+        <span class="text-zinc-400">Classic Key, Fill, and Rim/Back studio rig.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="LIGHT" />
+      <div>
+        <strong class="text-white block mb-0.5">Studio Duo (Product)</strong>
+        <span class="text-zinc-400">Two-point product studio layout.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="COLOR" />
+      <div>
+        <strong class="text-white block mb-0.5">Warm-Cool Split (Cinematic)</strong>
+        <span class="text-zinc-400">Cinematic warm-cool split key-fill setup.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="SHADING_RENDERED" />
+      <div>
+        <strong class="text-white block mb-0.5">Dramatic Rim (Silhouette)</strong>
+        <span class="text-zinc-400">High-contrast rim lighting setup.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="USER" />
+      <div>
+        <strong class="text-white block mb-0.5">Butterfly Glamour (Portrait)</strong>
+        <span class="text-zinc-400">Glamour/portrait beauty rig.</span>
+      </div>
+    </div>
+    <div class="p-3 bg-white/[0.01] border border-white/5 rounded-lg flex items-start gap-2.5">
+      <Icon name="LIGHT_DATA" />
+      <div>
+        <strong class="text-white block mb-0.5">Double Sun (Atmospheric)</strong>
+        <span class="text-zinc-400">Dual-sun atmospheric setup.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white/[0.01] border border-white/5 p-4 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 mb-8 flex items-center gap-3 text-xs">
+    <div class="p-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 flex-shrink-0">
+      <Icon name="REMOVE" />
+    </div>
+    <div>
+      <strong class="text-white text-xs block">Delete Operator (REMOVE)</strong>
+      <p class="text-[11px] text-zinc-400 font-light leading-relaxed mt-0.5">
+        Instantly removes the selected light object, helper object, or entire active collection hierarchies.
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>4. Right Sidebar Actions (UI List Column)</h2>
+  <p>
+    To the right of the main UI list is a vertical toolbar containing quick actions:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-xs text-left border-collapse">
+      <thead>
+        <tr class="border-b border-white/5 text-zinc-400 font-mono">
+          <th class="py-3 px-4 font-normal">Action</th>
+          <th class="py-3 px-4 font-normal text-center">Icon</th>
+          <th class="py-3 px-4 font-normal">Description</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/5">
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Expand Tree</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="icon_expand" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Recursively expands all collection levels in the list.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Collapse Tree</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="icon_collapse" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Recursively collapses all collection levels in the list.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Select Previous</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="TRIA_UP" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Selects the previous light or collection in the list index stack.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Select Next</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="TRIA_DOWN" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Selects the next light or collection in the list index stack.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Pin Collection</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="PINNED" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Pins the selected collection so its visibility is locked against global modifications.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Unpin Collection</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="UNPINNED" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Unpins the selected collection.</td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Solo / Isolate Mode</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="STICKY_UVS_LOC" /> / <Icon name="STICKY_UVS_DISABLE" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">
+            Turns off all other light sources to isolate the selected emitter/collection. <em>Turns red (alert mode) when active.</em>
+          </td>
+        </tr>
+        <tr class="hover:bg-white/[0.01] transition-colors">
+          <td class="py-4 px-4 font-medium text-white">Options Popover</td>
+          <td class="py-4 px-4 text-center">
+            <Icon name="PREFERENCES" />
+          </td>
+          <td class="py-4 px-4 text-zinc-400">Opens the <strong>List Display Options</strong> popover panel.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>5. List Display Options Popover</h2>
+  <p class="mb-4">
+    Clicking the Gear icon (<Icon name="PREFERENCES" />) opens a settings panel divided into two sections:
+  </p>
+
+  <!-- Options Popover Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/ui_list-popover.png`} 
+        alt="List Display Options Popover" 
+        class="h-auto max-h-[220px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">List Display & Sync Options Popover Panel</span>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 text-xs mb-6">
+    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
+      <strong class="text-white flex items-center gap-1.5 mb-2 font-mono"><Icon name="OUTLINER" /> A. List Display</strong>
+      <ul class="space-y-2 list-disc pl-4 text-zinc-400">
+        <li><strong>Expand All Light Details:</strong> Forces all lights to display their target, power, and color sliders inline.</li>
+        <li><strong>Auto Expand Active Light:</strong> Only shows inline sliders for the currently selected light.</li>
+        <li><strong>Show World in List:</strong> Toggles the visibility of the top-level <strong>World</strong> row.</li>
+        <li><strong>Outliner Columns:</strong> Show/hide columns (Select, Viewport, Render, Exposure, L. Group, L. Link, S. Link, Targets, V. Layer).</li>
+      </ul>
+    </div>
+    <div class="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
+      <strong class="text-white flex items-center gap-1.5 mb-2 font-mono"><Icon name="FILE_REFRESH" /> B. Synchronization</strong>
+      <ul class="space-y-2 list-disc pl-4 text-zinc-400">
+        <li><strong>Auto Local Transform:</strong> Toggles transform orientation to <strong>Local</strong> space upon selection.</li>
+        <li><strong>Sync Selection:</strong> Synchronizes viewport selection with the list, and vice versa.</li>
+        <li><strong>Sync Collection Selection:</strong> Selects all lights in viewport when their collection is selected.</li>
+        <li><strong>Sync Visibility Drivers:</strong> Syncs viewport visibility drivers when visibility properties change.</li>
+        <li><strong>Show Selected in Camera Render:</strong> Overrides render visibility for camera test renders.</li>
+      </ul>
+    </div>
+  </div>
+</DocLayout>
+

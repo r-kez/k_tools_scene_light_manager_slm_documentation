@@ -3,11 +3,11 @@ const base = import.meta.env.BASE_URL;
 const { activeTab } = Astro.props;
 
 const tabs = [
-  { label: 'Overview', path: 'main-panel' },
-  { label: 'UI List', path: 'main-panel/ui-list' },
-  { label: 'Collection Properties', path: 'main-panel/collection-properties' },
-  { label: 'Light Properties', path: 'main-panel/light-properties' },
-  { label: 'Linking Manager', path: 'main-panel/linking-manager' },
+  { label: 'Overview', path: 'light-manager' },
+  { label: 'UI List', path: 'light-manager/ui-list' },
+  { label: 'Collection Properties', path: 'light-manager/collection-properties' },
+  { label: 'Light Properties', path: 'light-manager/light-properties' },
+  { label: 'World Properties', path: 'light-manager/world-properties' },
 ];
 
 const relLink = (path: string) => {

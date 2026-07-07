@@ -1,17 +1,28 @@
 ---
 import DocLayout from '../../layouts/DocLayout.astro';
 import PreferencesTabs from '../../components/PreferencesTabs.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <DocLayout title="Preferences — Viewport & Gizmos">
   <h1>Addon Preferences Configuration</h1>
-  <p class="text-zinc-400 text-sm leading-relaxed mb-6 font-light">
-    Configure the visual overlays drawn directly inside Blender's 3D Viewport. Set up interactive buttons next to light sources, custom HDRI rotation overlays, and colored GPU outline highlights.
-  </p>
+  <PreferencesTabs activeTab="preferences/viewport-gizmos" description="Configure the visual overlays drawn directly inside Blender 3D Viewport, including interactive light buttons and GPU outline highlights." />
 
-  <PreferencesTabs activeTab="preferences/viewport-gizmos" />
+  <!-- Gizmos Preferences Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/preferences-viewport_and_gizmos.png`} 
+        alt="Viewport & Gizmos Preferences" 
+        class="h-auto max-h-[350px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Addon Preferences — Viewport Overlays & Gizmo settings</span>
+  </div>
 
-  <!-- ── 3. Viewport Highlights & Gizmos Settings ── -->
+  <!-- ââ 3. Viewport Highlights & Gizmos Settings ââ -->
   <div class="space-y-12">
 
     <!-- SECTION 1: CORE VISUAL TOGGLES -->
@@ -29,7 +40,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 gap-4">
         <!-- GPU Highlights -->
         <div id="enable_gpu_highlights" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
           <div>
@@ -43,7 +54,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
           </div>
           <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
@@ -61,7 +72,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
           </div>
           <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
@@ -79,7 +90,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
           </div>
           <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>•</span>
+            <span>â¢</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
@@ -105,7 +116,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
           When using the interactive environment rotation shortcuts, a HUD overlay renders the current rotation angle. Customize its visual styling below:
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="grid grid-cols-1 gap-4 text-xs">
           <!-- X Position -->
           <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
@@ -189,7 +200,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
         <!-- Part A: Layout & Anchors -->
         <div>
           <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-4 font-sans">1. Button Placements & Anchors</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-sans">
+          <div class="grid grid-cols-1 gap-4 text-xs font-sans">
             <!-- Offsets -->
             <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
               <span class="text-white font-medium block mb-1">Offset Alignment (X / Y)</span>
@@ -231,7 +242,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
             Toggle which quick-actions are drawn inline next to light objects in the 3D viewport:
           </p>
 
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 text-xs font-sans">
+          <div class="grid grid-cols-1 gap-3 text-xs font-sans">
             <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
               <span class="text-white block font-medium">Type Switcher</span>
               <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_type_button</code>
@@ -264,7 +275,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
         <!-- Part C: Button Aesthetics -->
         <div>
           <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-4 font-sans">3. Button Style & Coloring</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-sans">
+          <div class="grid grid-cols-1 gap-4 text-xs font-sans">
             <!-- Background Toggle -->
             <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between">
               <div>
@@ -362,7 +373,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
             Toggle a details panel drawn directly in the 3D view showing power stats for active lamps:
           </p>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs font-sans">
+          <div class="grid grid-cols-1 gap-6 text-xs font-sans">
             <!-- Card toggle -->
             <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
@@ -378,7 +389,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
             <!-- Stats Styles -->
             <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl space-y-3">
               <span class="text-white font-medium block">Stats Overlay Appearance Customization</span>
-              <div class="grid grid-cols-2 gap-2 text-[10px] font-sans">
+              <div class="grid grid-cols-1 gap-2 text-[10px] font-sans">
                 <div class="p-2 bg-white/[0.01] border border-white/5 rounded">
                   <span class="text-zinc-500 block mb-0.5">Font Size</span>
                   <code class="text-zinc-300">stats_overlay_font_size (Default: 12)</code>
@@ -434,7 +445,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
         <div class="h-[1px] bg-white/5"></div>
 
         <!-- Layout grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-sans">
+        <div class="grid grid-cols-1 gap-4 text-xs font-sans">
           
           <!-- Receiver Outline Color -->
           <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between">
@@ -497,4 +508,5 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
 
   </div>
 </DocLayout>
+
 

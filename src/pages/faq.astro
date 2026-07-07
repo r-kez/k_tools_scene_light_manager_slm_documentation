@@ -1,0 +1,125 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Troubleshooting & FAQ">
+  <h1>Troubleshooting & FAQ</h1>
+  <p class="text-zinc-400 text-sm leading-relaxed mb-8 font-light">
+    Find solutions to common performance questions, setup issues, and general lighting configuration queries.
+  </p>
+
+  <div class="space-y-8">
+    <!-- Section: Core FAQs -->
+    <section class="space-y-4">
+      <h2 class="text-white text-base font-semibold mb-4 flex items-center gap-2">
+        <svg class="w-5 h-5 text-technical-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Frequently Asked Questions
+      </h2>
+
+      <div class="space-y-4">
+        <!-- Q1 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+          <h3 class="text-sm font-medium text-white mb-2 flex items-start gap-2">
+            <span class="text-technical-amber font-mono select-none">Q:</span>
+            <span>Why is "No Shader Preview Rendered" showing in the list?</span>
+          </h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
+            Shader previews require node-based materials. Ensure that the active emitter has <strong>Use Nodes</strong> enabled under Blender's shading editor. Previews are not compiled for standard inputs.
+          </p>
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+          <h3 class="text-sm font-medium text-white mb-2 flex items-start gap-2">
+            <span class="text-technical-amber font-mono select-none">Q:</span>
+            <span>A tagged Mesh Light is missing from the Outliner list?</span>
+          </h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
+            Ensure the mesh material has an active Emissive shader, and the mesh name or material name matches your preference keywords (e.g., <code>glow</code>, <code>emit</code>). You can also mark objects manually using the <strong>Mark as Mesh Light</strong> operator.
+          </p>
+        </div>
+
+        <!-- Q3 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+          <h3 class="text-sm font-medium text-white mb-2 flex items-start gap-2">
+            <span class="text-technical-amber font-mono select-none">Q:</span>
+            <span>How are Custom Presets persistent across Blender updates?</span>
+          </h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
+            Custom presets are saved outside of the addon directory in Blender's persistent configuration path (<code>.../config/scene_light_manager/presets/</code>). This ensures your rigs are safe and preserved even when updating or reinstalling the addon.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Performance & Setup Troubleshooting -->
+    <section class="space-y-4 pt-4">
+      <h2 class="text-white text-base font-semibold mb-4 flex items-center gap-2">
+        <svg class="w-5 h-5 text-technical-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        Performance & Setup Troubleshooting
+      </h2>
+
+      <div class="space-y-4">
+        <!-- T1 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 flex gap-4">
+          <div class="p-2 rounded-lg bg-amber-500/5 text-amber-400 border border-amber-500/10 h-fit">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-sm font-medium text-white">Viewport Lag during Slider Tweak</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              If adjusting exposure or colors causes micro-stuttering, ensure <strong>Cycles GPU</strong> is set as the active Preview Render Engine in Addon Preferences. Cycles performs asynchronous background renders, whereas EEVEE compiles shaders synchronously on Blender's main thread, causing frames to drop.
+            </p>
+          </div>
+        </div>
+
+        <!-- T2 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 flex gap-4">
+          <div class="p-2 rounded-lg bg-amber-500/5 text-amber-400 border border-amber-500/10 h-fit">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-sm font-medium text-white">Shading Artifacts on Texture Maps</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              Ensure your working color space is configured correctly. Working in color spaces other than linear (such as sRGB on non-color maps) can distort normal outputs and shadow orientations. If necessary, use the diagnostics panel to reset mapping coordinates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Support callout -->
+    <div class="bg-gradient-to-r from-amber-500/5 to-orange-500/5 border border-amber-500/10 rounded-2xl p-8 text-center relative overflow-hidden mt-8">
+      <div class="absolute -right-16 -bottom-16 w-48 h-48 rounded-full bg-amber-500/5 blur-2xl pointer-events-none"></div>
+      <h3 class="text-white text-base font-semibold mb-2">Still Need Help?</h3>
+      <p class="text-xs text-zinc-400 max-w-md mx-auto mb-6 font-light">
+        If you couldn't find an answer here, feel free to report bug issues directly on GitHub or contact support via email.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a 
+          href="mailto:kezives3d@gmail.com" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-zinc-950 font-mono text-[10px] uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-all duration-300 shadow-lg shadow-white/5"
+          style="color: #09090b !important; text-decoration: none !important;"
+        >
+          <span>Email Support</span>
+        </a>
+        <a 
+          href="https://github.com/r-kez/k_tools_slm_documentation/issues" 
+          target="_blank" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest font-semibold hover:bg-zinc-800 transition-all duration-300"
+          style="text-decoration: none !important;"
+        >
+          <span>Open GitHub Issue</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocLayout>

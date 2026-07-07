@@ -3,57 +3,64 @@ const base = import.meta.env.BASE_URL;
 
 // All documentation items to search
 const searchIndex = [
-  // General & Guides
+  // Troubleshooting & FAQ
   {
-    title: "Architecture & Guide",
-    category: "Guide",
-    description: "Core architecture, registration structure, and developer guide.",
-    url: "guide",
-    keywords: ["architecture", "guide", "addon", "blender", "python", "developer"]
+    title: "Troubleshooting & FAQ",
+    category: "FAQ",
+    description: "Solutions to common performance queries, viewport stuttering, and setup issues.",
+    url: "faq",
+    keywords: ["troubleshooting", "faq", "issues", "stuttering", "eevee", "cycles", "lag", "support", "help", "contact"]
   },
+
+  // Light Manager UI
   {
-    title: "Design Aesthetics & System",
-    category: "Guide",
-    description: "Gyeol Studio color palettes, layout schemes, typography, and typography tokens.",
-    url: "guide#design",
-    keywords: ["design", "aesthetics", "system", "theme", "colors", "amber"]
-  },
-  
-  // Main Panel UI
-  {
-    title: "Main Panel UI Overview",
-    category: "Main Panel UI",
+    title: "Light Manager UI Overview",
+    category: "Light Manager",
     description: "Overview of the primary 3D viewport sidebar (N-Panel) interface layout.",
-    url: "main-panel",
-    keywords: ["n-panel", "sidebar", "main panel", "ui", "layout", "overview"]
+    url: "light-manager",
+    keywords: ["n-panel", "sidebar", "light manager", "main panel", "ui", "layout", "overview"]
   },
   {
     title: "UI List & Hierarchy",
-    category: "Main Panel UI",
+    category: "Light Manager",
     description: "Comprehensive guide to the main light hierarchy list, collection folders, and icons.",
-    url: "main-panel/ui-list",
+    url: "light-manager/ui-list",
     keywords: ["ui list", "hierarchy", "outliner", "icons", "sorting", "groups"]
   },
   {
     title: "Light Properties & Control",
-    category: "Main Panel UI",
+    category: "Light Manager",
     description: "Adjusting power, color, color temperature, and direct shader values.",
-    url: "main-panel/light-properties",
+    url: "light-manager/light-properties",
     keywords: ["light properties", "power", "color", "temperature", "kelvin", "exposure"]
   },
   {
     title: "Collection Properties & Rigging",
-    category: "Main Panel UI",
+    category: "Light Manager",
     description: "Grouping lights into rigs, nested collection behaviors, and collection-level switches.",
-    url: "main-panel/collection-properties",
+    url: "light-manager/collection-properties",
     keywords: ["collection properties", "rigging", "groups", "folder", "sub-collection"]
   },
   {
-    title: "Linking Manager & Override Setup",
-    category: "Main Panel UI",
+    title: "Link Manager & Override Setup",
+    category: "Link Manager",
     description: "Managing cycles light linking and shadow linking properties on collections and objects.",
-    url: "main-panel/linking-manager",
-    keywords: ["linking manager", "light linking", "shadow linking", "cycles", "receivers", "blockers"]
+    url: "linking-manager",
+    keywords: ["linking manager", "link manager", "light linking", "shadow linking", "cycles", "receivers", "blockers"]
+  },
+  {
+    title: "World Properties & SLM-World",
+    category: "Light Manager",
+    description: "Configuring environment maps, HDRI quick loader, procedural sky simulations, and the SLM-World custom node group.",
+    url: "light-manager/world-properties",
+    keywords: ["world properties", "slm-world", "hdri", "loader", "sky", "nishita", "sun alignment", "volumetric fog"]
+  },
+  {
+    title: "HDRI Favorites & Navigation",
+    category: "Light Manager",
+    description: "Virtual favorites subdirectory, favoriting HDRIs, random selection, and next/prev cycling.",
+    url: "light-manager/world-properties#favorites-navigation",
+    keywords: ["favorites", "navigation", "random", "next", "previous", "hdri", "virtual folder", "star", "shuffle"]
   },
 
   // Preferences - General & Sync
@@ -197,13 +204,13 @@ const searchIndex = [
     keywords: ["auto_assign_softbox", "softbox shader", "node group", "area lights"]
   },
 
-  // Interactive Tools
+  // Viewport
   {
-    title: "Interactive Viewport Tools",
-    category: "Tools",
-    description: "Modal operators like Light at Point, HDRI rotation, and interactive target constraints.",
-    url: "interactive-tools",
-    keywords: ["light at point", "rotate hdri", "target", "constraint", "modal", "operators"]
+    title: "Viewport Tools",
+    category: "Viewport",
+    description: "Modal operators like Light at Point, HDRI rotation, navigation, and interactive target constraints.",
+    url: "viewport",
+    keywords: ["viewport", "light at point", "rotate hdri", "target", "constraint", "modal", "operators", "next", "previous", "navigate"]
   },
 
   // Mesh Lights & Helpers
@@ -223,14 +230,12 @@ const searchIndex = [
     url: "presets-and-rigs",
     keywords: ["presets", "studio rigs", "rig manager", "import preset", "export preset"]
   },
-
-  // Keyboard Shortcuts
   {
-    title: "Keyboard Shortcuts Index",
-    category: "Shortcuts",
-    description: "Reference listing of all modal keymaps: Y (Quick Popup) and Ctrl+Alt+RMB (HDRI Drag).",
-    url: "shortcuts",
-    keywords: ["shortcuts", "hotkeys", "keymaps", "quick popup", "rotate hdri", "y key"]
+    title: "Custom Presets (Saving & Loading)",
+    category: "Presets",
+    description: "Save custom lighting setups to persistent configuration files, load and delete them from N-Panel/Pie menus.",
+    url: "presets-and-rigs#custom-presets",
+    keywords: ["custom presets", "save preset", "load preset", "delete preset", "blend files", "persistent config"]
   }
 ];
 ---

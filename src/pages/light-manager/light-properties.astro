@@ -1,0 +1,603 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import LightManagerTabs from "../../components/LightManagerTabs.astro";
+import Icon from "../../components/Icon.astro";
+
+const base = import.meta.env.BASE_URL;
+const iesThumbnails = Array.from(
+  { length: 30 },
+  (_, i) => `${base}icons/addon/ies-preview/${i + 1}.webp`,
+);
+
+const shapes = [
+  { name: "Square", file: "square.webp" },
+  { name: "Sphere", file: "sphere.webp" },
+  { name: "Ring", file: "ring.webp" },
+  { name: "Strip", file: "strip.webp" },
+  { name: "Strip V2", file: "stip_v2.webp" },
+  { name: "Linear", file: "linear.webp" },
+];
+
+const textures = [
+  { name: "HDR Texture 1", file: "texture (1).webp" },
+  { name: "HDR Texture 2", file: "texture (2).webp" },
+  { name: "HDR Texture 3", file: "texture (3).webp" },
+  { name: "HDR Texture 4", file: "texture (4).webp" },
+  { name: "HDR Texture 5", file: "texture (5).webp" },
+];
+
+const gobos = [
+  { name: "Caustics", file: "gobos (1).png" },
+  { name: "Foliage", file: "gobos (2).jpg" },
+  { name: "Foliage", file: "gobos (3).jpg" },
+  { name: "Blinds", file: "gobos (4).png" },
+];
+---
+
+<DocLayout title="Light Properties">
+  <h1>Light Manager — Light Properties</h1>
+  <LightManagerTabs activeTab="light-manager/light-properties" />
+
+  <p class="mb-6">
+    The <strong>Light Properties</strong> tab within the Main Panel UI expands Blender's
+    native light data blocks, providing a centralized control panel for adjustments,
+    photometric IES files, geographic sun rigs, and custom studio Softbox node modifiers.
+  </p>
+
+  <h2>1. Selected Light Tabs</h2>
+  <p class="mb-4">
+    When you select a light in the SLM list, the properties editor displays
+    three main context tabs at the top:
+  </p>
+
+  <div class="grid grid-cols-1 gap-4 mb-8 text-xs">
+    <!-- Properties Tab -->
+    <div
+      class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+    >
+      <div>
+        <div class="flex items-center gap-2 mb-2 font-mono text-white">
+          <Icon name="PROPERTIES" />
+          <span>Properties</span>
+        </div>
+        <p class="text-zinc-400 leading-relaxed font-light">
+          Displays advanced settings, custom shader node groups, Cycles/EEVEE
+          engines override settings, and object transformations.
+        </p>
+      </div>
+    </div>
+
+    <!-- Light Linking Tab -->
+    <div
+      class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+    >
+      <div>
+        <div class="flex items-center gap-2 mb-2 font-mono text-white">
+          <Icon name="LIGHT_LINKING" />
+          <span>Light Linking</span>
+        </div>
+        <p class="text-zinc-400 leading-relaxed font-light">
+          Configure which objects or collections in the scene are affected by
+          (receive light from) the selected emitter.
+        </p>
+      </div>
+    </div>
+
+    <!-- Shadow Linking Tab -->
+    <div
+      class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+    >
+      <div>
+        <div class="flex items-center gap-2 mb-2 font-mono text-white">
+          <Icon name="SHADOW_LINKING" />
+          <span>Shadow Linking</span>
+        </div>
+        <p class="text-zinc-400 leading-relaxed font-light">
+          Configure which objects or collections block shadows cast by this
+          light, bypassing standard viewport constraints.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>2. The Properties Tab Sub-Panels</h2>
+  <p class="mb-6">
+    The main <strong>Properties</strong> tab contains four collapsible sub-sections
+    designed to group related operations logically:
+  </p>
+
+  <div class="space-y-6">
+    <!-- Panel A: Light Settings -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="LIGHT" /> A. Light Settings (Physical Parameters)
+      </h3>
+      <p class="mb-4 text-xs text-zinc-400 font-light">
+        Controls the physical attributes, coordinates, and shape profiles of the
+        active emitter:
+      </p>
+      <div class="grid grid-cols-1 gap-4 text-xs">
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Type & Kelvin Temperature</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Switch type between <strong>Point</strong>, <strong>Sun</strong>, <strong
+              >Spot</strong
+            >, and <strong>Area</strong>. Toggle <strong>Use Temp</strong> to adjust
+            the output using photorealistic Kelvin scales (e.g., <code
+              >3200K</code
+            > to <code>5500K</code>).
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Energy & Exposure</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Adjust basic power in Watts and exposure in stops. Exposure values
+            are disabled if locked under a collection override.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >IES Profiles & Spawning</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Spawn IES lights directly using the exclusive <strong
+              >IES Light</strong
+            > operator in the <strong>+ Add...</strong> menu, or assign photometrically
+            calibrated IES profiles (.ies files) onto existing Point lights using
+            the interactive profile selector.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Ray Visibility (Cycles)</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Selectively filter which ray paths (Camera, Diffuse, Glossy,
+            Transmission, Volume) this light responds to.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel B: Shader Nodes Settings -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="SHADING_RENDERED" /> B. Shader Nodes Settings (Softbox Engine)
+      </h3>
+      <p class="mb-4 text-xs text-zinc-400 font-light">
+        Allows replacing default nodes with advanced, procedurally map-driven
+        shader configurations:
+      </p>
+      <div class="grid grid-cols-1 gap-4 text-xs">
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Softbox Node Group Integration</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Assign the custom <strong>SLM-Soft_Box</strong> shader to replace standard
+            nodes, or update the group definitions from external libraries dynamically.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Viewport Shader Preview</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Generate and cache real-time 2D thumbnails of active emission trees.
+            Includes toggles for auto-refreshing viewport indicators.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Gobo & Light Maps</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Map photographic textures to project structured studio reflections
+            or shadow gobos (blinds, trees, windows) directly from the list
+            interface.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Clearing / Library Sync</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Instantly wipe map textures or synchronize the active node structure
+            with the core global settings in a single click.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel C: Cycles / EEVEE Settings -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="RENDER_STILL" /> C. Render Engine Optimizations
+      </h3>
+      <p class="mb-4 text-xs text-zinc-400 font-light">
+        Contains specific properties optimized based on which rendering engine
+        is active:
+      </p>
+      <div class="grid grid-cols-1 gap-4 text-xs">
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >Cycles Specific Settings</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed mb-1">
+            Fine-tune performance-heavy render branches:
+          </p>
+          <ul
+            class="list-disc pl-4 space-y-0.5 text-[10px] text-zinc-500 font-light"
+          >
+            <li>
+              <strong>Max Bounces:</strong> Restrict recursive light paths.
+            </li>
+            <li>
+              <strong>Cast Shadows / Multiple Importance:</strong> Balance noise ratios.
+            </li>
+            <li>
+              <strong>Shadow Caustics / Portals:</strong> Guidance optimizations.
+            </li>
+          </ul>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1"
+            >EEVEE Specific Settings</strong
+          >
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed mb-1">
+            Configure rasterized screen shadow offsets:
+          </p>
+          <ul
+            class="list-disc pl-4 space-y-0.5 text-[10px] text-zinc-500 font-light"
+          >
+            <li>
+              <strong>Jitter & Filter Radius:</strong> Smooth pixel shadows.
+            </li>
+            <li>
+              <strong>Resolution Limit:</strong> Caps memory usage on large scenes.
+            </li>
+            <li>
+              <strong>Custom Distance:</strong> Culls light calculations beyond a
+              boundary.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel D: Object Transforms -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="ORIENTATION_GIMBAL" /> D. Object Transforms & Hierarchy
+      </h3>
+      <p class="mb-4 text-xs text-zinc-400 font-light">
+        Provides convenient spatial controls without leaving the main manager
+        list:
+      </p>
+      <div class="grid grid-cols-1 gap-4 text-xs">
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1">Transform Data</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Translate location coordinates, orientation Euler rotations, and
+            scales.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1">Parent Tracking</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Displays what item this emitter is currently constrained to.
+          </p>
+        </div>
+        <div
+          class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+        >
+          <strong class="text-white text-xs block mb-1">Hierarchy Setup</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Link and parent standard objects, helper flags, or rigs to targeted
+            bones/empties.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>3. Custom Softbox Node Group (SLM-Soft_Box)</h2>
+  <p class="mb-6">
+    The <strong>SLM-Soft_Box</strong> custom node group simulates physical modifiers
+    (honeycomb grids, frames, diffusers) directly inside Cycles shading paths. Below
+    is the structural layout of the group inputs:
+  </p>
+
+  <!-- Node Group Screenshot Diagram -->
+  <div
+    class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300"
+  >
+    <div
+      class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3"
+    >
+      <img
+        src={`${base}lights_node_group/node_group.png`}
+        alt="SLM Softbox Node Group Diagram"
+        class="w-full h-auto max-h-[450px] object-contain mx-auto transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center"
+      >SLM-Soft_Box Shader Node Group Layout Diagram</span
+    >
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <!-- Root Parameters -->
+    <div
+      class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300"
+    >
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="LIGHT" />
+        <strong class="text-white text-xs">Core Emission Parameters</strong>
+      </div>
+      <ul class="space-y-2 text-[11px] text-zinc-400 font-light">
+        <li>
+          <strong>Mode:</strong> Selects the softbox shape (<code>Square</code>, <code
+            >Disk</code
+          >, <code>Strip</code>, <code>Spheric</code>).
+        </li>
+        <li>
+          <strong>Falloff:</strong> Toggles decay math between physical <code
+            >Quadratic</code
+          > and custom curves.
+        </li>
+        <li>
+          <strong>Border:</strong> Adjusts edge interpolation hardness between <code
+            >Soft</code
+          > and <code>Sharp</code>.
+        </li>
+        <li>
+          <strong>Spread Angle:</strong> Controls beam throw coordinates from 180°
+          down to 2° (gridded honeycombs).
+        </li>
+        <li>
+          <strong>Power / Exposure / Smooth:</strong> Fine-tune core brightness, stops,
+          and highlight noise specular.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Coloring Systems -->
+    <div
+      class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300"
+    >
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="COLOR" />
+        <strong class="text-white text-xs">Coloring & Gradient Systems</strong>
+      </div>
+      <ul class="space-y-2 text-[11px] text-zinc-400 font-light">
+        <li>
+          <strong>Coloring Modes:</strong> Toggle inputs between standard <code
+            >RGB</code
+          >, <code>Kelvin</code>, and <code>Near/Far</code> gradients.
+        </li>
+        <li>
+          <strong>Color Temperature:</strong> Driven using physics-based Blackbody
+          temperature vectors.
+        </li>
+        <li>
+          <strong>Gradient Mapping:</strong> Configure primary <code>Near</code> and
+          secondary <code>Far</code> coordinates.
+        </li>
+        <li>
+          <strong>Contrast & Transitions:</strong> Tweak <code>Hardness</code> and
+          <code>Middle Point Distance</code> bias values.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h3
+    class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-4 flex items-center gap-1.5"
+  >
+    <Icon name="FILTER" class="w-3.5 h-3.5" /> Expandable Softbox Foldout Panels
+  </h3>
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <!-- Panel 1 -->
+    <div
+      class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+    >
+      <strong class="text-white flex items-center gap-1.5 mb-1"
+        ><Icon name="CURVE_BEZCIRCLE" class="w-3.5 h-3.5" /> Ring & Strip v2</strong
+      >
+      <p class="text-zinc-500 text-[10px] leading-relaxed mb-2 font-light">
+        Controls ring-shaped reflectors and custom coordinate rotations:
+      </p>
+      <ul
+        class="text-[10px] text-zinc-400 space-y-0.5 list-disc pl-3 font-light"
+      >
+        <li><strong>Ring Scale & Thickness</strong></li>
+        <li><strong>Strip Rotation Angle (0° to 90°)</strong></li>
+        <li><strong>Slide & Black Value Cutoffs</strong></li>
+      </ul>
+    </div>
+
+    <!-- Panel 2 -->
+    <div
+      class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+    >
+      <strong class="text-white flex items-center gap-1.5 mb-1"
+        ><Icon name="GRID" class="w-3.5 h-3.5" /> Grids & Distortions</strong
+      >
+      <p class="text-zinc-500 text-[10px] leading-relaxed mb-2 font-light">
+        Subdivides the emitter area into grids or bends spherical shapes:
+      </p>
+      <ul
+        class="text-[10px] text-zinc-400 space-y-0.5 list-disc pl-3 font-light"
+      >
+        <li><strong>Subdivisions & Subdiv Mixer</strong></li>
+        <li><strong>Spheric Coordinates (X, Y Bias)</strong></li>
+        <li><strong>Linear Smoothness Adjustments</strong></li>
+      </ul>
+    </div>
+
+    <!-- Panel 3 -->
+    <div
+      class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300"
+    >
+      <strong class="text-white flex items-center gap-1.5 mb-1"
+        ><Icon name="MOD_NOISE" class="w-3.5 h-3.5" /> Noise & Transparency</strong
+      >
+      <p class="text-zinc-500 text-[10px] leading-relaxed mb-2 font-light">
+        Adds organic textures and manages ray tracing visibility:
+      </p>
+      <ul
+        class="text-[10px] text-zinc-400 space-y-0.5 list-disc pl-3 font-light"
+      >
+        <li><strong>Noise Mask Offset & Detail Roughness</strong></li>
+        <li><strong>Per-ray visibility factors (Camera, Diffuse)</strong></li>
+        <li><strong>Backfacing Cull & Transmission Depth limits</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Node Group Visual Showcase -->
+  <h3
+    class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-4 mt-8 flex items-center gap-1.5"
+  >
+    <Icon name="LIGHT" class="w-3.5 h-3.5" /> Softbox Shape Profiles
+  </h3>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-8">
+    {
+      shapes.map((shape) => (
+        <div class="bg-zinc-950/40 border border-white/5 p-3 rounded-xl flex flex-col justify-between hover:border-white/10 transition-all duration-300 group">
+          <div class="aspect-square w-full overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2">
+            <img
+              src={`${base}lights_node_group/${shape.file}`}
+              alt={`Shape Profile: ${shape.name}`}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+              loading="lazy"
+            />
+          </div>
+          <span class="text-white text-xs font-mono block text-center mt-1">
+            {shape.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+
+  <h3
+    class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-4 flex items-center gap-1.5"
+  >
+    <Icon name="GRID" class="w-3.5 h-3.5" /> HDR Light Textures
+  </h3>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-8">
+    {
+      textures.map((tex) => (
+        <div class="bg-zinc-950/40 border border-white/5 p-3 rounded-xl flex flex-col justify-between hover:border-white/10 transition-all duration-300 group">
+          <div class="aspect-square w-full overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2">
+            <img
+              src={`${base}lights_node_group/${tex.file}`}
+              alt={tex.name}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+              loading="lazy"
+            />
+          </div>
+          <span class="text-white text-xs font-mono block text-center mt-1">
+            {tex.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+
+  <h3
+    class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-4 flex items-center gap-1.5"
+  >
+    <Icon name="SHADING_RENDERED" class="w-3.5 h-3.5" /> Photographic Gobo Projections
+  </h3>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+    {
+      gobos.map((gobo) => (
+        <div class="bg-zinc-950/40 border border-white/5 p-3 rounded-xl flex flex-col justify-between hover:border-white/10 transition-all duration-300 group">
+          <div class="aspect-square w-full overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2">
+            <img
+              src={`${base}lights_node_group/${gobo.file}`}
+              alt={`Gobo: ${gobo.name}`}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-zoom-in"
+              loading="lazy"
+            />
+          </div>
+          <span class="text-white text-xs font-mono block text-center mt-1">
+            {gobo.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="text-zinc-500 text-[11px] italic mb-8 font-light text-center">
+    *Note: The images above show only a few examples of the wide range of HDR
+    textures and Gobo projections included with the addon.*
+  </p>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>4. Calibrated IES Light Profiles</h2>
+  <p class="mb-6">
+    When the active light is a Point Light (or when you spawn a new IES Light
+    via the Add menu), the properties panel displays an interactive IES Profile
+    library. This library provides photometrically calibrated light shapes to
+    simulate realistic architectural illumination (downlights, spotlights,
+    bollards, wall washes, etc.).
+  </p>
+
+  <h3
+    class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-4 flex items-center gap-1.5"
+  >
+    <Icon name="LIGHT_DATA" class="w-3.5 h-3.5" /> Photometric Profile Library Preview
+  </h3>
+  <div class="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-10 gap-2 mb-8">
+    {
+      iesThumbnails.map((src, index) => (
+        <div class="bg-zinc-900 border border-white/5 p-1 rounded-lg hover:border-amber-500/30 transition-all duration-300">
+          <img
+            src={src}
+            alt={`IES Profile #${index + 1}`}
+            class="w-full aspect-square object-cover rounded opacity-80 hover:opacity-100 transition-opacity select-none zoomable-img cursor-zoom-in"
+            loading="lazy"
+          />
+        </div>
+      ))
+    }
+  </div>
+</DocLayout>

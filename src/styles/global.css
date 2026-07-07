@@ -8,7 +8,8 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #a1a1aa;
   --color-text-tertiary: #71717a;
-  --color-accent: #f59e0b; /* Amber */
+  --color-accent: #f59e0b;
+  /* Amber */
   --font-sans: 'Inter', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
@@ -83,6 +84,10 @@ body {
 }
 
 /* ═══════════════════ MARKDOWN RENDERING ═══════════════════ */
+.markdown-content hr {
+  border-color: rgba(245, 159, 11, 0.7) !important;
+}
+
 .markdown-content h1 {
   font-size: 2.25rem;
   font-weight: 300;
@@ -90,8 +95,6 @@ body {
   letter-spacing: -0.03em;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 0.5rem;
 }
 
 .markdown-content h2 {
@@ -101,8 +104,6 @@ body {
   letter-spacing: -0.02em;
   margin-top: 2.5rem;
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 0.25rem;
 }
 
 .markdown-content h3 {
@@ -221,7 +222,8 @@ body {
 
 .markdown-content blockquote p {
   margin-bottom: 0;
-  color: #fca5a5; /* Warning color tint or accent color depending on type */
+  color: #fca5a5;
+  /* Warning color tint or accent color depending on type */
 }
 
 /* Custom Warning blockquote */
@@ -247,9 +249,93 @@ body {
     background-color: rgba(245, 158, 11, 0.1) !important;
     box-shadow: 0 0 35px rgba(245, 158, 11, 0.25);
   }
+
   100% {
     border-color: rgba(245, 158, 11, 0.35) !important;
     background-color: rgba(245, 158, 11, 0.02) !important;
     box-shadow: 0 0 25px rgba(245, 158, 11, 0.05);
   }
+}
+
+/* ═══════════════════ GLOBAL FONT SIZES CUSTOM OVERRIDE ═══════════════════ */
+body,
+p,
+li,
+td,
+th,
+input,
+textarea,
+select,
+span:not([class*="text-"]):not([class*="font-mono"]):not([class*="uppercase"]):not(h1 *):not(h2 *):not(h3 *) {
+  font-size: 1rem !important;
+  /* 16px */
+}
+
+/* Map Tailwind font size utilities to custom pixel specs */
+.text-xs {
+  font-size: 14px !important;
+}
+
+.text-sm {
+  font-size: 15px !important;
+}
+
+.text-base {
+  font-size: 16px !important;
+}
+
+.text-lg {
+  font-size: 18px !important;
+}
+
+/* Custom/Arbitrary utility classes mapped to custom pixel specs */
+.text-\[9px\] {
+  font-size: 10px !important;
+}
+
+.text-\[10px\] {
+  font-size: 11px !important;
+}
+
+.text-\[11px\] {
+  font-size: 12px !important;
+}
+
+.text-\[12px\] {
+  font-size: 14px !important;
+}
+
+.text-\[13px\] {
+  font-size: 15px !important;
+}
+
+/* Exclude and lock titles/headings at their original size values */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  font-size: var(--title-size, inherit);
+}
+
+h1,
+.markdown-content h1 {
+  font-size: 2.25rem !important;
+  /* 36px */
+}
+
+h2,
+.markdown-content h2 {
+  font-size: 1.75rem !important;
+  /* 28px */
+}
+
+h3,
+.markdown-content h3 {
+  font-size: 1.35rem !important;
+  /* 21.6px */
 }

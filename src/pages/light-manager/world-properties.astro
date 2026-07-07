@@ -1,0 +1,292 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import LightManagerTabs from '../../components/LightManagerTabs.astro';
+import Icon from '../../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<DocLayout title="World Properties">
+  <h1>Light Manager — World Properties</h1>
+  <LightManagerTabs activeTab="light-manager/world-properties" />
+
+  <p class="mb-6">
+    The <strong>World Properties</strong> section details settings and features available when the World environment background is selected in the Scene Light Manager. It details the active Quick HDRI Loader, procedural Sky simulations, and parameters inside the custom <strong>SLM-World</strong> shader node group.
+  </p>
+
+  <h2>1. The World Properties Panel Structure</h2>
+  <p class="mb-6">
+    When the World data-block or an HDRI Sphere is active, the properties editor exposes three specialized sub-panels:
+  </p>
+
+  <!-- World Properties Panel Structure Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/world_properties.png`} 
+        alt="World Properties Panel" 
+        class="h-auto max-h-[350px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">World Properties Panel Structure in SLM</span>
+  </div>
+
+  <div class="space-y-6 mb-8">
+    <!-- Quick World / HDRI Loader -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="WORLD" /> A. Quick World / HDRI Quick Loader
+      </h3>
+      <p class="mb-4 text-xs text-zinc-400 font-light">
+        Allows you to dynamically import and control environment maps (HDRIs) or procedural skies:
+      </p>
+      <div class="grid grid-cols-1 gap-4 text-xs">
+        <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+          <strong class="text-white text-xs block mb-1">Loader Mode Selection</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Switch input modes between <strong>HDRI (Path)</strong> to import from folders, <strong>Asset</strong> to browse native libraries, or <strong>Sky</strong> for solar models.
+          </p>
+        </div>
+        <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+          <strong class="text-white text-xs block mb-1">Convert to SLM World & Update</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Instantly hooks the active World setup into the custom <strong>SLM-World</strong> shader nodes, or synchronizes/updates group node trees from external asset libraries.
+          </p>
+        </div>
+        <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+          <strong class="text-white text-xs block mb-1">Resolution Limit & Filtering</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Scan and load visual previews from selected folders. Apply memory boundaries (e.g., <strong>2K</strong>, <strong>4K</strong>, or <strong>Original</strong>) to optimize viewport speed.
+          </p>
+        </div>
+        <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+          <strong class="text-white text-xs block mb-1">Select / Add Aligned Sun</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Scans the brightest spot (sun coordinate) on the active HDRI, automatically spawning and aligning a Sun light to match the environment angle.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sky Texture Settings -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="LIGHT_SUN" /> B. Sky Texture Settings (Sky Mode Only)
+      </h3>
+      <p class="mb-4 text-xs text-zinc-400 font-light">
+        Configures physics-driven sky modeling when rendering procedurally:
+      </p>
+
+      <!-- Sky Texture Settings Mode Image -->
+      <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-6 group hover:border-white/10 transition-all duration-300">
+        <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+          <img 
+            src={`${base}panel_images/world_sky_mode.png`} 
+            alt="Sky Texture Settings Mode" 
+            class="h-auto max-h-[300px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+            loading="lazy"
+          />
+        </div>
+        <span class="text-zinc-500 text-[11px] block font-mono text-center">Sky Texture Settings in Sky Mode</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 text-xs">
+        <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+          <strong class="text-white text-xs block mb-1">Geographic Sun Alignment</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed mb-3">
+            Drive solar angles using physical coordinates: Latitude, Longitude, Sun North compass offset, calendar Day/Month/Year, and local UTC timezone offsets.
+          </p>
+          <div class="overflow-hidden rounded-lg bg-black/40 border border-white/5 mb-2 flex justify-center">
+            <img 
+              src={`${base}panel_images/geographic_sun_alignment.png`} 
+              alt="Geographic Sun Alignment Settings" 
+              class="h-auto max-h-[200px] object-contain transition-transform duration-500 zoomable-img cursor-zoom-in"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+          <strong class="text-white text-xs block mb-1">Sky Models & Multipliers</strong>
+          <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+            Select between <strong>Nishita</strong>, <strong>Preetham</strong>, or <strong>Hosek-Wilkie</strong> algorithms. Tweak Sun Intensity, Sun Size, Air/Aerosol/Ozone densities, Ground Albedo, and Turbidity.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- World Settings -->
+    <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl">
+      <h3 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+        <Icon name="PROPERTIES" /> C. World Settings
+      </h3>
+      <p class="text-xs text-zinc-400 font-light leading-relaxed mb-4">
+        Displays the core Surface shading configuration. When <strong>SLM-World</strong> is active, it directly exposes the custom node group parameters. When not using nodes, it falls back to standard Surface and Volume socket blocks.
+      </p>
+
+      <!-- World Settings Surface Image -->
+      <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-2 group hover:border-white/10 transition-all duration-300">
+        <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+          <img 
+            src={`${base}panel_images/world_settings.png`} 
+            alt="World Settings" 
+            class="h-auto max-h-[200px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+            loading="lazy"
+          />
+        </div>
+        <span class="text-zinc-500 text-[11px] block font-mono text-center">World settings showing active surface node group slots</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2 id="favorites-navigation">2. HDRI Favorites & Navigation</h2>
+  <p class="mb-6">
+    Scene Light Manager provides advanced workflow tools to quickly browse, favorite, and randomize your environment HDRIs:
+  </p>
+
+  <div class="flex flex-col gap-4 text-xs mb-8">
+    <!-- Virtual Favorites Folder -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="WORLD" />
+        <strong class="text-white text-xs">A. Virtual Favorites Folder</strong>
+      </div>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        When you mark an HDRI as a favorite, its file path is saved to a persistent <code>hdri_favorites.json</code> file inside Blender's user configuration folder. 
+        In the <strong>Subdir Selection</strong> dropdown, you will see a virtual folder called <strong>Favorites</strong> (indicated by a star icon). Selecting it filters the list to show only your favorited HDRIs.
+      </p>
+    </div>
+
+    <!-- Favoriting HDRIs -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex gap-0.5">
+          <Icon name="icon_fav_off" class="w-3.5 h-3.5" />
+          <Icon name="icon_fav_on" class="w-3.5 h-3.5" />
+        </div>
+        <strong class="text-white text-xs">B. Favoriting HDRIs</strong>
+      </div>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        Next to the <strong>Select HDRI</strong> dropdown, you will find a <strong>Star Button</strong>:
+      </p>
+      <ul class="text-[11px] text-zinc-400 font-light mt-2 space-y-1 list-disc pl-4">
+        <li><strong class="text-white">Favorite On (<Icon name="icon_fav_on" class="w-3.5 h-3.5" />):</strong> Identifies that the currently loaded HDRI is already in your favorites list. Clicking it removes it.</li>
+        <li><strong class="text-white">Favorite Off (<Icon name="icon_fav_off" class="w-3.5 h-3.5" />):</strong> Indicates that the loaded HDRI is not favorited yet. Clicking it adds it to your favorites.</li>
+      </ul>
+    </div>
+
+    <!-- Random HDRI Selection -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="icon_shuffle" class="w-3.5 h-3.5" />
+        <strong class="text-white text-xs">C. Random HDRI Selection</strong>
+      </div>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        Next to the navigation controls, there is a <strong>Randomize Button</strong> (indicated by the shuffle icon 🔀). Clicking it picks and loads a random HDRI from the active folder or virtual category, allowing for rapid look development.
+      </p>
+    </div>
+
+    <!-- Next & Previous Navigation -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-white font-mono text-xs inline-flex items-center gap-1">◀ ▶</span>
+        <strong class="text-white text-xs">D. Next & Previous Navigation</strong>
+      </div>
+      <p class="text-zinc-400 font-light text-[11px] leading-relaxed">
+        Next to the select dropdown, there are <strong>Previous (◀)</strong> and <strong>Next (▶)</strong> arrows. Click these arrows to instantly cycle to the next or previous HDRI file in the active folder, making viewport-based lighting audits extremely fast.
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-8 border-white/5" />
+
+  <h2>3. The Custom SLM-World Node Group</h2>
+  <p class="mb-6">
+    The <strong>SLM-World</strong> node group processes environment textures, offering advanced color correction, projection flattening, and integrated volumetric fog controls:
+  </p>
+
+  <!-- World Node Group Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/world_node_group.png`} 
+        alt="SLM World Node Group Layout" 
+        class="h-auto max-h-[300px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">SLM-World Shader Node Group Layout</span>
+  </div>
+
+  <!-- Root Sockets Grid -->
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <!-- Root Parameters -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="WORLD" />
+        <strong class="text-white text-xs">Main Root-Level Sockets</strong>
+      </div>
+      <ul class="space-y-2 text-[11px] text-zinc-400 font-light">
+        <li><strong>Surface:</strong> Shader Output connection socket to the World Surface.</li>
+        <li><strong>Volume:</strong> Shader Output connection socket to the World Volume (Atmosphere).</li>
+        <li><strong>Strength:</strong> Overall environment intensity multiplier (Default: <code>1.0</code>).</li>
+        <li><strong>Exposure:</strong> Photographic stop exposure offset (Default: <code>0.0</code>).</li>
+        <li><strong>Blur:</strong> Blurs the environment texture (ideal for creating abstract, soft background colors).</li>
+        <li><strong>Z Rotation:</strong> Rotates the HDRI sphere horizontally (0° to 360°).</li>
+      </ul>
+    </div>
+
+    <!-- Edit Panel -->
+    <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl hover:border-amber-500/20 transition-all duration-300">
+      <div class="flex items-center gap-2 mb-3">
+        <Icon name="COLOR" />
+        <strong class="text-white text-xs">Edit Panel (Color Correction)</strong>
+      </div>
+      <ul class="space-y-2 text-[11px] text-zinc-400 font-light">
+        <li><strong>Black & White:</strong> Desaturates the environment texture (0.0 to 1.0).</li>
+        <li><strong>Gamma, Bright, Contrast:</strong> Adjust core contrast and luminance.</li>
+        <li><strong>Hue, Saturation, Color Value:</strong> Grading adjustments for artistic overrides.</li>
+        <li><strong>Use Temperature & Kelvin:</strong> Enable color temperature adjustments.</li>
+        <li><strong><Icon name="COLOR" class="w-3.5 h-3.5" /> Color Overlay:</strong> Toggles custom color overlays with RGB color slots.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-4 flex items-center gap-1.5"><Icon name="OUTLINER" class="w-3.5 h-3.5" /> Secondary World Control Panels</h3>
+  <div class="grid grid-cols-1 gap-4 text-xs mb-8">
+    <!-- Background Panel -->
+    <div class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <strong class="text-white flex items-center gap-1.5 mb-1"><Icon name="IMAGE" class="w-3.5 h-3.5" /> Background</strong>
+      <p class="text-zinc-500 text-[10px] leading-relaxed mb-2 font-light">Display a custom gradient vignette behind the model while keeping HDRI lighting:</p>
+      <ul class="text-[10px] text-zinc-400 space-y-0.5 list-disc pl-3 font-light">
+        <li><strong>Background Toggle:</strong> Switch between <code>HDRI</code> and <code>Custom Color</code>.</li>
+        <li><strong>Vignette:</strong> Inner/Outer Color, Scale, and bias offsets.</li>
+        <li><strong>Sync:</strong> Follow HDRI strength and independent visible strength.</li>
+      </ul>
+    </div>
+
+    <!-- Flatten Ground Panel -->
+    <div class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <strong class="text-white flex items-center gap-1.5 mb-1"><Icon name="GRID" class="w-3.5 h-3.5" /> Flatten Ground</strong>
+      <p class="text-zinc-500 text-[10px] leading-relaxed mb-2 font-light">Projects the bottom half of the HDRI onto a flat ground plane to prevent floating models:</p>
+      <ul class="text-[10px] text-zinc-400 space-y-0.5 list-disc pl-3 font-light">
+        <li><strong>Flatten Ground:</strong> Toggles ground flattening projection.</li>
+        <li><strong>Size:</strong> Adjust projected floor size.</li>
+        <li><strong>Offset:</strong> Vector offsets for floor alignment.</li>
+      </ul>
+    </div>
+
+    <!-- Volume Panel -->
+    <div class="bg-zinc-900/30 border border-white/5 p-4 rounded-xl hover:border-white/10 transition-all duration-300">
+      <strong class="text-white flex items-center gap-1.5 mb-1"><Icon name="MOD_NOISE" class="w-3.5 h-3.5" /> Volume (Fog)</strong>
+      <p class="text-zinc-500 text-[10px] leading-relaxed mb-2 font-light">Sets up a global volumetric fog environment for depth atmospheric scattering:</p>
+      <ul class="text-[10px] text-zinc-400 space-y-0.5 list-disc pl-3 font-light">
+        <li><strong>Volume Toggle:</strong> Enable global volumetric fog.</li>
+        <li><strong>Fog Color & Density:</strong> Fog thickness.</li>
+        <li><strong>Anisotropy:</strong> Forward vs. backward scattering values.</li>
+      </ul>
+    </div>
+  </div>
+</DocLayout>

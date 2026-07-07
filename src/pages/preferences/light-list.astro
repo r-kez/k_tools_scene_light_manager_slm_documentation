@@ -1,6 +1,8 @@
 ---
 import DocLayout from '../../layouts/DocLayout.astro';
 import PreferencesTabs from '../../components/PreferencesTabs.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <DocLayout title="Preferences — Light List & Detection">
@@ -10,6 +12,19 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
   </p>
 
   <PreferencesTabs activeTab="preferences/light-list" />
+
+  <!-- List Preferences Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/preferences-list_and_detection.png`} 
+        alt="Light List Preferences" 
+        class="h-auto max-h-[350px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Addon Preferences — Main Light List UI layout configurations</span>
+  </div>
 
   <!-- ── 2. Light List & Component Detection Settings ── -->
   <div class="space-y-12">
@@ -33,7 +48,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
           Enable or disable specific column headers and toggle switches to suit your screen real estate and workflow complexity:
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+        <div class="grid grid-cols-1 gap-4 text-xs">
           <!-- View Layer Exclude -->
           <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 hover:border-amber-500/10 transition-colors">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
@@ -132,7 +147,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 gap-4">
         <!-- Card: Auto-Expand Selected Light -->
         <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
           <div>
@@ -186,7 +201,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 gap-4">
         <!-- Card: Display Helpers as Wireframe -->
         <div id="spawn_helpers_as_wire" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
           <div>
@@ -282,7 +297,7 @@ import PreferencesTabs from '../../components/PreferencesTabs.astro';
             Scene Light Manager automatically indexes non-light mesh objects if their names contain any of the comma-separated keywords defined below:
           </p>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="grid grid-cols-1 gap-4 text-xs">
             <!-- Mesh Lights Suffixes -->
             <div id="mesh_light_search_terms" class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between">
               <div>

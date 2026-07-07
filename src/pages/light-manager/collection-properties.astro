@@ -1,18 +1,31 @@
 ---
 import DocLayout from '../../layouts/DocLayout.astro';
-import MainPanelTabs from '../../components/MainPanelTabs.astro';
+import LightManagerTabs from '../../components/LightManagerTabs.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <DocLayout title="Collection Properties">
-  <h1>Main Panel — Collection Properties</h1>
-  <MainPanelTabs activeTab="main-panel/collection-properties" />
-  <p>
-    Scene Light Manager enables collection-level overrides. This allows you to apply bulk settings, lock specific values, or dictate properties across group instances.
+  <h1>Light Manager — Collection Properties</h1>
+  <LightManagerTabs activeTab="light-manager/collection-properties" />
+  <p class="mb-6">
+    Scene Light Manager enables collection-level overrides and specialized controls. This allows you to configure collection options and manage active overrides directly, applying bulk settings, locking specific values, or dictating properties across group instances.
   </p>
 
-  <hr class="my-8 border-white/5" />
+  <!-- Collection Properties Panel Image -->
+  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
+    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
+      <img 
+        src={`${base}panel_images/collection_properties.png`} 
+        alt="Collection Properties Panel" 
+        class="h-auto max-h-[300px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
+        loading="lazy"
+      />
+    </div>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center">Collection Properties panel showcasing custom options and override settings</span>
+  </div>
 
-  <h2>── 1. Custom Rig Collection Options ──</h2>
+  <h2>1. Custom Rig Collection Options</h2>
   <blockquote>
     <p>
       <strong>[IMPORTANT] Custom Rig Integration:</strong> Collections designated as <strong>Studio Rigs</strong> or custom rigs (e.g. containing SLM suffix names) expose specialized RNA properties inside the collection properties tab.
@@ -44,7 +57,7 @@ import MainPanelTabs from '../../components/MainPanelTabs.astro';
 
   <hr class="my-8 border-white/5" />
 
-  <h2>── 2. Standard Collection Tracking ──</h2>
+  <h2>2. Standard Collection Tracking</h2>
   <p>
     Standard collections organize your outliner. Turning visibility eyes or rendering states on/off at the collection level automatically mutes/unmutes child light properties tracked in the SLM list.
   </p>

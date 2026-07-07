@@ -1,0 +1,445 @@
+---
+const base = import.meta.env.BASE_URL;
+
+// All documentation items to search
+const searchIndex = [
+  // Troubleshooting & FAQ
+  {
+    title: "Troubleshooting & FAQ",
+    category: "FAQ",
+    description: "Solutions to common performance queries, viewport stuttering, and setup issues.",
+    url: "faq",
+    keywords: ["troubleshooting", "faq", "issues", "stuttering", "eevee", "cycles", "lag", "support", "help", "contact"]
+  },
+
+  // Light Manager UI
+  {
+    title: "Light Manager UI Overview",
+    category: "Light Manager",
+    description: "Overview of the primary 3D viewport sidebar (N-Panel) interface layout.",
+    url: "light-manager",
+    keywords: ["n-panel", "sidebar", "light manager", "main panel", "ui", "layout", "overview"]
+  },
+  {
+    title: "UI List & Hierarchy",
+    category: "Light Manager",
+    description: "Comprehensive guide to the main light hierarchy list, collection folders, and icons.",
+    url: "light-manager/ui-list",
+    keywords: ["ui list", "hierarchy", "outliner", "icons", "sorting", "groups"]
+  },
+  {
+    title: "Light Properties & Control",
+    category: "Light Manager",
+    description: "Adjusting power, color, color temperature, and direct shader values.",
+    url: "light-manager/light-properties",
+    keywords: ["light properties", "power", "color", "temperature", "kelvin", "exposure"]
+  },
+  {
+    title: "Collection Properties & Rigging",
+    category: "Light Manager",
+    description: "Grouping lights into rigs, nested collection behaviors, and collection-level switches.",
+    url: "light-manager/collection-properties",
+    keywords: ["collection properties", "rigging", "groups", "folder", "sub-collection"]
+  },
+  {
+    title: "Link Manager & Override Setup",
+    category: "Link Manager",
+    description: "Managing cycles light linking and shadow linking properties on collections and objects.",
+    url: "linking-manager",
+    keywords: ["linking manager", "link manager", "light linking", "shadow linking", "cycles", "receivers", "blockers"]
+  },
+  {
+    title: "World Properties & SLM-World",
+    category: "Light Manager",
+    description: "Configuring environment maps, HDRI quick loader, procedural sky simulations, and the SLM-World custom node group.",
+    url: "light-manager/world-properties",
+    keywords: ["world properties", "slm-world", "hdri", "loader", "sky", "nishita", "sun alignment", "volumetric fog"]
+  },
+  {
+    title: "HDRI Favorites & Navigation",
+    category: "Light Manager",
+    description: "Virtual favorites subdirectory, favoriting HDRIs, random selection, and next/prev cycling.",
+    url: "light-manager/world-properties#favorites-navigation",
+    keywords: ["favorites", "navigation", "random", "next", "previous", "hdri", "virtual folder", "star", "shuffle"]
+  },
+
+  // Preferences - General & Sync
+  {
+    title: "Addon Preferences: General & Sync",
+    category: "Preferences",
+    description: "Global selection sync, render visibility drivers, and HDRI paths.",
+    url: "preferences",
+    keywords: ["preferences", "general", "sync", "settings", "options"]
+  },
+  {
+    title: "Selection Sync Preference",
+    category: "Preferences",
+    description: "sync_selection: Enable bidirectional viewport and list item selection synchronization.",
+    url: "preferences#sync_selection",
+    keywords: ["sync_selection", "selection sync", "viewport sync"]
+  },
+  {
+    title: "World Fallback on Deselect",
+    category: "Preferences",
+    description: "sync_world_fallback: Revert selection highlight to the World HDRI item when clearing selections.",
+    url: "preferences#sync_world_fallback",
+    keywords: ["sync_world_fallback", "world fallback", "deselect"]
+  },
+  {
+    title: "Sync Collection Selection",
+    category: "Preferences",
+    description: "sync_collection_selection: Highlights parent collections in Blender's Outliner upon list click.",
+    url: "preferences#sync_collection_selection",
+    keywords: ["sync_collection_selection", "outliner sync", "collections"]
+  },
+  {
+    title: "Render Visibility Sync (Drivers)",
+    category: "Preferences",
+    description: "sync_visibility_drivers: Binds viewport eye icons to render camera states via python drivers.",
+    url: "preferences#sync_visibility_drivers",
+    keywords: ["sync_visibility_drivers", "visibility drivers", "render sync", "drivers"]
+  },
+  {
+    title: "Shader Preview Engine",
+    category: "Preferences",
+    description: "preview_render_engine & preview_refresh_interval: Controls EEVEE/Cycles thumbnail generation.",
+    url: "preferences#preview_render_engine",
+    keywords: ["preview_render_engine", "shader preview", "cycles preview", "thumbnails", "eevee"]
+  },
+  {
+    title: "HDRI Folder Mapping",
+    category: "Preferences",
+    description: "k_tools_hdri_folder: Configures the target directory containing your environment textures.",
+    url: "preferences#k_tools_hdri_folder",
+    keywords: ["k_tools_hdri_folder", "hdri folder", "environment path", "exr", "hdr"]
+  },
+  {
+    title: "Sidebar Tab Location (Tab Mode)",
+    category: "Preferences",
+    description: "category_mode: Merges panels into Scene properties or creates dedicated K-Tools N-Panel tab.",
+    url: "preferences#category_mode",
+    keywords: ["category_mode", "tab mode", "n-panel", "properties", "k-tools"]
+  },
+
+  // Preferences - Light List & Detection
+  {
+    title: "Addon Preferences: Light List & Detection",
+    category: "Preferences",
+    description: "Visible columns, isolation rules, and custom keyword scanner suffix terms.",
+    url: "preferences/light-list",
+    keywords: ["light list", "columns", "detection", "isolation", "keywords"]
+  },
+  {
+    title: "List Column Visibility Toggles",
+    category: "Preferences",
+    description: "show_hide_viewport, show_hide_render, show_hide_exposure: Toggle column widths.",
+    url: "preferences/light-list#show_hide_viewport",
+    keywords: ["show_hide_viewport", "show_hide_render", "show_hide_exposure", "columns", "toggles"]
+  },
+  {
+    title: "Display Helpers as Wireframe",
+    category: "Preferences",
+    description: "spawn_helpers_as_wire: Auto-draw utility bouncers and blockers in Wire mode in viewport.",
+    url: "preferences/light-list#spawn_helpers_as_wire",
+    keywords: ["spawn_helpers_as_wire", "wireframe helpers", "bouncers", "blockers"]
+  },
+  {
+    title: "Disable World Nodes (Mute HDRI)",
+    category: "Preferences",
+    description: "isolate_disable_world_nodes: Turns off environment lighting during Solo mode.",
+    url: "preferences/light-list#isolate_disable_world_nodes",
+    keywords: ["isolate_disable_world_nodes", "mute hdri", "solo mode", "isolation"]
+  },
+  {
+    title: "Emissive Mesh Lights Detection",
+    category: "Preferences",
+    description: "enable_mesh_lights & mesh_light_search_terms: Scans scene for meshes with emissive shaders.",
+    url: "preferences/light-list#enable_mesh_lights",
+    keywords: ["enable_mesh_lights", "mesh_light_search_terms", "emissive mesh", "mesh light"]
+  },
+  {
+    title: "Helper Search Term Keywords",
+    category: "Preferences",
+    description: "bouncer_search_terms, blocker_search_terms, catcher_search_terms: Suffix keyword scanner setup.",
+    url: "preferences/light-list#bouncer_search_terms",
+    keywords: ["bouncer_search_terms", "blocker_search_terms", "catcher_search_terms", "suffix", "keywords"]
+  },
+
+  // Preferences - Viewport & Gizmos
+  {
+    title: "Addon Preferences: Viewport & Gizmos",
+    category: "Preferences",
+    description: "Custom outline highlight colors, viewport gizmo buttons, and value overlay anchors.",
+    url: "preferences/viewport-gizmos",
+    keywords: ["viewport", "gizmos", "highlights", "outlines", "gpu"]
+  },
+  {
+    title: "GPU Outline Highlights Style",
+    category: "Preferences",
+    description: "enable_gpu_highlights: Renders custom colored silhouettes around linked receivers and blockers.",
+    url: "preferences/viewport-gizmos#enable_gpu_highlights",
+    keywords: ["enable_gpu_highlights", "gpu highlights", "outlines", "silhouette"]
+  },
+  {
+    title: "Interactive Viewport Gizmos",
+    category: "Preferences",
+    description: "enable_viewport_gizmos: Spawns hover-actions adjacent to lights in 3D viewport.",
+    url: "preferences/viewport-gizmos#enable_viewport_gizmos",
+    keywords: ["enable_viewport_gizmos", "viewport buttons", "hover gizmos"]
+  },
+
+  // Preferences - Keybindings & Library
+  {
+    title: "Addon Preferences: Library & Keybindings",
+    category: "Preferences",
+    description: "Modal rotation hotkeys, quick popup bindings, and auto softbox node assignment.",
+    url: "preferences/keybindings",
+    keywords: ["keybindings", "shortcuts", "softbox", "library", "quick popup"]
+  },
+  {
+    title: "Auto-Assign Softbox Group",
+    category: "Preferences",
+    description: "auto_assign_softbox: Links custom node group shader to newly created Area Lights.",
+    url: "preferences/keybindings#auto_assign_softbox",
+    keywords: ["auto_assign_softbox", "softbox shader", "node group", "area lights"]
+  },
+
+  // Interactive Tools
+  {
+    title: "Interactive Viewport Tools",
+    category: "Tools",
+    description: "Modal operators like Light at Point, HDRI rotation, and interactive target constraints.",
+    url: "interactive-tools",
+    keywords: ["light at point", "rotate hdri", "target", "constraint", "modal", "operators"]
+  },
+
+  // Mesh Lights & Helpers
+  {
+    title: "Mesh Lights & Viewport Helpers",
+    category: "Helpers",
+    description: "Emissive mesh geometry lights, reflector cards, black flags, and shadow catchers.",
+    url: "mesh-lights-and-helpers",
+    keywords: ["mesh lights", "helpers", "bouncers", "blockers", "catchers", "flags"]
+  },
+
+  // Presets & Studio Rigs
+  {
+    title: "Presets & Studio Rigs Manager",
+    category: "Presets",
+    description: "Create, save, export, and hot-load studio lighting presets across files.",
+    url: "presets-and-rigs",
+    keywords: ["presets", "studio rigs", "rig manager", "import preset", "export preset"]
+  },
+  {
+    title: "Custom Presets (Saving & Loading)",
+    category: "Presets",
+    description: "Save custom lighting setups to persistent configuration files, load and delete them from N-Panel/Pie menus.",
+    url: "presets-and-rigs#custom-presets",
+    keywords: ["custom presets", "save preset", "load preset", "delete preset", "blend files", "persistent config"]
+  }
+];
+---
+
+<div
+  id="search-container"
+  data-base-url={base}
+  data-search-index={JSON.stringify(searchIndex)}
+  class="relative w-full"
+>
+  <div class="relative">
+    <input
+      id="search-input"
+      type="text"
+      placeholder="Search documentation..."
+      class="w-full px-3 py-2 pl-9 bg-white/[0.02] hover:bg-white/[0.05] focus:bg-zinc-950/60 border border-white/5 focus:border-amber-500/20 rounded-xl text-xs text-white placeholder-zinc-500 outline-none transition-all duration-300 font-mono"
+      autocomplete="off"
+    />
+    <div class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500">
+      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Results Dropdown Popover -->
+  <div
+    id="search-popover"
+    class="absolute left-0 right-0 top-full mt-2 z-50 bg-zinc-900 border border-white/10 rounded-xl shadow-2xl p-2 max-h-[320px] overflow-y-auto hidden space-y-1 scrollbar-custom"
+  >
+  </div>
+</div>
+
+<script>
+  const container = document.getElementById('search-container') as HTMLElement;
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const popover = document.getElementById('search-popover') as HTMLElement;
+
+  const baseUrl = container.dataset.baseUrl || '';
+  const searchIndex = JSON.parse(container.dataset.searchIndex || '[]');
+
+  let activeIndex = -1;
+  let currentResults: any[] = [];
+
+  const relLink = (path: string) => {
+    const safeBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    return `${safeBase}${cleanPath}`;
+  };
+
+  // Simple, offline-first search scoring implementation
+  const performSearch = (query: string) => {
+    const q = query.toLowerCase().trim();
+    if (!q) return [];
+
+    return searchIndex
+      .map(item => {
+        let score = 0;
+        const title = (item.title || '').toLowerCase();
+        const desc = (item.description || '').toLowerCase();
+        const keywords = item.keywords || [];
+
+        // Title matches
+        if (title === q) {
+          score += 100;
+        } else if (title.startsWith(q)) {
+          score += 80;
+        } else if (title.includes(q)) {
+          score += 50;
+        }
+
+        // Keywords matches
+        keywords.forEach(kw => {
+          const kwL = kw.toLowerCase();
+          if (kwL === q) {
+            score += 40;
+          } else if (kwL.includes(q)) {
+            score += 20;
+          }
+        });
+
+        // Description matches
+        if (desc.includes(q)) {
+          score += 10;
+        }
+
+        return { item, score };
+      })
+      .filter(res => res.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5);
+  };
+
+  const showPopover = () => {
+    popover.classList.remove('hidden');
+  };
+
+  const hidePopover = () => {
+    popover.classList.add('hidden');
+    activeIndex = -1;
+  };
+
+  const renderResults = () => {
+    popover.innerHTML = '';
+
+    if (currentResults.length === 0) {
+      if (input.value.trim() === '') {
+        hidePopover();
+      } else {
+        showPopover();
+        popover.innerHTML = `
+          <div class="text-center py-4 text-zinc-500 text-[10px] font-mono">
+            No results found
+          </div>
+        `;
+      }
+      return;
+    }
+
+    showPopover();
+
+    currentResults.forEach((result, idx) => {
+      const item = result.item;
+      const isActive = idx === activeIndex;
+
+      const itemEl = document.createElement('a');
+      itemEl.href = relLink(item.url);
+      itemEl.className = `flex flex-col gap-0.5 p-2.5 rounded-lg transition-all duration-200 text-left border ${
+        isActive
+          ? 'bg-amber-500/10 border-amber-500/20'
+          : 'bg-transparent border-transparent hover:bg-white/[0.02]'
+      }`;
+
+      itemEl.innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-[11px] font-semibold ${isActive ? 'text-amber-400' : 'text-zinc-200'}">${item.title}</span>
+          <span class="text-[8px] font-mono uppercase text-zinc-500 bg-zinc-800 px-1 py-0.5 rounded flex-shrink-0">${item.category}</span>
+        </div>
+        <p class="text-[9px] text-zinc-400 font-light truncate">${item.description}</p>
+      `;
+
+      itemEl.addEventListener('click', () => {
+        hidePopover();
+      });
+
+      popover.appendChild(itemEl);
+    });
+
+    if (activeIndex >= 0) {
+      const activeEl = popover.children[activeIndex] as HTMLElement;
+      activeEl?.scrollIntoView({ block: 'nearest' });
+    }
+  };
+
+  input.addEventListener('input', () => {
+    const query = input.value.trim();
+    if (query === '') {
+      currentResults = [];
+      activeIndex = -1;
+      hidePopover();
+    } else {
+      currentResults = performSearch(query);
+      activeIndex = currentResults.length > 0 ? 0 : -1;
+      renderResults();
+    }
+  });
+
+  input.addEventListener('focus', () => {
+    if (input.value.trim() !== '') {
+      renderResults();
+    }
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target as Node)) {
+      hidePopover();
+    }
+  });
+
+  // Keyboard navigation inside input context
+  input.addEventListener('keydown', (e) => {
+    if (popover.classList.contains('hidden')) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIndex = (activeIndex + 1) % currentResults.length;
+      renderResults();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIndex = (activeIndex - 1 + currentResults.length) % currentResults.length;
+      if (activeIndex < 0) activeIndex = currentResults.length - 1;
+      renderResults();
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && currentResults[activeIndex]) {
+        e.preventDefault();
+        const url = relLink(currentResults[activeIndex].item.url);
+        hidePopover();
+        window.location.href = url;
+      }
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      hidePopover();
+      input.blur();
+    }
+  });
+</script>

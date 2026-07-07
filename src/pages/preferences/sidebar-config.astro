@@ -1,0 +1,95 @@
+---
+import DocLayout from '../../layouts/DocLayout.astro';
+import PreferencesTabs from '../../components/PreferencesTabs.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<DocLayout title="Preferences — Sidebar Tab Config">
+  <h1>Addon Preferences Configuration</h1>
+  <PreferencesTabs activeTab="preferences/sidebar-config" description="Control which N-Panel category tab the Scene Light Manager panel appears in, with preset and custom label options." />
+
+  <!-- ââ Sidebar Tab Configuration ââ -->
+  <div class="space-y-12">
+    
+    <section class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-white text-base font-semibold m-0">Sidebar Tab Configuration</h2>
+          <p class="text-zinc-500 text-xs mt-0.5">Control the location and naming of the N-Panel sidebar interface</p>
+        </div>
+      </div>
+
+      <div id="category_mode" class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 space-y-6">
+        <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
+              <strong class="text-white text-sm">Tab Mode</strong>
+              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">category_mode</span>
+            </div>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              Determines where the Scene Light Manager UI panels are registered. Allows you to merge SLM into custom folders or native Blender properties categories.
+            </p>
+          </div>
+          <div class="text-[10px] text-zinc-500 font-mono flex-shrink-0">
+            <span>Type: <span class="text-amber-500/80">Enum</span></span>
+          </div>
+        </div>
+
+        <!-- Tab Options Visualizer -->
+        <div class="grid grid-cols-1 gap-3 text-xs">
+          <!-- SOLO -->
+          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <strong class="text-white text-xs">Solo Tab (K-Tools)</strong>
+              <span class="px-1.5 py-0.5 rounded bg-green-500/10 text-green-400 border border-green-500/20 text-[9px] font-mono">SOLO</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+              Creates a dedicated <strong>K-Tools</strong> category tab on Blender's 3D Viewport N-Panel. Highly recommended for a clean layout.
+            </p>
+          </div>
+
+          <!-- DEFAULT -->
+          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <strong class="text-white text-xs">Default Categories</strong>
+              <span class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 text-[9px] font-mono">DEFAULT</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+              Injects the SLM panels into Blender's standard tabs. You can select either the <strong>View</strong>, <strong>Tool</strong>, or <strong>Item</strong> tab.
+            </p>
+          </div>
+
+          <!-- CUSTOM -->
+          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <strong class="text-white text-xs">Custom Category</strong>
+              <span class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 text-[9px] font-mono">CUSTOM</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+              Appends panels to a user-defined category name (via <code>custom_category</code>). Integrates with custom UI organization schemes.
+            </p>
+          </div>
+
+          <!-- PROPERTIES -->
+          <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <strong class="text-white text-xs">Scene Properties</strong>
+              <span class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 text-[9px] font-mono">PROPERTIES</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed font-light">
+              Moves the entire UI out of the N-Panel sidebar and attaches it to the native Blender <strong>Scene Properties</strong> tab instead.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</DocLayout>
+
