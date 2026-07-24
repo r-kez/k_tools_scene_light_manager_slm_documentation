@@ -1,5 +1,6 @@
 ---
 import DocLayout from '../layouts/DocLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <DocLayout title="Troubleshooting & FAQ">
@@ -26,7 +27,15 @@ import DocLayout from '../layouts/DocLayout.astro';
             <span>Why is "No Shader Preview Rendered" showing in the list?</span>
           </h3>
           <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
-            Shader previews require node-based materials. Ensure that the active emitter has <strong>Use Nodes</strong> enabled under Blender's shading editor. Previews are not compiled for standard inputs.
+            Generate the preview by clicking the <strong>File Refresh</strong> button
+            <span class="inline-flex items-center justify-center p-1 bg-white/5 border border-white/10 rounded ml-1 mr-1 align-middle">
+              <img
+                src={`${base}icons/blender/file_refresh.svg`}
+                alt="File Refresh"
+                class="w-3.5 h-3.5"
+              />
+            </span>
+            next to the material path in the manager interface. Previews are not compiled automatically for standard parameter inputs.
           </p>
         </div>
 
@@ -34,10 +43,10 @@ import DocLayout from '../layouts/DocLayout.astro';
         <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
           <h3 class="text-sm font-medium text-white mb-2 flex items-start gap-2">
             <span class="text-technical-amber font-mono select-none">Q:</span>
-            <span>A tagged Mesh Light is missing from the Outliner list?</span>
+            <span>Why is my Mesh Light / Emissive object missing from the list?</span>
           </h3>
           <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
-            Ensure the mesh material has an active Emissive shader, and the mesh name or material name matches your preference keywords (e.g., <code>glow</code>, <code>emit</code>). You can also mark objects manually using the <strong>Mark as Mesh Light</strong> operator.
+            Verify if the object has been marked as an emissive object within the addon interface. By default, for performance reasons, the addon does not automatically scan all scene materials in real-time, so this marking must be done manually in some cases. Also, ensure the mesh name or material name matches your configured filter keywords (such as <code>glow</code> or <code>emit</code>) in the Addon Preferences.
           </p>
         </div>
 
@@ -49,6 +58,17 @@ import DocLayout from '../layouts/DocLayout.astro';
           </h3>
           <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
             Custom presets are saved outside of the addon directory in Blender's persistent configuration path (<code>.../config/scene_light_manager/presets/</code>). This ensures your rigs are safe and preserved even when updating or reinstalling the addon.
+          </p>
+        </div>
+
+        <!-- Q4 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+          <h3 class="text-sm font-medium text-white mb-2 flex items-start gap-2">
+            <span class="text-technical-amber font-mono select-none">Q:</span>
+            <span>Why are the SLM gizmos/Smart Buttons not showing up?</span>
+          </h3>
+          <p class="text-xs text-zinc-400 leading-relaxed font-light pl-6">
+            Ensure that Blender's global <strong>Show Gizmos</strong> toggle (icon in the top-right header of the 3D Viewport) is turned on. Also, verify that a supported Light object (Area, Spot, Point, or Sun) is actively selected.
           </p>
         </div>
       </div>
@@ -90,6 +110,37 @@ import DocLayout from '../layouts/DocLayout.astro';
             <h3 class="text-sm font-medium text-white">Shading Artifacts on Texture Maps</h3>
             <p class="text-xs text-zinc-400 leading-relaxed font-light">
               Ensure your working color space is configured correctly. Working in color spaces other than linear (such as sRGB on non-color maps) can distort normal outputs and shadow orientations. If necessary, use the diagnostics panel to reset mapping coordinates.
+            </p>
+          </div>
+        </div>
+
+        <!-- T3 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 flex gap-4">
+          <div class="p-2 rounded-lg bg-amber-500/5 text-amber-400 border border-amber-500/10 h-fit">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-sm font-medium text-white">Light and Shadow Linking does not show viewport outlines</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              To display the highlight/outline effect on linked objects in the 3D viewport, make sure the checkbox option <strong>Highlight Linked/Blockers in viewport</strong> is turned on in the addon interface. Modern Blender versions support light and shadow linking under both EEVEE and Cycles rendering engines.
+            </p>
+          </div>
+        </div>
+
+        <!-- T4 -->
+        <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300 flex gap-4">
+          <div class="p-2 rounded-lg bg-amber-500/5 text-amber-400 border border-amber-500/10 h-fit">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-sm font-medium text-white">The HDRI Rotation Shortcut conflicts with viewport navigation</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed font-light">
+              If the default <code>Ctrl + Alt + RMB</code> shortcut clashes with other custom plugins or your native OS navigation, you can rebind it under <strong>Edit > Preferences > Keymap</strong> (search for <code>Scene Light Manager</code>), or adjust the environment angle using the slider in the unified sidebar's World tab.
             </p>
           </div>
         </div>
