@@ -22,12 +22,25 @@ const base = import.meta.env.BASE_URL;
   <section
     class="max-w-[1400px] mx-auto px-6 md:px-12 pt-20 pb-16 text-center relative"
   >
+    <!-- Brand Logo -->
+    <div class="flex justify-center mb-8 select-none pointer-events-none">
+      <img
+        src={`${base}promo/promo-logo-slm-c.webp`}
+        alt="Scene Light Manager Logo"
+        class="h-32 md:h-48 object-contain filter drop-shadow-[0_0_30px_rgba(245,158,11,0.25)] hover:scale-[1.02] transition-transform duration-500"
+      />
+    </div>
+
     <!-- Badges -->
     <div class="flex justify-center items-center gap-3 mb-6">
-      <span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono text-[10px] uppercase tracking-wider">
+      <span
+        class="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono text-[10px] uppercase tracking-wider"
+      >
         Blender 5.1+
       </span>
-      <span class="inline-flex items-center px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 font-mono text-[10px] uppercase tracking-wider">
+      <span
+        class="inline-flex items-center px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 font-mono text-[10px] uppercase tracking-wider"
+      >
         License: GPL-3.0
       </span>
     </div>
@@ -36,21 +49,27 @@ const base = import.meta.env.BASE_URL;
     <h1
       class="text-5xl md:text-7xl font-extralight text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto"
     >
-      💡 Scene Light Manager <br class="hidden md:block" />
+      Scene Light Manager <br class="hidden md:block" />
       For <span
         class="font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 drop-shadow-[0_2px_20px_rgba(245,158,11,0.2)]"
         >Blender</span
       >
     </h1>
 
-    <h2 class="text-xl md:text-2xl text-zinc-200 font-light tracking-wide mb-6 max-w-2xl mx-auto">
+    <h2
+      class="text-xl md:text-2xl text-zinc-200 font-light tracking-wide mb-6 max-w-2xl mx-auto"
+    >
       Stop fighting Blender’s interface just to light your scene.
     </h2>
 
     <p
       class="text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-3xl mx-auto mb-10"
     >
-      Scene Light Manager (SLM) is a professional, high-fidelity lighting workflow toolkit designed to keep you in the creative flow. Adjust intensity, change shapes, solo lights, control HDRI rotation, and manage light/shadow linking <strong>directly in the 3D Viewport</strong> without ever opening the properties sidebar.
+      Scene Light Manager (SLM) is a professional, high-fidelity lighting
+      workflow toolkit designed to keep you in the creative flow. Adjust
+      intensity, change shapes, solo lights, control HDRI rotation, and manage
+      light/shadow linking <strong>directly in the 3D Viewport</strong> without ever
+      opening the properties sidebar.
     </p>
 
     <div class="flex justify-center items-center mb-12">
@@ -68,228 +87,146 @@ const base = import.meta.env.BASE_URL;
         class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500"
         >Available On</span
       >
-      <div class="flex flex-wrap justify-center items-center gap-5">
-        <a
-          href="https://kezives.gumroad.com/l/slm"
-          target="_blank"
-          class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] text-zinc-300 hover:text-white font-mono text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] hover:shadow-[0_0_25px_rgba(245,158,11,0.1)] backdrop-blur-sm"
-          title="Gumroad"
-        >
-          <img
-            src={`${base}third_party/gumroad.png`}
-            alt="Gumroad"
-            class="h-5 object-contain"
-          />
-          <span>Gumroad</span>
-        </a>
+      <div class="flex justify-center items-center">
         <a
           href="https://superhivemarket.com/"
           target="_blank"
-          class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] text-zinc-300 hover:text-white font-mono text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] hover:shadow-[0_0_25px_rgba(245,158,11,0.1)] backdrop-blur-sm"
+          class="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-zinc-950 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_25px_rgba(255,255,255,0.15)]"
           title="Superhive"
         >
           <img
             src={`${base}third_party/superhive.png`}
             alt="Superhive"
-            class="h-5 object-contain"
+            class="h-10 object-contain"
           />
           <span>Superhive</span>
         </a>
-        <a
-          href="https://www.blenderkit.com"
-          target="_blank"
-          class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] text-zinc-300 hover:text-white font-mono text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] hover:shadow-[0_0_25px_rgba(245,158,11,0.1)] backdrop-blur-sm"
-          title="BlenderKit"
-        >
-          <img
-            src={`${base}third_party/blenderkit.png`}
-            alt="BlenderKit"
-            class="h-5 object-contain"
-          />
-          <span>BlenderKit</span>
-        </a>
       </div>
     </div>
 
-    <!-- Interactive 3D Viewport Simulator (Banner / Teaser) -->
+    <!-- Video Demonstration Placeholder
     <div
-      class="relative w-full max-w-[1200px] mx-auto bg-zinc-950/40 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-28 group"
+      class="relative w-full max-w-[1200px] mx-auto aspect-[21/9] bg-zinc-950/20 border border-white/5 rounded-3xl flex items-center justify-center mb-28 group overflow-hidden"
     >
-      <!-- Top header bar -->
       <div
-        class="flex items-center justify-between px-6 py-3 border-b border-white/5 bg-zinc-900/40 font-mono text-[10px] text-zinc-500"
+        class="absolute inset-0 opacity-5"
+        style="background-image: radial-gradient(circle, #3f3f46 1px, transparent 1px); background-size: 24px 24px;"
       >
-        <div class="flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30"></span>
-          <span class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/30"></span>
-          <span class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/30"></span>
-          <span class="ml-2 text-zinc-400">Blender 3D Viewport — SLM_Viewport_Active</span>
-        </div>
-        <div class="flex items-center gap-4">
-          <span>Global</span>
-          <div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            SOLO ACTIVE
-          </div>
-        </div>
       </div>
 
-      <!-- Main viewport arena -->
-      <div class="relative w-full aspect-[21/9] bg-gradient-to-b from-zinc-950 to-zinc-900/60 flex items-center justify-center overflow-hidden">
-        <!-- Grid overlay pattern -->
-        <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(circle, #3f3f46 1px, transparent 1px); background-size: 24px 24px;"></div>
-
-        <!-- Technical center guidelines -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
-          <div class="h-full w-[1px] bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
+      <div class="relative z-10 flex flex-col items-center gap-3">
+        <div
+          class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 group-hover:scale-105 group-hover:border-amber-500/30 group-hover:text-amber-400 transition-all duration-500 shadow-inner"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
         </div>
-
-        <!-- Simulated 3D Elements -->
-        <div class="relative w-[300px] h-[200px] flex items-center justify-center">
-          <div class="absolute w-16 h-16 rounded-full border border-white/10 flex items-center justify-center animate-spin" style="animation-duration: 20s">
-            <div class="w-12 h-12 rounded-full border border-dashed border-zinc-600"></div>
-            <div class="absolute w-20 h-[1px] bg-zinc-700"></div>
-            <div class="absolute h-20 w-[1px] bg-zinc-700"></div>
-          </div>
-          <div class="absolute w-4 h-4 rounded-full bg-amber-400/20 border border-amber-400 flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.5)]">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          </div>
-
-          <!-- Key Light -->
-          <div class="absolute -top-12 -left-16 flex flex-col items-center group/light">
-            <div class="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center relative hover:scale-110 hover:border-amber-400 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)]">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400">
-                <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-              </svg>
-              <div class="absolute w-[180px] h-[2px] border-t border-dashed border-amber-500/30 origin-bottom-left rotate-[40deg] -bottom-[1px] left-5 pointer-events-none"></div>
-            </div>
-            <span class="text-[8px] font-mono text-amber-400 mt-1 uppercase tracking-wider bg-zinc-950/80 px-1 py-0.5 rounded border border-white/5">Key Light</span>
-          </div>
-
-          <!-- Fill Light -->
-          <div class="absolute top-20 -right-24 flex flex-col items-center group/light">
-            <div class="w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center relative hover:scale-110 hover:border-blue-400 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-              </svg>
-              <div class="absolute w-[120px] h-[2px] border-t border-dashed border-blue-500/20 origin-top-right rotate-[145deg] top-4 right-4 pointer-events-none"></div>
-            </div>
-            <span class="text-[8px] font-mono text-blue-400 mt-1 uppercase tracking-wider bg-zinc-950/80 px-1 py-0.5 rounded border border-white/5">Fill Light</span>
-          </div>
-
-          <!-- Rim Light -->
-          <div class="absolute -top-16 right-16 flex flex-col items-center group/light">
-            <div class="w-8 h-8 rounded-full bg-white/5 border border-white/20 flex items-center justify-center relative hover:scale-110 hover:border-white transition-all duration-300">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-              </svg>
-              <div class="absolute w-[110px] h-[2px] border-t border-dashed border-white/20 origin-bottom-right rotate-[-55deg] -bottom-[1px] right-4 pointer-events-none"></div>
-            </div>
-            <span class="text-[8px] font-mono text-zinc-400 mt-1 uppercase tracking-wider bg-zinc-950/80 px-1 py-0.5 rounded border border-white/5">Rim Light</span>
-          </div>
-        </div>
-
-        <!-- Floating UI panel simulating the addon -->
-        <div class="absolute bottom-6 right-6 w-64 bg-zinc-950/80 border border-white/10 rounded-xl p-4 font-mono text-[9px] text-zinc-400 shadow-2xl backdrop-blur-md">
-          <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-3">
-            <span class="text-white font-semibold">▼ SCENE LIGHT MANAGER</span>
-            <span class="text-amber-400">[RIG_3POINT]</span>
-          </div>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between mb-1">
-                <span>Base Energy</span>
-                <span class="text-white">120 W</span>
-              </div>
-              <div class="w-full h-1.5 bg-zinc-900 rounded border border-white/5 overflow-hidden">
-                <div class="w-3/5 h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between mb-1">
-                <span>Contrast Ratio</span>
-                <span class="text-white">4.2 : 1</span>
-              </div>
-              <div class="w-full h-1.5 bg-zinc-900 rounded border border-white/5 overflow-hidden">
-                <div class="w-[75%] h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded"></div>
-              </div>
-            </div>
-            <div class="flex gap-2 pt-1">
-              <div class="flex-1 py-1 px-2 bg-zinc-900 hover:bg-zinc-800 rounded border border-white/5 text-center text-white cursor-pointer select-none">
-                Link Light
-              </div>
-              <div class="flex-1 py-1 px-2 bg-zinc-900 hover:bg-zinc-800 rounded border border-white/5 text-center text-white cursor-pointer select-none">
-                Spawn Rig
-              </div>
-            </div>
-          </div>
-        </div>
+        <span
+          class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors duration-500"
+        >
+          Video Demonstration Placeholder
+        </span>
       </div>
     </div>
+    -->
   </section>
 
   <!-- Section: Why Scene Light Manager? (The SLM Difference) -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5">
+  <section
+    class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5"
+  >
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-5">
-        <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block">
-          🚀 The SLM Difference
+        <span
+          class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block"
+        >
+          The SLM Difference
         </span>
-        <h2 class="text-3xl md:text-4xl font-light text-white tracking-tight leading-tight mb-6">
+        <h2
+          class="text-3xl md:text-4xl font-light text-white tracking-tight leading-tight mb-6"
+        >
           Why Scene Light Manager?
         </h2>
         <p class="text-sm text-zinc-400 font-light leading-relaxed mb-6">
-          In vanilla Blender, setting up cinematic lighting is a tedious loop: select a light, look at the properties panel, drag a slider, look back at the viewport, select another light, expand sub-panels, repeat.
+          In vanilla Blender, setting up cinematic lighting is a tedious loop:
+          select a light, look at the properties panel, drag a slider, look back
+          at the viewport, select another light, expand sub-panels, repeat.
         </p>
         <div class="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10">
           <p class="text-xs text-amber-300 font-mono">
-            <strong>SLM changes everything by bringing the controls to your cursor.</strong>
+            <strong
+              >SLM changes everything by bringing the controls to your cursor.</strong
+            >
           </p>
         </div>
       </div>
 
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
         <!-- Diff Card 1 -->
-        <div class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300">
-          <div class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2">
-            <span class="text-xs">⚡</span> Zero Context Switching
+        <div
+          class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300"
+        >
+          <div
+            class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2"
+          >
+            Zero Context Switching
           </div>
           <p class="text-xs text-zinc-400 leading-relaxed font-light">
-            Adjust power, size, beam angle, and color directly on the light object inside the 3D Viewport.
+            Adjust power, size, beam angle, and color directly on the light
+            object inside the 3D Viewport.
           </p>
         </div>
 
         <!-- Diff Card 2 -->
-        <div class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300">
-          <div class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2">
-            <span class="text-xs">👁️</span> Instant Visual Feedback
+        <div
+          class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300"
+        >
+          <div
+            class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2"
+          >
+            Instant Visual Feedback
           </div>
           <p class="text-xs text-zinc-400 leading-relaxed font-light">
-            High-fidelity GPU outlines highlight exactly which objects are affected by light or shadow linking in real time.
+            High-fidelity GPU outlines highlight exactly which objects are
+            affected by light or shadow linking in real time.
           </p>
         </div>
 
         <!-- Diff Card 3 -->
-        <div class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300">
-          <div class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2">
-            <span class="text-xs">🌍</span> Intuitive Environment Controls
+        <div
+          class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300"
+        >
+          <div
+            class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2"
+          >
+            Intuitive Environment Controls
           </div>
           <p class="text-xs text-zinc-400 leading-relaxed font-light">
-            Rotate your HDRI or position the Nishita sun texture with simple viewport gestures.
+            Rotate your HDRI or position the Nishita sun texture with simple
+            viewport gestures.
           </p>
         </div>
 
         <!-- Diff Card 4 -->
-        <div class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300">
-          <div class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2">
-            <span class="text-xs">⚙️</span> Pure Performance
+        <div
+          class="p-6 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all duration-300"
+        >
+          <div
+            class="text-amber-400 font-semibold text-sm mb-2 flex items-center gap-2"
+          >
+            Pure Performance
           </div>
           <p class="text-xs text-zinc-400 leading-relaxed font-light">
-            Built from the ground up for heavy production scenes with zero overhead.
+            Built from the ground up for heavy production scenes with zero
+            overhead.
           </p>
         </div>
       </div>
@@ -297,16 +234,23 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Section: Key Features -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5">
+  <section
+    class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5"
+  >
     <div class="text-center max-w-2xl mx-auto mb-20">
-      <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block">
-        🌟 Feature Suite
+      <span
+        class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block"
+      >
+        Feature Suite
       </span>
-      <h2 class="text-3xl md:text-5xl font-light text-white tracking-tight leading-none mb-4">
+      <h2
+        class="text-3xl md:text-5xl font-light text-white tracking-tight leading-none mb-4"
+      >
         Key Features
       </h2>
       <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-        Engineered for technical lighting pipelines, providing professional UI tools and precise feedback controls.
+        Engineered for technical lighting pipelines, providing professional UI
+        tools and precise feedback controls.
       </p>
     </div>
 
@@ -315,29 +259,56 @@ const base = import.meta.env.BASE_URL;
       <!-- Feature 1 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 space-y-6">
-          <div class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs">
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
             01
           </div>
           <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
             Viewport Gizmo Interface & Floating Overlay
           </h3>
-          <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-            Gain instant, contextual access to light settings directly on the active light:
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Gain instant, contextual access to light settings directly on the
+            active light:
           </p>
-          <ul class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
-            <li><strong class="text-zinc-200">Smart Buttons:</strong> Click interactive icons next to your selected light to cycle types, change area shapes, toggle solo mode, adjust spot beam spreads, or tweak sizes.</li>
-            <li><strong class="text-zinc-200">Real-Time Value Overlay:</strong> Get beautiful, color-coded HUD feedback showing your precise parameter values as you drag. Choose to lock the HUD to your mouse or snap it cleanly below the gizmo cluster.</li>
-            <li><strong class="text-zinc-200">Alt-Modifier Batch Control:</strong> Hold <code class="bg-zinc-900 px-1 py-0.5 rounded border border-white/5 text-amber-400">Alt</code> while adjusting a viewport gizmo to propagate the change to all selected lights instantly.</li>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Smart Buttons:</strong> Click interactive
+              icons next to your selected light to cycle types, change area shapes,
+              toggle solo mode, adjust spot beam spreads, or tweak sizes.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Real-Time Value Overlay:</strong> Get
+              beautiful, color-coded HUD feedback showing your precise parameter values
+              as you drag. Choose to lock the HUD to your mouse or snap it cleanly
+              below the gizmo cluster.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Alt-Modifier Batch Control:</strong> Hold
+              <code
+                class="bg-zinc-900 px-1 py-0.5 rounded border border-white/5 text-amber-400"
+                >Alt</code
+              > while adjusting a viewport gizmo to propagate the change to all selected
+              lights instantly.
+            </li>
           </ul>
         </div>
         <div class="lg:col-span-7">
-          <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
             <img
               src={`${base}overlay_gizmos/viewport_2d_gizmos.png`}
               alt="Viewport Gizmos Adjustment Interface"
               class="w-full rounded-xl zoomable-img cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
             />
-            <div class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none">
+            <div
+              class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
               Click to zoom
             </div>
           </div>
@@ -347,30 +318,50 @@ const base = import.meta.env.BASE_URL;
       <!-- Feature 2 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
             <img
-              src={`${base}overlay_gizmos/ll_and_sl_obkect_outline.png`}
+              src={`${base}promo/promo-linking.webp`}
               alt="Light and Shadow Linking Visual Highlights"
               class="w-full rounded-xl zoomable-img cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
             />
-            <div class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none">
+            <div
+              class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
               Click to zoom
             </div>
           </div>
         </div>
         <div class="lg:col-span-5 space-y-6 order-1 lg:order-2">
-          <div class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs">
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
             02
           </div>
           <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
             High-Fidelity GPU Linking Highlights
           </h3>
-          <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-            Configure Blender’s powerful Light and Shadow Linking systems visually:
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Configure Blender’s powerful Light and Shadow Linking systems
+            visually:
           </p>
-          <ul class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
-            <li><strong class="text-zinc-200">Visual Silhouette Outlines:</strong> Selecting any light instantly projects clean, anti-aliased wireframes and silhouette highlights over the linked receiver or blocker geometry.</li>
-            <li><strong class="text-zinc-200">Dynamic Customization:</strong> Choose from three outline modes (<em>Silhouette</em>, <em>Wireframe</em>, or <em>Both</em>), and customize line thickness and colors to match your scene style.</li>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Visual Silhouette Outlines:</strong> Selecting
+              any light instantly projects clean, anti-aliased wireframes and silhouette
+              highlights over the linked receiver or blocker geometry.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Dynamic Customization:</strong> Choose
+              from three outline modes (<em>Silhouette</em>, <em>Wireframe</em>,
+              or <em>Both</em>), and customize line thickness and colors to
+              match your scene style.
+            </li>
           </ul>
         </div>
       </div>
@@ -378,44 +369,282 @@ const base = import.meta.env.BASE_URL;
       <!-- Feature 3 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 space-y-6">
-          <div class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs">
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
             03
           </div>
           <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
             Interactive HDRI & Sky Rotation
           </h3>
-          <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-            Ditch the shader editor mapping node. Rotate your environment from any camera angle:
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Ditch the shader editor mapping node. Rotate your environment from
+            any camera angle:
           </p>
-          <ul class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
-            <li><strong class="text-zinc-200">Auto-Detection Engine:</strong> Automatically detects and rotates the active background environment—whether it is Nishita Sky, a World Mapping node (Z Rotation), or Blender's built-in Viewport HDRI.</li>
-            <li><strong class="text-zinc-200">Instant Drag Gesture:</strong> Hold <code class="bg-zinc-900 px-1 py-0.5 rounded border border-white/5 text-amber-400">Ctrl + Alt + RMB</code> and drag horizontally to spin the dome. Release to commit, or cancel with a right click.</li>
-            <li><strong class="text-zinc-200">HUD Angle Readout:</strong> A clean digital compass at the bottom of the viewport displays the exact rotation angle in real time.</li>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Auto-Detection Engine:</strong> Automatically
+              detects and rotates the active background environment—whether it is
+              Nishita Sky, a World Mapping node (Z Rotation), or Blender's built-in
+              Viewport HDRI.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Instant Drag Gesture:</strong> Hold <code
+                class="bg-zinc-900 px-1 py-0.5 rounded border border-white/5 text-amber-400"
+                >Ctrl + Alt + RMB</code
+              > and drag horizontally to spin the dome. Release to commit, or cancel
+              with a right click.
+            </li>
+            <li>
+              <strong class="text-zinc-200">HUD Angle Readout:</strong> A clean digital
+              compass at the bottom of the viewport displays the exact rotation angle
+              in real time.
+            </li>
           </ul>
         </div>
         <div class="lg:col-span-7">
-          <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl">
-            <img
-              src={`${base}overlay_gizmos/world_rotation.png`}
-              alt="Interactive HDRI World Rotation"
-              class="w-full rounded-xl zoomable-img cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
-            />
-            <div class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none">
-              Click to zoom
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
+            <!-- Multi-image container with fade transition -->
+            <div
+              class="relative w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-950"
+            >
+              <img
+                id="world-image-a"
+                src={`${base}promo/promo-world_a.webp`}
+                alt="Interactive HDRI World Rotation — Studio Setup"
+                class="absolute inset-0 w-full h-full object-cover zoomable-img cursor-zoom-in transition-opacity duration-500 opacity-100"
+              />
+              <img
+                id="world-image-b"
+                src={`${base}promo/promo-world_b.webp`}
+                alt="Interactive HDRI World Rotation — Exterior Scene"
+                class="absolute inset-0 w-full h-full object-cover zoomable-img cursor-zoom-in transition-opacity duration-500 opacity-0 pointer-events-none"
+              />
+            </div>
+
+            <!-- Controls overlay -->
+            <div
+              class="absolute top-4 right-4 flex gap-1.5 bg-zinc-950/85 border border-white/10 rounded-full p-1 backdrop-blur-sm shadow-xl"
+            >
+              <button
+                id="btn-world-a"
+                class="px-3 py-1 text-[9px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-full transition-all cursor-pointer font-medium uppercase tracking-wider"
+              >
+                Studio Setup
+              </button>
+              <button
+                id="btn-world-b"
+                class="px-3 py-1 text-[9px] font-mono text-zinc-400 border border-transparent rounded-full hover:bg-white/5 hover:text-white transition-all cursor-pointer font-medium uppercase tracking-wider"
+              >
+                Exterior Scene
+              </button>
+            </div>
+
+            <div
+              class="absolute bottom-4 left-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
+              Click image to zoom
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Feature 4 -->
+      <!-- Feature 4: HDR Studio Light Textures -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-8 shadow-2xl min-h-[300px] flex flex-col justify-center">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
+            <!-- Multi-image container with fade transition -->
+            <div
+              class="relative w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-950"
+            >
+              <img
+                id="texture-image-a"
+                src={`${base}promo/promo-light_texture_a.webp`}
+                alt="HDR Studio Light Textures — Gobo Projector Setup"
+                class="absolute inset-0 w-full h-full object-cover zoomable-img cursor-zoom-in transition-opacity duration-500 opacity-100"
+              />
+              <img
+                id="texture-image-b"
+                src={`${base}promo/promo-light_texture_b.webp`}
+                alt="HDR Studio Light Textures — Studio Softbox"
+                class="absolute inset-0 w-full h-full object-cover zoomable-img cursor-zoom-in transition-opacity duration-500 opacity-0 pointer-events-none"
+              />
+            </div>
+
+            <!-- Controls overlay -->
+            <div
+              class="absolute top-4 right-4 flex gap-1.5 bg-zinc-950/85 border border-white/10 rounded-full p-1 backdrop-blur-sm shadow-xl"
+            >
+              <button
+                id="btn-texture-a"
+                class="px-3 py-1 text-[9px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-full transition-all cursor-pointer font-medium uppercase tracking-wider"
+              >
+                Gobo Projector
+              </button>
+              <button
+                id="btn-texture-b"
+                class="px-3 py-1 text-[9px] font-mono text-zinc-400 border border-transparent rounded-full hover:bg-white/5 hover:text-white transition-all cursor-pointer font-medium uppercase tracking-wider"
+              >
+                Studio Softbox
+              </button>
+            </div>
+
+            <div
+              class="absolute bottom-4 left-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
+              Click image to zoom
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 space-y-6 order-1 lg:order-2">
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
+            04
+          </div>
+          <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
+            HDR Studio Light Textures & Gobos
+          </h3>
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Project real-world high-dynamic-range softboxes and patterns
+            directly from Blender Area Lights:
+          </p>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Photographic Realism:</strong> Map photographic
+              softbox reflection textures and studio Gobos with a single click.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Integrated Node Automation:</strong> Behind
+              the scenes, SLM handles shader setups, texture mapping coordinate projections,
+              and strength balance.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Interactive Tweaks:</strong> Adjust Gobo
+              rotation, scale, and softness directly from viewport operators.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feature 5: Cinematic Presets & Lighting Rigs -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
+            05
+          </div>
+          <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
+            Cinematic Presets & Custom Lighting Rigs
+          </h3>
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Build master lighting setups in seconds using built-in rigs and
+            saving custom presets:
+          </p>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Instant Rig Spawning:</strong> Spawn standard
+              3-point rigs, butterfly setups, or backlighting rings aligned to your
+              active viewport camera.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Preset Library Manager:</strong> Save
+              complete scene lighting states to the global asset library and restore
+              them instantly.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Non-Destructive Mixing:</strong> Test
+              different lighting directions, colors, and intensities by saving snapshots
+              as presets.
+            </li>
+          </ul>
+        </div>
+        <div class="lg:col-span-7">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
+            <!-- Multi-image container with fade transition -->
+            <div
+              class="relative w-full aspect-[16/10] overflow-hidden rounded-xl bg-zinc-950"
+            >
+              <img
+                id="presets-image-a"
+                src={`${base}promo/promo-presets_a.webp`}
+                alt="Cinematic Presets & Lighting Rigs — Portrait Studio Setup"
+                class="absolute inset-0 w-full h-full object-cover zoomable-img cursor-zoom-in transition-opacity duration-500 opacity-100"
+              />
+              <img
+                id="presets-image-b"
+                src={`${base}promo/promo-presets_b.webp`}
+                alt="Cinematic Presets & Lighting Rigs — High-Contrast Cinematic Rim"
+                class="absolute inset-0 w-full h-full object-cover zoomable-img cursor-zoom-in transition-opacity duration-500 opacity-0 pointer-events-none"
+              />
+            </div>
+
+            <!-- Controls overlay -->
+            <div
+              class="absolute top-4 right-4 flex gap-1.5 bg-zinc-950/85 border border-white/10 rounded-full p-1 backdrop-blur-sm shadow-xl"
+            >
+              <button
+                id="btn-presets-a"
+                class="px-3 py-1 text-[9px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-full transition-all cursor-pointer font-medium uppercase tracking-wider"
+              >
+                Portrait Setup
+              </button>
+              <button
+                id="btn-presets-b"
+                class="px-3 py-1 text-[9px] font-mono text-zinc-400 border border-transparent rounded-full hover:bg-white/5 hover:text-white transition-all cursor-pointer font-medium uppercase tracking-wider"
+              >
+                Cinematic Rim
+              </button>
+            </div>
+
+            <div
+              class="absolute bottom-4 left-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
+              Click image to zoom
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-8 shadow-2xl min-h-[300px] flex flex-col justify-center"
+          >
             <!-- Simulated Solo Overlay Graphic -->
-            <div class="border border-white/10 bg-zinc-950/90 rounded-xl p-6 font-mono text-xs text-zinc-400 space-y-4">
-              <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                <span class="text-white font-semibold">⚡ ISOLATION PIPELINE</span>
-                <span class="text-amber-400 font-bold px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px]">SOLO ACTIVE</span>
+            <div
+              class="border border-white/10 bg-zinc-950/90 rounded-xl p-6 font-mono text-xs text-zinc-400 space-y-4"
+            >
+              <div
+                class="flex justify-between items-center border-b border-white/5 pb-2"
+              >
+                <span class="text-white font-semibold"
+                  >⚡ ISOLATION PIPELINE</span
+                >
+                <span
+                  class="text-amber-400 font-bold px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[10px]"
+                  >SOLO ACTIVE</span
+                >
               </div>
               <div class="space-y-2">
                 <div class="flex items-center justify-between text-zinc-500">
@@ -435,83 +664,153 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="lg:col-span-5 space-y-6 order-1 lg:order-2">
-          <div class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs">
-            04
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
+            06
           </div>
           <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
             Smart Light Isolation (Solo Mode)
           </h3>
-          <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-            Isolate a single light source to judge its contribution, shadows, and bounce:
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Isolate a single light source to judge its contribution, shadows,
+            and bounce:
           </p>
-          <ul class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
-            <li><strong class="text-zinc-200">Synchronized Soloing:</strong> Solo any light via the viewport gizmo button or the sidebar list.</li>
-            <li><strong class="text-zinc-200">Automatic Restores:</strong> Un-soloing returns your scene to the exact previous visibility layout.</li>
-            <li><strong class="text-zinc-200">World Muting Option:</strong> Automatically disable the World background shader while soloing to isolate light color contributions in pure darkness.</li>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Synchronized Soloing:</strong> Solo any
+              light via the viewport gizmo button or the sidebar list.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Automatic Restores:</strong> Un-soloing
+              returns your scene to the exact previous visibility layout.
+            </li>
+            <li>
+              <strong class="text-zinc-200">World Muting Option:</strong> Automatically
+              disable the World background shader while soloing to isolate light color
+              contributions in pure darkness.
+            </li>
           </ul>
         </div>
       </div>
 
-      <!-- Feature 5 -->
+      <!-- Feature 7 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 space-y-6">
-          <div class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs">
-            05
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
+            07
           </div>
           <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
             Unified Light Manager Sidebar
           </h3>
-          <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-            A beautiful, tabbed panel consolidating every light source, emissive mesh, and setting in your project:
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            A beautiful, tabbed panel consolidating every light source, emissive
+            mesh, and setting in your project:
           </p>
-          <ul class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
-            <li><strong class="text-zinc-200">Properties Tab:</strong> Grouped list control over name, power, color, and visibility of all scene lights.</li>
-            <li><strong class="text-zinc-200">Synchronization Tab:</strong> Seamlessly synchronize viewport selections, automatically activate collections, or sync visibility parameters.</li>
-            <li><strong class="text-zinc-200">Light List Tab:</strong> Customize which property columns are visible (including icons for Light Groups, Light Linking, Shadow Linking, and Exposure Overrides).</li>
-            <li><strong class="text-zinc-200">Mesh Emitters Detection:</strong> Automatically scan and list mesh objects acting as lights via emissive shaders (using configurable search terms like <code class="bg-zinc-900 px-1 py-0.5 rounded text-amber-400">led</code>, <code class="bg-zinc-900 px-1 py-0.5 rounded text-amber-400">emit</code>, <code class="bg-zinc-900 px-1 py-0.5 rounded text-amber-400">glow</code>).</li>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Properties Tab:</strong> Grouped list
+              control over name, power, color, and visibility of all scene lights.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Synchronization Tab:</strong> Seamlessly
+              synchronize viewport selections, automatically activate collections,
+              or sync visibility parameters.
+            </li>
+            <li>
+              <strong class="text-zinc-200">Light List Tab:</strong> Customize which
+              property columns are visible (including icons for Light Groups, Light
+              Linking, Shadow Linking, and Exposure Overrides).
+            </li>
+            <li>
+              <strong class="text-zinc-200">Mesh Emitters Detection:</strong> Automatically
+              scan and list mesh objects acting as lights via emissive shaders (using
+              configurable search terms like <code
+                class="bg-zinc-900 px-1 py-0.5 rounded text-amber-400">led</code
+              >, <code class="bg-zinc-900 px-1 py-0.5 rounded text-amber-400"
+                >emit</code
+              >, <code class="bg-zinc-900 px-1 py-0.5 rounded text-amber-400"
+                >glow</code
+              >).
+            </li>
           </ul>
         </div>
         <div class="lg:col-span-7">
-          <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
             <img
               src={`${base}panel_images/ui_list.png`}
               alt="Unified Sidebar Interface List Panel"
               class="w-full rounded-xl zoomable-img cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
             />
-            <div class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none">
+            <div
+              class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
               Click to zoom
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Feature 6 -->
+      <!-- Feature 8 -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl">
+          <div
+            class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+          >
             <img
               src={`${base}panel_images/geographic_sun_alignment.png`}
               alt="Geographic Solar Positioning Interface"
               class="w-full rounded-xl zoomable-img cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
             />
-            <div class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none">
+            <div
+              class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+            >
               Click to zoom
             </div>
           </div>
         </div>
         <div class="lg:col-span-5 space-y-6 order-1 lg:order-2">
-          <div class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs">
-            06
+          <div
+            class="inline-flex items-center justify-center w-8 h-8 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs"
+          >
+            08
           </div>
           <h3 class="text-2xl md:text-3xl font-light text-white leading-tight">
             Geographic Sun & Sky Positioning
           </h3>
-          <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-            Align your Nishita sky or solar directional lights using real-world geographic coordinates:
+          <p
+            class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed"
+          >
+            Align your Nishita sky or solar directional lights using real-world
+            geographic coordinates:
           </p>
-          <ul class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
-            <li><strong class="text-zinc-200">Latitude/Longitude Inputs:</strong> Enter standard coordinates in Decimal format or degrees/minutes/seconds (e.g., <code class="bg-zinc-900 px-1 py-0.5 rounded text-zinc-300">48°51'30.2"N 02°17'40.2"E</code>).</li>
-            <li><strong class="text-zinc-200">3D Solar Path Overlay:</strong> Projects a beautiful daily solar path arc and cardinal direction compass (North-South, East-West) inside the 3D viewport.</li>
+          <ul
+            class="space-y-3 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+          >
+            <li>
+              <strong class="text-zinc-200">Latitude/Longitude Inputs:</strong> Enter
+              standard coordinates in Decimal format or degrees/minutes/seconds (e.g.,
+              <code class="bg-zinc-900 px-1 py-0.5 rounded text-zinc-300"
+                >48°51'30.2"N 02°17'40.2"E</code
+              >).
+            </li>
+            <li>
+              <strong class="text-zinc-200">3D Solar Path Overlay:</strong> Projects
+              a beautiful daily solar path arc and cardinal direction compass (North-South,
+              East-West) inside the 3D viewport.
+            </li>
           </ul>
         </div>
       </div>
@@ -519,44 +818,79 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Section: Shortcuts & Hotkeys Guide -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5">
+  <section
+    class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5"
+  >
     <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block">
-        ⌨️ Operator Shortcuts
+      <span
+        class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block"
+      >
+        Operator Shortcuts
       </span>
-      <h2 class="text-3xl md:text-4xl font-light text-white tracking-tight leading-none mb-4">
+      <h2
+        class="text-3xl md:text-4xl font-light text-white tracking-tight leading-none mb-4"
+      >
         Viewport Control & Shortcuts
       </h2>
       <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-        Quickly navigate operators and modal modes directly within the Blender scene viewport.
+        Quickly navigate operators and modal modes directly within the Blender
+        scene viewport.
       </p>
     </div>
 
     <div class="flex flex-col gap-12">
       <!-- Global Hotkeys Table -->
       <div class="space-y-4">
-        <h3 class="text-lg text-white font-mono tracking-wider flex items-center gap-2 border-b border-white/5 pb-2">
+        <h3
+          class="text-lg text-white font-mono tracking-wider flex items-center gap-2 border-b border-white/5 pb-2"
+        >
           <span class="text-amber-400">■</span> Global Hotkeys
         </h3>
         <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs font-light text-zinc-400">
+          <table
+            class="w-full text-left border-collapse text-xs font-light text-zinc-400"
+          >
             <thead>
               <tr class="border-b border-white/10 text-zinc-300 font-mono">
-                <th class="py-3 px-2 uppercase tracking-wider text-[10px]">Action</th>
-                <th class="py-3 px-2 uppercase tracking-wider text-[10px]">Shortcut</th>
-                <th class="py-3 px-2 uppercase tracking-wider text-[10px]">Description</th>
+                <th class="py-3 px-2 uppercase tracking-wider text-[10px]"
+                  >Action</th
+                >
+                <th class="py-3 px-2 uppercase tracking-wider text-[10px]"
+                  >Shortcut</th
+                >
+                <th class="py-3 px-2 uppercase tracking-wider text-[10px]"
+                  >Description</th
+                >
               </tr>
             </thead>
             <tbody class="divide-y divide-white/5">
               <tr class="hover:bg-white/[0.01] transition-colors">
                 <td class="py-3.5 px-2 text-white font-normal">Quick Popup</td>
-                <td class="py-3.5 px-2"><kbd class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-amber-400 font-mono text-[10px]">Y</kbd></td>
-                <td class="py-3.5 px-2">Open the Scene Light Manager quick settings popup under the cursor.</td>
+                <td class="py-3.5 px-2"
+                  ><kbd
+                    class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-amber-400 font-mono text-[10px]"
+                    >Y</kbd
+                  ></td
+                >
+                <td class="py-3.5 px-2"
+                  >Open the Scene Light Manager quick settings popup under the
+                  cursor.</td
+                >
               </tr>
               <tr class="hover:bg-white/[0.01] transition-colors">
-                <td class="py-3.5 px-2 text-white font-normal">Interactive HDRI Rotation</td>
-                <td class="py-3.5 px-2"><kbd class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-amber-400 font-mono text-[10px]">Ctrl + Alt + RMB</kbd></td>
-                <td class="py-3.5 px-2">Hold and drag horizontally in the viewport to spin the background environment.</td>
+                <td class="py-3.5 px-2 text-white font-normal"
+                  >Interactive HDRI Rotation</td
+                >
+                <td class="py-3.5 px-2"
+                  ><kbd
+                    class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-amber-400 font-mono text-[10px]"
+                    >Ctrl + Alt + RMB</kbd
+                  ></td
+                >
+                <td class="py-3.5 px-2"
+                  >Hold and drag horizontally in the viewport to spin the
+                  background environment.</td
+                >
               </tr>
             </tbody>
           </table>
@@ -565,29 +899,59 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Modal Navigation Table -->
       <div class="space-y-4">
-        <h3 class="text-lg text-white font-mono tracking-wider flex items-center gap-2 border-b border-white/5 pb-2">
+        <h3
+          class="text-lg text-white font-mono tracking-wider flex items-center gap-2 border-b border-white/5 pb-2"
+        >
           <span class="text-amber-400">■</span> Modal Adjustment Mode
         </h3>
         <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs font-light text-zinc-400">
+          <table
+            class="w-full text-left border-collapse text-xs font-light text-zinc-400"
+          >
             <thead>
               <tr class="border-b border-white/10 text-zinc-300 font-mono">
-                <th class="py-3 px-2 uppercase tracking-wider text-[10px]">Key</th>
-                <th class="py-3 px-2 uppercase tracking-wider text-[10px]">Action Description</th>
+                <th class="py-3 px-2 uppercase tracking-wider text-[10px]"
+                  >Key</th
+                >
+                <th class="py-3 px-2 uppercase tracking-wider text-[10px]"
+                  >Action Description</th
+                >
               </tr>
             </thead>
             <tbody class="divide-y divide-white/5">
               <tr class="hover:bg-white/[0.01] transition-colors">
-                <td class="py-3.5 px-2"><kbd class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-zinc-200 font-mono text-[10px]">Hold Shift</kbd></td>
-                <td class="py-3.5 px-2">Scales down mouse sensitivity for ultra-precise value tuning.</td>
+                <td class="py-3.5 px-2"
+                  ><kbd
+                    class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-zinc-200 font-mono text-[10px]"
+                    >Hold Shift</kbd
+                  ></td
+                >
+                <td class="py-3.5 px-2"
+                  >Scales down mouse sensitivity for ultra-precise value tuning.</td
+                >
               </tr>
               <tr class="hover:bg-white/[0.01] transition-colors">
-                <td class="py-3.5 px-2"><kbd class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-zinc-200 font-mono text-[10px]">LMB / Enter</kbd></td>
-                <td class="py-3.5 px-2">Confirms value changes and exits interactive adjustment mode.</td>
+                <td class="py-3.5 px-2"
+                  ><kbd
+                    class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-zinc-200 font-mono text-[10px]"
+                    >LMB / Enter</kbd
+                  ></td
+                >
+                <td class="py-3.5 px-2"
+                  >Confirms value changes and exits interactive adjustment mode.</td
+                >
               </tr>
               <tr class="hover:bg-white/[0.01] transition-colors">
-                <td class="py-3.5 px-2"><kbd class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-zinc-200 font-mono text-[10px]">RMB / Esc</kbd></td>
-                <td class="py-3.5 px-2">Cancels active adjustments and reverts lights to their original values.</td>
+                <td class="py-3.5 px-2"
+                  ><kbd
+                    class="bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-zinc-200 font-mono text-[10px]"
+                    >RMB / Esc</kbd
+                  ></td
+                >
+                <td class="py-3.5 px-2"
+                  >Cancels active adjustments and reverts lights to their
+                  original values.</td
+                >
               </tr>
             </tbody>
           </table>
@@ -597,41 +961,59 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Section: Modular Preferences -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5">
+  <section
+    class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 mb-28 border-t border-white/5"
+  >
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-5 space-y-6">
-        <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block">
-          ⚙️ Customize Settings
+        <span
+          class="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-400 mb-2 block"
+        >
+          Customize Settings
         </span>
-        <h2 class="text-3xl md:text-4xl font-light text-white tracking-tight leading-tight">
+        <h2
+          class="text-3xl md:text-4xl font-light text-white tracking-tight leading-tight"
+        >
           Modular Preferences
         </h2>
         <p class="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
-          Tailor every detail of the interface to match your personal pipeline inside <strong class="text-zinc-200">Edit > Preferences > Add-ons > K-tools: Scene Light Manager</strong>:
+          Tailor every detail of the interface to match your personal pipeline
+          inside <strong class="text-zinc-200"
+            >Edit > Preferences > Add-ons > K-tools: Scene Light Manager</strong
+          >:
         </p>
-        <ul class="space-y-4 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20">
+        <ul
+          class="space-y-4 font-light text-xs text-zinc-400 pl-4 border-l border-amber-500/20"
+        >
           <li>
-            <strong class="text-zinc-200">Customize Gizmos:</strong> 
-            Choose which buttons (Type, Shape, Size, Beam, Isolate) are visible in the viewport clusters.
+            <strong class="text-zinc-200">Customize Gizmos:</strong>
+            Choose which buttons (Type, Shape, Size, Beam, Isolate) are visible in
+            the viewport clusters.
           </li>
           <li>
-            <strong class="text-zinc-200">Clean Tabs Grid:</strong> 
-            Choose between a grid or column layout for the preference panels to keep them organized.
+            <strong class="text-zinc-200">Clean Tabs Grid:</strong>
+            Choose between a grid or column layout for the preference panels to keep
+            them organized.
           </li>
           <li>
-            <strong class="text-zinc-200">Custom Emissive Keywords:</strong> 
-            Add your own terms to scan materials and automatically detect custom Mesh Lights.
+            <strong class="text-zinc-200">Custom Emissive Keywords:</strong>
+            Add your own terms to scan materials and automatically detect custom Mesh
+            Lights.
           </li>
         </ul>
       </div>
       <div class="lg:col-span-7">
-        <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl">
+        <div
+          class="relative rounded-2xl overflow-hidden border border-white/5 bg-zinc-900/40 p-2 group shadow-2xl"
+        >
           <img
             src={`${base}panel_images/preferences-viewport_and_gizmos.png`}
             alt="Blender Preferences Scene Light Manager Settings"
             class="w-full rounded-xl zoomable-img cursor-zoom-in hover:scale-[1.01] transition-transform duration-500"
           />
-          <div class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none">
+          <div
+            class="absolute bottom-4 right-4 bg-zinc-950/80 border border-white/10 rounded px-2.5 py-1 text-[9px] font-mono text-zinc-400 select-none"
+          >
             Click to zoom
           </div>
         </div>
@@ -640,9 +1022,102 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Final Footer Credits Section -->
-  <section class="max-w-[800px] mx-auto px-6 py-12 mb-20 text-center border-t border-white/5">
+  <section
+    class="max-w-[800px] mx-auto px-6 py-12 mb-20 text-center border-t border-white/5"
+  >
     <p class="text-xs text-zinc-500 font-light leading-relaxed">
-      Developed by <strong class="text-zinc-400">Robert Kezives</strong>. For support, feedback, or feature requests, visit the <a href="https://github.com/r-kez/k_tools_slm_documentation" class="text-amber-400 hover:text-white underline transition-colors">Documentation Repository</a>.
+      Developed by <strong class="text-zinc-400">Robert Kezives</strong>. For
+      support, feedback, or feature requests, visit the <a
+        href="https://github.com/r-kez/k_tools_slm_documentation"
+        class="text-amber-400 hover:text-white underline transition-colors"
+        >Documentation Repository</a
+      >.
     </p>
   </section>
+
+  <!-- Client-side Interactive Image Selectors Script -->
+  <script>
+    function setupImageToggles(
+      btnAId: string,
+      btnBId: string,
+      imgAId: string,
+      imgBId: string,
+    ) {
+      const btnA = document.getElementById(btnAId);
+      const btnB = document.getElementById(btnBId);
+      const imgA = document.getElementById(imgAId);
+      const imgB = document.getElementById(imgBId);
+
+      if (btnA && btnB && imgA && imgB) {
+        const toggle = (showA: boolean) => {
+          if (showA) {
+            // Show A, hide B
+            imgA.classList.remove("opacity-0", "pointer-events-none");
+            imgA.classList.add("opacity-100");
+            imgB.classList.add("opacity-0", "pointer-events-none");
+            imgB.classList.remove("opacity-100");
+
+            // Active A styles
+            btnA.classList.add(
+              "text-amber-400",
+              "bg-amber-500/10",
+              "border-amber-500/20",
+            );
+            btnA.classList.remove("text-zinc-400", "border-transparent");
+            // Inactive B styles
+            btnB.classList.remove(
+              "text-amber-400",
+              "bg-amber-500/10",
+              "border-amber-500/20",
+            );
+            btnB.classList.add("text-zinc-400", "border-transparent");
+          } else {
+            // Show B, hide A
+            imgA.classList.add("opacity-0", "pointer-events-none");
+            imgA.classList.remove("opacity-100");
+            imgB.classList.remove("opacity-0", "pointer-events-none");
+            imgB.classList.add("opacity-100");
+
+            // Active B styles
+            btnB.classList.add(
+              "text-amber-400",
+              "bg-amber-500/10",
+              "border-amber-500/20",
+            );
+            btnB.classList.remove("text-zinc-400", "border-transparent");
+            // Inactive A styles
+            btnA.classList.remove(
+              "text-amber-400",
+              "bg-amber-500/10",
+              "border-amber-500/20",
+            );
+            btnA.classList.add("text-zinc-400", "border-transparent");
+          }
+        };
+
+        btnA.addEventListener("click", () => toggle(true));
+        btnB.addEventListener("click", () => toggle(false));
+      }
+    }
+
+    // Initialize toggle behaviors
+    setupImageToggles(
+      "btn-world-a",
+      "btn-world-b",
+      "world-image-a",
+      "world-image-b",
+    );
+    setupImageToggles(
+      "btn-texture-a",
+      "btn-texture-b",
+      "texture-image-a",
+      "texture-image-b",
+    );
+    setupImageToggles(
+      "btn-presets-a",
+      "btn-presets-b",
+      "presets-image-a",
+      "presets-image-b",
+    );
+  </script>
 </Layout>

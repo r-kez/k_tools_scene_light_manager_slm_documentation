@@ -1,0 +1,148 @@
+<h1>💡 Scene Light Manager for Blender</h1>
+
+<p><strong>Stop fighting Blender’s interface just to light your scene.</strong></p>
+
+<p>Scene Light Manager (SLM) is a professional, high-fidelity lighting workflow toolkit designed to keep you in the creative flow. Adjust intensity, change shapes, solo lights, control HDRI rotation, and manage light/shadow linking <strong>directly in the 3D Viewport</strong> without ever opening the properties sidebar.</p>
+
+<hr />
+
+<h3>🚀 Key Information</h3>
+<ul>
+    <li><strong>Blender Compatibility:</strong> 5.1+</li>
+    <li><strong>License:</strong> GPL-3.0</li>
+    <li><strong>Documentation Site:</strong> <a href="https://r-kez.github.io/k_tools_slm_documentation/" target="_blank">https://r-kez.github.io/k_tools_slm_documentation/</a></li>
+</ul>
+
+<hr />
+
+<h2>🌟 Why Scene Light Manager?</h2>
+<p>In vanilla Blender, setting up cinematic lighting is a tedious loop: select a light, look at the properties panel, drag a slider, look back at the viewport, select another light, expand sub-panels, repeat.</p>
+<p><strong>SLM changes everything by bringing the controls directly to your cursor inside the 3D Viewport.</strong></p>
+
+<ul>
+    <li><strong>⚡ Zero Context Switching:</strong> Adjust power, size, beam angle, and color directly on the light object inside the 3D Viewport.</li>
+    <li><strong>👁️ Instant Visual Feedback:</strong> High-fidelity GPU outlines highlight exactly which objects are affected by light or shadow linking in real time.</li>
+    <li><strong>🌍 Intuitive Environment Controls:</strong> Rotate your HDRI or position the Nishita sun texture with simple viewport gestures.</li>
+    <li><strong>⚙️ Pure Performance:</strong> Built from the ground up for heavy production scenes with zero overhead.</li>
+</ul>
+
+<hr />
+
+<h2>🛠️ Core Features</h2>
+
+<h3>1. Viewport Gizmo Interface & Floating Overlay</h3>
+<p>Gain instant, contextual access to light settings directly on the active light:</p>
+<ul>
+    <li><strong>Smart Buttons:</strong> Click interactive icons next to your selected light to cycle types, change area shapes, toggle solo mode, adjust spot beam spreads, or tweak sizes.</li>
+    <li><strong>Real-Time Value Overlay:</strong> Get beautiful HUD feedback showing your precise parameter values as you drag.</li>
+    <li><strong>Alt-Modifier Batch Control:</strong> Hold <code>Alt</code> while adjusting a viewport gizmo to propagate the change to all selected lights instantly.</li>
+</ul>
+<p><img src="https://r-kez.github.io/k_tools_slm_documentation/overlay_gizmos/viewport_2d_gizmos.png" alt="Viewport Gizmos Adjustment Interface" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #333; margin: 15px 0;" /></p>
+
+<h3>2. High-Fidelity GPU Linking Highlights</h3>
+<p>Configure Blender’s powerful Light and Shadow Linking systems visually:</p>
+<ul>
+    <li><strong>Visual Silhouette Outlines:</strong> Selecting any light instantly projects clean, anti-aliased wireframes and silhouette highlights over the linked receiver or blocker geometry.</li>
+    <li><strong>Dynamic Customization:</strong> Choose from three outline modes (Silhouette, Wireframe, or Both), and customize line thickness and colors to match your scene style.</li>
+</ul>
+<p><img src="https://r-kez.github.io/k_tools_slm_documentation/overlay_gizmos/ll_and_sl_obkect_outline.png" alt="Light and Shadow Linking Visual Highlights" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #333; margin: 15px 0;" /></p>
+
+<h3>3. Interactive HDRI & Sky Rotation</h3>
+<p>Ditch the shader editor mapping node. Rotate your environment from any camera angle:</p>
+<ul>
+    <li><strong>Auto-Detection Engine:</strong> Automatically detects and rotates the active background environment—whether it is Nishita Sky, a World Mapping node (Z Rotation), or Blender's built-in Viewport HDRI.</li>
+    <li><strong>Instant Drag Gesture:</strong> Hold <code>Ctrl + Alt + RMB</code> and drag horizontally to spin the dome. Release to commit, or cancel with a right click.</li>
+    <li><strong>HUD Angle Readout:</strong> A clean digital compass at the bottom of the viewport displays the exact rotation angle in real time.</li>
+</ul>
+<p><img src="https://r-kez.github.io/k_tools_slm_documentation/overlay_gizmos/world_rotation.png" alt="Interactive HDRI World Rotation" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #333; margin: 15px 0;" /></p>
+
+<h3>4. Smart Light Isolation (Solo Mode)</h3>
+<p>Isolate a single light source to judge its contribution, shadows, and bounce:</p>
+<ul>
+    <li><strong>Synchronized Soloing:</strong> Solo any light via the viewport gizmo button or the sidebar list.</li>
+    <li><strong>Automatic Restores:</strong> Un-soloing returns your scene to the exact previous visibility layout.</li>
+    <li><strong>World Muting Option:</strong> Automatically disable the World background shader while soloing to isolate light color contributions in pure darkness.</li>
+</ul>
+
+<h3>5. Unified Light Manager Sidebar</h3>
+<p>A clean, tabbed panel consolidating every light source, emissive mesh, and setting in your project:</p>
+<ul>
+    <li><strong>Properties Tab:</strong> Grouped list control over name, power, color, and visibility of all scene lights.</li>
+    <li><strong>Synchronization Tab:</strong> Seamlessly synchronize viewport selections, automatically activate collections, or sync visibility parameters.</li>
+    <li><strong>Mesh Emitters Detection:</strong> Automatically scan and list mesh objects acting as lights via emissive shaders (using configurable search terms like led, emit, glow).</li>
+</ul>
+<p><img src="https://r-kez.github.io/k_tools_slm_documentation/panel_images/ui_list.png" alt="Unified Sidebar Interface List Panel" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #333; margin: 15px 0;" /></p>
+
+<h3>6. Geographic Sun & Sky Positioning</h3>
+<p>Align your Nishita sky or solar directional lights using real-world geographic coordinates:</p>
+<ul>
+    <li><strong>Latitude/Longitude Inputs:</strong> Enter standard coordinates in Decimal format or degrees/minutes/seconds.</li>
+    <li><strong>3D Solar Path Overlay:</strong> Projects a daily solar path arc and cardinal direction compass inside the 3D viewport.</li>
+</ul>
+<p><img src="https://r-kez.github.io/k_tools_slm_documentation/panel_images/geographic_sun_alignment.png" alt="Geographic Solar Positioning Interface" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #333; margin: 15px 0;" /></p>
+
+<hr />
+
+<h2>⌨️ Viewport Control & Shortcuts</h2>
+
+<h3>Global Hotkeys</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; border: 1px solid #444; width: 100%; text-align: left; margin-bottom: 20px;">
+    <thead>
+        <tr style="background-color: #222; color: #fff;">
+            <th>Action</th>
+            <th>Shortcut</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Quick Popup</strong></td>
+            <td><code>Y</code></td>
+            <td>Open the Scene Light Manager quick settings popup under the cursor.</td>
+        </tr>
+        <tr>
+            <td><strong>Interactive HDRI Rotation</strong></td>
+            <td><code>Ctrl + Alt + RMB</code></td>
+            <td>Hold and drag horizontally in the viewport to spin the background environment.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Modal Adjustment Mode</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; border: 1px solid #444; width: 100%; text-align: left;">
+    <thead>
+        <tr style="background-color: #222; color: #fff;">
+            <th>Key</th>
+            <th>Action Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Hold Shift</strong></td>
+            <td>Scales down mouse sensitivity for ultra-precise value tuning.</td>
+        </tr>
+        <tr>
+            <td><strong>LMB / Enter</strong></td>
+            <td>Confirms value changes and exits interactive adjustment mode.</td>
+        </tr>
+        <tr>
+            <td><strong>RMB / Esc</strong></td>
+            <td>Cancels active adjustments and reverts lights to their original values.</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr />
+
+<h2>⚙️ Modular Preferences</h2>
+<p>Tailor every detail of the interface to match your personal pipeline inside <em>Edit &gt; Preferences &gt; Add-ons &gt; K-tools: Scene Light Manager</em>:</p>
+<ul>
+    <li><strong>Customize Gizmos:</strong> Choose which buttons (Type, Shape, Size, Beam, Isolate) are visible in the viewport clusters.</li>
+    <li><strong>Clean Tabs Grid:</strong> Choose between a grid or column layout for the preference panels.</li>
+    <li><strong>Custom Emissive Keywords:</strong> Add your own terms to scan materials and automatically detect custom Mesh Lights.</li>
+</ul>
+<p><img src="https://r-kez.github.io/k_tools_slm_documentation/panel_images/preferences-viewport_and_gizmos.png" alt="Blender Preferences Scene Light Manager Settings" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #333; margin: 15px 0;" /></p>
+
+<hr />
+
+<p><em>Developed by Robert Kezives. For full documentation and support details, visit the official repository page.</em></p>

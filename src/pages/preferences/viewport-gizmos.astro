@@ -1,96 +1,161 @@
 ---
-import DocLayout from '../../layouts/DocLayout.astro';
-import PreferencesTabs from '../../components/PreferencesTabs.astro';
+import DocLayout from "../../layouts/DocLayout.astro";
+import PreferencesTabs from "../../components/PreferencesTabs.astro";
 
 const base = import.meta.env.BASE_URL;
 ---
 
 <DocLayout title="Preferences — Viewport & Gizmos">
   <h1>Addon Preferences Configuration</h1>
-  <PreferencesTabs activeTab="preferences/viewport-gizmos" description="Configure the visual overlays drawn directly inside Blender 3D Viewport, including interactive light buttons and GPU outline highlights." />
+  <PreferencesTabs
+    activeTab="preferences/viewport-gizmos"
+    description="Configure the visual overlays drawn directly inside Blender 3D Viewport, including interactive light buttons and GPU outline highlights."
+  />
 
   <!-- Gizmos Preferences Image -->
-  <div class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300">
-    <div class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center">
-      <img 
-        src={`${base}panel_images/preferences-viewport_and_gizmos.png`} 
-        alt="Viewport & Gizmos Preferences" 
+  <div
+    class="bg-zinc-950/40 border border-white/5 p-4 rounded-2xl mb-8 group hover:border-white/10 transition-all duration-300"
+  >
+    <div
+      class="overflow-hidden rounded-xl bg-black/40 border border-white/5 mb-3 flex justify-center"
+    >
+      <img
+        src={`${base}panel_images/preferences-viewport_and_gizmos.png`}
+        alt="Viewport & Gizmos Preferences"
         class="h-auto max-h-[350px] object-contain transition-transform duration-500 group-hover:scale-[1.01] zoomable-img cursor-zoom-in"
         loading="lazy"
       />
     </div>
-    <span class="text-zinc-500 text-[11px] block font-mono text-center">Addon Preferences — Viewport Overlays & Gizmo settings</span>
+    <span class="text-zinc-500 text-[11px] block font-mono text-center"
+      >Addon Preferences — Viewport Overlays & Gizmo settings</span
+    >
   </div>
 
   <!-- ââ 3. Viewport Highlights & Gizmos Settings ââ -->
   <div class="space-y-12">
-
     <!-- SECTION 1: CORE VISUAL TOGGLES -->
     <section class="space-y-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        <div
+          class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+            ></path>
           </svg>
         </div>
         <div>
-          <h2 class="text-white text-base font-semibold m-0">Core Viewport Drawing</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Toggle primary viewport drawing engine capabilities</p>
+          <h2 class="text-white text-base font-semibold m-0">
+            Core Viewport Drawing
+          </h2>
+          <p class="text-zinc-500 text-xs mt-0.5">
+            Toggle primary viewport drawing engine capabilities
+          </p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 gap-4">
         <!-- GPU Highlights -->
-        <div id="enable_gpu_highlights" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          id="enable_gpu_highlights"
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
               <strong class="text-white text-sm">GPU Highlights</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">enable_gpu_highlights</span>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >enable_gpu_highlights</span
+              >
             </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light font-sans">
-              Draws custom colored silhouette borders around linked collection objects when clicking a light in the SLM list.
+            <p
+              class="text-xs text-zinc-400 leading-relaxed font-light font-sans"
+            >
+              Draws custom colored silhouette borders around linked collection
+              objects when clicking a light in the SLM list.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>â¢</span>
+            <span>•</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
 
         <!-- Viewport Gizmos -->
-        <div id="enable_viewport_gizmos" class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          id="enable_viewport_gizmos"
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
               <strong class="text-white text-sm">Interactive Gizmos</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">enable_viewport_gizmos</span>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >enable_viewport_gizmos</span
+              >
             </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light font-sans">
-              Draws a floating button cluster next to light sources in the 3D viewport for mouse-drag tweaking.
+            <p
+              class="text-xs text-zinc-400 leading-relaxed font-light font-sans"
+            >
+              Draws a floating button cluster next to light sources in the 3D
+              viewport for mouse-drag tweaking.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>â¢</span>
+            <span>•</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
 
         <!-- Hide in Camera View -->
-        <div class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300">
+        <div
+          class="bg-white/[0.01] border border-white/5 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/20 hover:bg-white/[0.02] transition-all duration-300"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+            >
               <strong class="text-white text-sm">Hide in Camera View</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">hide_in_camera_view</span>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >hide_in_camera_view</span
+              >
             </div>
-            <p class="text-xs text-zinc-400 leading-relaxed font-light font-sans">
-              Suppresses all custom SLM viewport gizmos when viewing through an active camera (Numpad 0) to keep composition frames clean.
+            <p
+              class="text-xs text-zinc-400 leading-relaxed font-light font-sans"
+            >
+              Suppresses all custom SLM viewport gizmos when viewing through an
+              active camera (Numpad 0) to keep composition frames clean.
             </p>
           </div>
-          <div class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono">
+          <div
+            class="flex items-center gap-2 mt-4 text-[10px] text-zinc-500 font-mono"
+          >
             <span>Type: <span class="text-amber-500/80">Boolean</span></span>
-            <span>â¢</span>
+            <span>•</span>
             <span>Default: <span class="text-green-500/80">True</span></span>
           </div>
         </div>
@@ -100,62 +165,135 @@ const base = import.meta.env.BASE_URL;
     <!-- SECTION 2: HDRI ROTATION HUD DISPLAY -->
     <section class="space-y-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        <div
+          class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+            ></path>
           </svg>
         </div>
         <div>
-          <h2 class="text-white text-base font-semibold m-0">HDRI Rotation HUD Display</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Customize the viewport feedback overlay during environment sky rotations</p>
+          <h2 class="text-white text-base font-semibold m-0">
+            HDRI Rotation HUD Display
+          </h2>
+          <p class="text-zinc-500 text-xs mt-0.5">
+            Customize the viewport feedback overlay during environment sky
+            rotations
+          </p>
         </div>
       </div>
 
-      <div class="bg-white/[0.01] border border-white/5 rounded-2xl p-6 space-y-6">
+      <div
+        class="bg-white/[0.01] border border-white/5 rounded-2xl p-6 space-y-6"
+      >
         <p class="text-xs text-zinc-400 mb-4 font-light leading-relaxed">
-          When using the interactive environment rotation shortcuts, a HUD overlay renders the current rotation angle. Customize its visual styling below:
+          When using the interactive environment rotation shortcuts, a HUD
+          overlay renders the current rotation angle. Customize its visual
+          styling below:
         </p>
 
         <div class="grid grid-cols-1 gap-4 text-xs">
           <!-- X Position -->
           <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+            >
               <span class="text-white font-medium">HUD X Position (%)</span>
-              <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">hdri_hud_percent_x</span>
+              <span
+                class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                >hdri_hud_percent_x</span
+              >
             </div>
-            <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">Horizontal screen percent alignment offset.</p>
-            <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center font-sans">Default: 50.0</div>
+            <p
+              class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+            >
+              Horizontal screen percent alignment offset.
+            </p>
+            <div
+              class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center font-sans"
+            >
+              Default: 50.0
+            </div>
           </div>
 
           <!-- Y Position -->
           <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+            >
               <span class="text-white font-medium">HUD Y Position (%)</span>
-              <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">hdri_hud_percent_y</span>
+              <span
+                class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                >hdri_hud_percent_y</span
+              >
             </div>
-            <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">Vertical screen percent alignment offset.</p>
-            <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center font-sans">Default: 30.0</div>
+            <p
+              class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+            >
+              Vertical screen percent alignment offset.
+            </p>
+            <div
+              class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center font-sans"
+            >
+              Default: 30.0
+            </div>
           </div>
 
           <!-- Font Size -->
           <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+            >
               <span class="text-white font-medium">Font Size</span>
-              <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">hdri_hud_size</span>
+              <span
+                class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                >hdri_hud_size</span
+              >
             </div>
-            <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">Text font size scale for HUD drawing.</p>
-            <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center font-sans">Default: 24</div>
+            <p
+              class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+            >
+              Text font size scale for HUD drawing.
+            </p>
+            <div
+              class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center font-sans"
+            >
+              Default: 24
+            </div>
           </div>
 
           <!-- Accent Color -->
           <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+            >
               <span class="text-white font-medium">Accent Color</span>
-              <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">hdri_hud_accent_color</span>
+              <span
+                class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                >hdri_hud_accent_color</span
+              >
             </div>
-            <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">HUD text highlight color vector.</p>
-            <div class="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded font-sans">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block border border-white/10"></span>
+            <p
+              class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+            >
+              HUD text highlight color vector.
+            </p>
+            <div
+              class="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded font-sans"
+            >
+              <span
+                class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block border border-white/10"
+              ></span>
               <span>RGBA Amber</span>
             </div>
           </div>
@@ -164,14 +302,24 @@ const base = import.meta.env.BASE_URL;
         <div class="h-[1px] bg-white/5"></div>
 
         <!-- Preview HUD Toggle -->
-        <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center text-xs">
+        <div
+          class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center text-xs"
+        >
           <div>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1 font-sans">
-              <strong class="text-white font-sans">Preview HUD Alignment</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">hdri_hud_preview_show</span>
+            <div
+              class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1 font-sans"
+            >
+              <strong class="text-white font-sans">Preview HUD Alignment</strong
+              >
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >hdri_hud_preview_show</span
+              >
             </div>
             <p class="text-zinc-500 leading-relaxed font-light font-sans">
-              Toggles a persistent test rendering of the HUD inside the active viewport so you can preview layout alignments without initiating modal rotation tools.
+              Toggles a persistent test rendering of the HUD inside the active
+              viewport so you can preview layout alignments without initiating
+              modal rotation tools.
             </p>
           </div>
           <div class="flex-shrink-0 font-mono text-[10px] text-zinc-500">
@@ -184,51 +332,111 @@ const base = import.meta.env.BASE_URL;
     <!-- SECTION 3: VIEWPORT GIZMOS CUSTOMIZATION -->
     <section class="space-y-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+        <div
+          class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+            ></path>
           </svg>
         </div>
         <div>
-          <h2 class="text-white text-base font-semibold m-0">Interactive Viewport Gizmos Layout</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Customize placement, active button states, sensitivities, and stats overlays</p>
+          <h2 class="text-white text-base font-semibold m-0">
+            Interactive Viewport Gizmos Layout
+          </h2>
+          <p class="text-zinc-500 text-xs mt-0.5">
+            Customize placement, active button states, sensitivities, and stats
+            overlays
+          </p>
         </div>
       </div>
 
-      <div class="bg-white/[0.01] border border-white/5 rounded-2xl p-6 space-y-8">
-        
+      <div
+        class="bg-white/[0.01] border border-white/5 rounded-2xl p-6 space-y-8"
+      >
         <!-- Part A: Layout & Anchors -->
         <div>
-          <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-4 font-sans">1. Button Placements & Anchors</h3>
+          <h3
+            class="text-white text-xs font-semibold uppercase tracking-wider mb-4 font-sans"
+          >
+            1. Button Placements & Anchors
+          </h3>
           <div class="grid grid-cols-1 gap-4 text-xs font-sans">
             <!-- Offsets -->
             <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-              <span class="text-white font-medium block mb-1">Offset Alignment (X / Y)</span>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">Adjusts 2D coordinate spacing offset from the light anchor.</p>
+              <span class="text-white font-medium block mb-1"
+                >Offset Alignment (X / Y)</span
+              >
+              <p
+                class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+              >
+                Adjusts 2D coordinate spacing offset from the light anchor.
+              </p>
               <div class="flex gap-2 font-mono text-[9px] text-zinc-400">
-                <span class="bg-white/[0.01] border border-white/5 px-2 py-1 rounded flex-1">X Offset: 20px</span>
-                <span class="bg-white/[0.01] border border-white/5 px-2 py-1 rounded flex-1">Y Offset: 0px</span>
+                <span
+                  class="bg-white/[0.01] border border-white/5 px-2 py-1 rounded flex-1"
+                  >X Offset: 20px</span
+                >
+                <span
+                  class="bg-white/[0.01] border border-white/5 px-2 py-1 rounded flex-1"
+                  >Y Offset: 0px</span
+                >
               </div>
             </div>
 
             <!-- Value Overlay Position -->
             <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+              >
                 <span class="text-white font-medium">Value Overlay Anchor</span>
-                <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">gizmo_overlay_position</span>
+                <span
+                  class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                  >gizmo_overlay_position</span
+                >
               </div>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">Anchors value readouts next to the cursor or at the bottom bar.</p>
-              <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center">Default: 'MOUSE'</div>
+              <p
+                class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+              >
+                Anchors value readouts next to the cursor or at the bottom bar.
+              </p>
+              <div
+                class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center"
+              >
+                Default: 'MOUSE'
+              </div>
             </div>
 
             <!-- Buttons Per Row -->
             <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+              >
                 <span class="text-white font-medium">Gizmos per Row</span>
-                <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">gizmos_per_row</span>
+                <span
+                  class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                  >gizmos_per_row</span
+                >
               </div>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3">Folds layout wrapping after a specific count of buttons.</p>
-              <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center">Default: 5</div>
+              <p
+                class="text-[11px] text-zinc-500 font-light leading-relaxed mb-3"
+              >
+                Folds layout wrapping after a specific count of buttons.
+              </p>
+              <div
+                class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center"
+              >
+                Default: 5
+              </div>
             </div>
           </div>
         </div>
@@ -237,35 +445,72 @@ const base = import.meta.env.BASE_URL;
 
         <!-- Part B: Toggleable Buttons list -->
         <div>
-          <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-2 font-sans">2. Toggleable Gizmo Buttons</h3>
-          <p class="text-zinc-500 text-xs font-light leading-relaxed mb-4 font-sans">
-            Toggle which quick-actions are drawn inline next to light objects in the 3D viewport:
+          <h3
+            class="text-white text-xs font-semibold uppercase tracking-wider mb-2 font-sans"
+          >
+            2. Toggleable Gizmo Buttons
+          </h3>
+          <p
+            class="text-zinc-500 text-xs font-light leading-relaxed mb-4 font-sans"
+          >
+            Toggle which quick-actions are drawn inline next to light objects in
+            the 3D viewport:
           </p>
 
           <div class="grid grid-cols-1 gap-3 text-xs font-sans">
-            <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
+            <div
+              class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
               <span class="text-white block font-medium">Type Switcher</span>
-              <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_type_button</code>
+              <code
+                class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                >show_gizmo_type_button</code
+              >
             </div>
-            <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
+            <div
+              class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
               <span class="text-white block font-medium">Shape Toggle</span>
-              <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_shape_button</code>
+              <code
+                class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                >show_gizmo_shape_button</code
+              >
             </div>
-            <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
+            <div
+              class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
               <span class="text-white block font-medium">Size Handle</span>
-              <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_size_button</code>
+              <code
+                class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                >show_gizmo_size_button</code
+              >
             </div>
-            <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
+            <div
+              class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
               <span class="text-white block font-medium">Beam Angle</span>
-              <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_beam_button</code>
+              <code
+                class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                >show_gizmo_beam_button</code
+              >
             </div>
-            <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
+            <div
+              class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
               <span class="text-white block font-medium">Isolate Light</span>
-              <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_isolate_button</code>
+              <code
+                class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                >show_gizmo_isolate_button</code
+              >
             </div>
-            <div class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
+            <div
+              class="p-3 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
               <span class="text-white block font-medium">Cycles Preview</span>
-              <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">show_gizmo_viewport_preview</code>
+              <code
+                class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                >show_gizmo_viewport_preview</code
+              >
             </div>
           </div>
         </div>
@@ -274,48 +519,108 @@ const base = import.meta.env.BASE_URL;
 
         <!-- Part C: Button Aesthetics -->
         <div>
-          <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-4 font-sans">3. Button Style & Coloring</h3>
+          <h3
+            class="text-white text-xs font-semibold uppercase tracking-wider mb-4 font-sans"
+          >
+            3. Button Style & Coloring
+          </h3>
           <div class="grid grid-cols-1 gap-4 text-xs font-sans">
             <!-- Background Toggle -->
-            <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between">
+            <div
+              class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between"
+            >
               <div>
-                <span class="text-white font-medium block">Show Backgrounds</span>
-                <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">gizmo_show_background</code>
-                <p class="text-[11px] text-zinc-500 font-light mt-1.5">Draws a semi-opaque backdrop circle behind HUD buttons.</p>
+                <span class="text-white font-medium block"
+                  >Show Backgrounds</span
+                >
+                <code
+                  class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                  >gizmo_show_background</code
+                >
+                <p class="text-[11px] text-zinc-500 font-light mt-1.5">
+                  Draws a semi-opaque backdrop circle behind HUD buttons.
+                </p>
               </div>
-              <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3">Default: True</div>
+              <div
+                class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3"
+              >
+                Default: True
+              </div>
             </div>
 
             <!-- Background Color -->
-            <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between">
+            <div
+              class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between"
+            >
               <div>
-                <span class="text-white font-medium block">Background Color</span>
-                <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">gizmo_background_color</code>
-                <p class="text-[11px] text-zinc-500 font-light mt-1.5">Color vector of button background. Active only if backdrop is enabled.</p>
+                <span class="text-white font-medium block"
+                  >Background Color</span
+                >
+                <code
+                  class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                  >gizmo_background_color</code
+                >
+                <p class="text-[11px] text-zinc-500 font-light mt-1.5">
+                  Color vector of button background. Active only if backdrop is
+                  enabled.
+                </p>
               </div>
-              <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3">Default: Dark Grey</div>
+              <div
+                class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3"
+              >
+                Default: Dark Grey
+              </div>
             </div>
 
             <!-- Highlight Hover Color -->
-            <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between">
+            <div
+              class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between"
+            >
               <div>
-                <span class="text-white font-medium block">Hover Accent Color</span>
-                <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">gizmo_highlight_color</code>
-                <p class="text-[11px] text-zinc-500 font-light mt-1.5">Highlight tint applied when the mouse hovers over a button.</p>
+                <span class="text-white font-medium block"
+                  >Hover Accent Color</span
+                >
+                <code
+                  class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                  >gizmo_highlight_color</code
+                >
+                <p class="text-[11px] text-zinc-500 font-light mt-1.5">
+                  Highlight tint applied when the mouse hovers over a button.
+                </p>
               </div>
-              <div class="text-[10px] font-mono text-amber-500/80 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3">Default: Amber / Orange</div>
+              <div
+                class="text-[10px] font-mono text-amber-500/80 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3"
+              >
+                Default: Amber / Orange
+              </div>
             </div>
 
             <!-- Sizing Parameters -->
-            <div class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between">
+            <div
+              class="p-4 rounded-xl bg-zinc-950/40 border border-white/5 flex flex-col justify-between"
+            >
               <div>
-                <span class="text-white font-medium block">Button Size & Spacing</span>
-                <code class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1">gizmo_button_size / spacing</code>
-                <p class="text-[11px] text-zinc-500 font-light mt-1.5">Sets button diameter in pixels and spaces items within the row.</p>
+                <span class="text-white font-medium block"
+                  >Button Size & Spacing</span
+                >
+                <code
+                  class="text-[9px] text-zinc-500 block break-all whitespace-normal mt-1"
+                  >gizmo_button_size / spacing</code
+                >
+                <p class="text-[11px] text-zinc-500 font-light mt-1.5">
+                  Sets button diameter in pixels and spaces items within the
+                  row.
+                </p>
               </div>
               <div class="flex gap-2 font-mono text-[9px] text-zinc-400 mt-3">
-                <span class="bg-white/[0.01] border border-white/5 p-1 rounded flex-1 text-center">Size: 22px</span>
-                <span class="bg-white/[0.01] border border-white/5 p-1 rounded flex-1 text-center">Gap: 4px</span>
+                <span
+                  class="bg-white/[0.01] border border-white/5 p-1 rounded flex-1 text-center"
+                  >Size: 22px</span
+                >
+                <span
+                  class="bg-white/[0.01] border border-white/5 p-1 rounded flex-1 text-center"
+                  >Gap: 4px</span
+                >
               </div>
             </div>
           </div>
@@ -325,39 +630,95 @@ const base = import.meta.env.BASE_URL;
 
         <!-- Part D: Sensitivities -->
         <div>
-          <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-2 font-sans">4. Drag Tweaking Sensitivity</h3>
-          <p class="text-zinc-500 text-xs font-light leading-relaxed mb-4 font-sans">
-            Configure incremental multiplier rates for interactive mouse drags, mapping default, fine adjustments (<kbd class="text-zinc-400">Shift</kbd>), and snapping increments (<kbd class="text-zinc-400">Ctrl</kbd>):
+          <h3
+            class="text-white text-xs font-semibold uppercase tracking-wider mb-2 font-sans"
+          >
+            4. Drag Tweaking Sensitivity
+          </h3>
+          <p
+            class="text-zinc-500 text-xs font-light leading-relaxed mb-4 font-sans"
+          >
+            Configure incremental multiplier rates for interactive mouse drags,
+            mapping default, fine adjustments (<kbd class="text-zinc-400"
+              >Shift</kbd
+            >), and snapping increments (<kbd class="text-zinc-400">Ctrl</kbd>):
           </p>
 
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs font-mono border-collapse">
               <thead>
-                <tr class="border-b border-white/5 text-zinc-500 uppercase text-[10px]">
+                <tr
+                  class="border-b border-white/5 text-zinc-500 uppercase text-[10px]"
+                >
                   <th class="py-2 pr-4 font-semibold">Tweak Property</th>
                   <th class="py-2 px-4 font-semibold">Default Speed</th>
-                  <th class="py-2 px-4 font-semibold">Shift Speed (Fine-tune)</th>
+                  <th class="py-2 px-4 font-semibold"
+                    >Shift Speed (Fine-tune)</th
+                  >
                   <th class="py-2 pl-4 font-semibold">Ctrl Speed (Snapping)</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-white/5">
                 <tr>
-                  <td class="py-3 pr-4 text-white font-semibold font-sans">Intensity (Power)</td>
-                  <td class="py-3 px-4 text-zinc-400">1.0 <span class="text-[9px] text-zinc-600 block break-all">gizmo_intensity_sensitivity_default</span></td>
-                  <td class="py-3 px-4 text-zinc-400">0.1 <span class="text-[9px] text-zinc-600 block break-all">gizmo_intensity_sensitivity_shift</span></td>
-                  <td class="py-3 pl-4 text-zinc-400">5.0 <span class="text-[9px] text-zinc-600 block break-all">gizmo_intensity_sensitivity_ctrl</span></td>
+                  <td class="py-3 pr-4 text-white font-semibold font-sans"
+                    >Intensity (Power)</td
+                  >
+                  <td class="py-3 px-4 text-zinc-400"
+                    >1.0 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_intensity_sensitivity_default</span
+                    ></td
+                  >
+                  <td class="py-3 px-4 text-zinc-400"
+                    >0.1 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_intensity_sensitivity_shift</span
+                    ></td
+                  >
+                  <td class="py-3 pl-4 text-zinc-400"
+                    >5.0 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_intensity_sensitivity_ctrl</span
+                    ></td
+                  >
                 </tr>
                 <tr>
-                  <td class="py-3 pr-4 text-white font-semibold font-sans">Size (Dimension)</td>
-                  <td class="py-3 px-4 text-zinc-400">0.05 <span class="text-[9px] text-zinc-600 block break-all">gizmo_size_sensitivity_default</span></td>
-                  <td class="py-3 px-4 text-zinc-400">0.005 <span class="text-[9px] text-zinc-600 block break-all">gizmo_size_sensitivity_shift</span></td>
-                  <td class="py-3 pl-4 text-zinc-400">0.25 <span class="text-[9px] text-zinc-600 block break-all">gizmo_size_sensitivity_ctrl</span></td>
+                  <td class="py-3 pr-4 text-white font-semibold font-sans"
+                    >Size (Dimension)</td
+                  >
+                  <td class="py-3 px-4 text-zinc-400"
+                    >0.05 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_size_sensitivity_default</span
+                    ></td
+                  >
+                  <td class="py-3 px-4 text-zinc-400"
+                    >0.005 <span
+                      class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_size_sensitivity_shift</span
+                    ></td
+                  >
+                  <td class="py-3 pl-4 text-zinc-400"
+                    >0.25 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_size_sensitivity_ctrl</span
+                    ></td
+                  >
                 </tr>
                 <tr>
-                  <td class="py-3 pr-4 text-white font-semibold font-sans">Beam Angle (Spotlight)</td>
-                  <td class="py-3 px-4 text-zinc-400">0.2 <span class="text-[9px] text-zinc-600 block break-all">gizmo_beam_sensitivity_default</span></td>
-                  <td class="py-3 px-4 text-zinc-400">0.02 <span class="text-[9px] text-zinc-600 block break-all">gizmo_beam_sensitivity_shift</span></td>
-                  <td class="py-3 pl-4 text-zinc-400">1.0 <span class="text-[9px] text-zinc-600 block break-all">gizmo_beam_sensitivity_ctrl</span></td>
+                  <td class="py-3 pr-4 text-white font-semibold font-sans"
+                    >Beam Angle (Spotlight)</td
+                  >
+                  <td class="py-3 px-4 text-zinc-400"
+                    >0.2 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_beam_sensitivity_default</span
+                    ></td
+                  >
+                  <td class="py-3 px-4 text-zinc-400"
+                    >0.02 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_beam_sensitivity_shift</span
+                    ></td
+                  >
+                  <td class="py-3 pl-4 text-zinc-400"
+                    >1.0 <span class="text-[9px] text-zinc-600 block break-all"
+                      >gizmo_beam_sensitivity_ctrl</span
+                    ></td
+                  >
                 </tr>
               </tbody>
             </table>
@@ -368,76 +729,138 @@ const base = import.meta.env.BASE_URL;
 
         <!-- Part E: Light Stats Overlay -->
         <div>
-          <h3 class="text-white text-xs font-semibold uppercase tracking-wider mb-2 font-sans">5. Light Stats Overlay</h3>
-          <p class="text-zinc-500 text-xs font-light leading-relaxed mb-4 font-sans">
-            Toggle a details panel drawn directly in the 3D view showing power stats for active lamps:
+          <h3
+            class="text-white text-xs font-semibold uppercase tracking-wider mb-2 font-sans"
+          >
+            5. Light Stats Overlay
+          </h3>
+          <p
+            class="text-zinc-500 text-xs font-light leading-relaxed mb-4 font-sans"
+          >
+            Toggle a details panel drawn directly in the 3D view showing power
+            stats for active lamps:
           </p>
 
           <div class="grid grid-cols-1 gap-6 text-xs font-sans">
             <!-- Card toggle -->
-            <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                <span class="text-white font-medium">Show Light Stats Overlay</span>
-                <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">gizmo_show_stats_overlay</span>
+            <div
+              class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl hover:border-amber-500/10 transition-colors"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2"
+              >
+                <span class="text-white font-medium"
+                  >Show Light Stats Overlay</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                  >gizmo_show_stats_overlay</span
+                >
               </div>
               <p class="text-[11px] text-zinc-500 font-light leading-relaxed">
-                Appends active stats readout (Wattage, Kelvin temperatures, Collection folder details) above the button gizmo clusters.
+                Appends active stats readout (Wattage, Kelvin temperatures,
+                Collection folder details) above the button gizmo clusters.
               </p>
-              <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3">Default: True</div>
+              <div
+                class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1 rounded text-center mt-3"
+              >
+                Default: True
+              </div>
             </div>
 
             <!-- Stats Styles -->
-            <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl space-y-3">
-              <span class="text-white font-medium block">Stats Overlay Appearance Customization</span>
+            <div
+              class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl space-y-3"
+            >
+              <span class="text-white font-medium block"
+                >Stats Overlay Appearance Customization</span
+              >
               <div class="grid grid-cols-1 gap-2 text-[10px] font-sans">
                 <div class="p-2 bg-white/[0.01] border border-white/5 rounded">
                   <span class="text-zinc-500 block mb-0.5">Font Size</span>
-                  <code class="text-zinc-300">stats_overlay_font_size (Default: 12)</code>
+                  <code class="text-zinc-300"
+                    >stats_overlay_font_size (Default: 12)</code
+                  >
                 </div>
                 <div class="p-2 bg-white/[0.01] border border-white/5 rounded">
                   <span class="text-zinc-500 block mb-0.5">Vertical Gap</span>
-                  <code class="text-zinc-300">stats_overlay_gap (Default: 5px)</code>
+                  <code class="text-zinc-300"
+                    >stats_overlay_gap (Default: 5px)</code
+                  >
                 </div>
-                <div class="p-2 bg-white/[0.01] border border-white/5 rounded col-span-2">
-                  <span class="text-zinc-500 block mb-0.5">Background & Opacity</span>
-                  <code class="text-zinc-300 font-mono">stats_overlay_bg_color / stats_overlay_bg_alpha</code>
+                <div
+                  class="p-2 bg-white/[0.01] border border-white/5 rounded col-span-2"
+                >
+                  <span class="text-zinc-500 block mb-0.5"
+                    >Background & Opacity</span
+                  >
+                  <code class="text-zinc-300 font-mono"
+                    >stats_overlay_bg_color / stats_overlay_bg_alpha</code
+                  >
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- SECTION 4: VIEWPORT HIGHLIGHTS (GPU OUTLINES) -->
     <section class="space-y-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        <div
+          class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            ></path>
           </svg>
         </div>
         <div>
-          <h2 class="text-white text-base font-semibold m-0">Viewport Highlights (GPU Outlines)</h2>
-          <p class="text-zinc-500 text-xs mt-0.5">Configure styling overlays highlighting linked receiver/blocker objects</p>
+          <h2 class="text-white text-base font-semibold m-0">
+            Viewport Highlights (GPU Outlines)
+          </h2>
+          <p class="text-zinc-500 text-xs mt-0.5">
+            Configure styling overlays highlighting linked receiver/blocker
+            objects
+          </p>
         </div>
       </div>
 
-      <div class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl space-y-6">
-        
+      <div
+        class="bg-white/[0.01] border border-white/5 p-6 rounded-2xl space-y-6"
+      >
         <!-- Toggle details -->
-        <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center text-xs">
+        <div
+          class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center text-xs"
+        >
           <div>
             <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
               <strong class="text-white font-sans">GPU Highlights Mode</strong>
-              <span class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all">gpu_highlight_mode</span>
+              <span
+                class="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-mono text-zinc-400 self-start sm:self-auto break-all"
+                >gpu_highlight_mode</span
+              >
             </div>
             <p class="text-zinc-500 leading-relaxed font-light font-sans">
-              Determines visual presentation of highlight borders inside Blender: <code>'BOUNDINGBOX'</code>, <code>'SILHOUETTE'</code>, or <code>'BOTH'</code>.
+              Determines visual presentation of highlight borders inside
+              Blender: <code>'BOUNDINGBOX'</code>, <code>'SILHOUETTE'</code>, or <code
+                >'BOTH'</code
+              >.
             </p>
           </div>
-          <div class="flex-shrink-0 font-mono text-[10px] text-zinc-500 font-sans">
+          <div
+            class="flex-shrink-0 font-mono text-[10px] text-zinc-500 font-sans"
+          >
             Default: <span class="text-amber-500/80">'BOUNDINGBOX'</span>
           </div>
         </div>
@@ -446,67 +869,119 @@ const base = import.meta.env.BASE_URL;
 
         <!-- Layout grid -->
         <div class="grid grid-cols-1 gap-4 text-xs font-sans">
-          
           <!-- Receiver Outline Color -->
-          <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between">
+          <div
+            class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between"
+          >
             <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
-                <span class="text-white font-medium">Receiver Outline Color</span>
-                <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">gpu_highlight_receiver_color</span>
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+              >
+                <span class="text-white font-medium"
+                  >Receiver Outline Color</span
+                >
+                <span
+                  class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                  >gpu_highlight_receiver_color</span
+                >
               </div>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">RGBA color highlight outlining receiver objects bound in Light Linking rigs.</p>
+              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">
+                RGBA color highlight outlining receiver objects bound in Light
+                Linking rigs.
+              </p>
             </div>
-            <div class="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded mt-3">
-              <span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block border border-white/10"></span>
+            <div
+              class="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded mt-3"
+            >
+              <span
+                class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block border border-white/10"
+              ></span>
               <span>Default: Light Blue</span>
             </div>
           </div>
 
           <!-- Blocker Outline Color -->
-          <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between">
+          <div
+            class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between"
+          >
             <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
-                <span class="text-white font-medium">Blocker Outline Color</span>
-                <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">gpu_highlight_blocker_color</span>
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+              >
+                <span class="text-white font-medium">Blocker Outline Color</span
+                >
+                <span
+                  class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                  >gpu_highlight_blocker_color</span
+                >
               </div>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">RGBA color highlight outlining blocker objects bound in Shadow Linking rigs.</p>
+              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">
+                RGBA color highlight outlining blocker objects bound in Shadow
+                Linking rigs.
+              </p>
             </div>
-            <div class="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded mt-3">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block border border-white/10"></span>
+            <div
+              class="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded mt-3"
+            >
+              <span
+                class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block border border-white/10"
+              ></span>
               <span>Default: Amber / Orange</span>
             </div>
           </div>
 
           <!-- Face fill alpha -->
-          <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between">
+          <div
+            class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between"
+          >
             <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+              >
                 <span class="text-white font-medium">Face Opacity</span>
-                <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">gpu_highlight_fill_alpha</span>
+                <span
+                  class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                  >gpu_highlight_fill_alpha</span
+                >
               </div>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">Sets background fill opacity inside the highlight bounds when drawing solid overlays.</p>
+              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">
+                Sets background fill opacity inside the highlight bounds when
+                drawing solid overlays.
+              </p>
             </div>
-            <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center mt-3">Default: 0.1</div>
+            <div
+              class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center mt-3"
+            >
+              Default: 0.1
+            </div>
           </div>
 
           <!-- Outline thickness -->
-          <div class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between">
+          <div
+            class="p-4 bg-zinc-950/40 border border-white/5 rounded-xl flex flex-col justify-between"
+          >
             <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1.5"
+              >
                 <span class="text-white font-medium">Line Thickness</span>
-                <span class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all">gpu_highlight_line_width</span>
+                <span
+                  class="text-[9px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded self-start sm:self-auto break-all"
+                  >gpu_highlight_line_width</span
+                >
               </div>
-              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">Pixel thickness parameter governing drawn outline margins.</p>
+              <p class="text-[11px] text-zinc-500 font-light leading-relaxed">
+                Pixel thickness parameter governing drawn outline margins.
+              </p>
             </div>
-            <div class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center mt-3">Default: 2px</div>
+            <div
+              class="text-[10px] font-mono text-zinc-400 bg-white/[0.01] border border-white/5 p-1.5 rounded text-center mt-3"
+            >
+              Default: 2px
+            </div>
           </div>
-
         </div>
-
       </div>
     </section>
-
   </div>
 </DocLayout>
-
-
