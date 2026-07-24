@@ -9,8 +9,7 @@ Scene Light Manager (SLM) is a professional, high-fidelity lighting workflow too
 
 ---
 
-> [!PLACEHOLDER: Main Addon Teaser / Hero Video]
-> *Add a high-quality 10-15s looping GIF or MP4 showing SLM's viewport gizmos adjusting a light's power and shape in real time.*
+![Scene Light Manager Brand Logo](public/promo/promo-logo-slm-c.webp)
 
 ---
 
@@ -35,8 +34,7 @@ Gain instant, contextual access to light settings directly on the active light:
 *   **Real-Time Value Overlay:** Get beautiful, color-coded HUD feedback showing your precise parameter values as you drag. Choose to lock the HUD to your mouse or snap it cleanly below the gizmo cluster.
 *   **Alt-Modifier Batch Control:** Hold `Alt` while adjusting a viewport gizmo to propagate the change to all selected lights instantly.
 
-> [!PLACEHOLDER: Viewport Gizmos Adjustment Demo]
-> *Show a GIF of adjusting light power and size with the floating value tag changing values.*
+![Viewport Gizmos Adjustment Interface](public/overlay_gizmos/viewport_2d_gizmos.png)
 
 ---
 
@@ -45,8 +43,7 @@ Configure Blender’s powerful Light and Shadow Linking systems visually:
 *   **Visual Silhouette Outlines:** Selecting any light instantly projects clean, anti-aliased wireframes and silhouette highlights over the linked receiver or blocker geometry.
 *   **Dynamic Customization:** Choose from three outline modes (*Silhouette*, *Wireframe*, or *Both*), and customize line thickness and colors to match your scene style.
 
-> [!PLACEHOLDER: Light and Shadow Linking Visual Highlights]
-> *Show a comparison image of a character/asset highlighted in blue (linked receiver) and red (shadow blocker) when selecting a spotlight.*
+![Light and Shadow Linking Visual Highlights](public/promo/promo-linking.webp)
 
 ---
 
@@ -56,12 +53,34 @@ Ditch the shader editor mapping node. Rotate your environment from any camera an
 *   **Instant Drag Gesture:** Hold `Ctrl + Alt + Right Mouse Button` and drag horizontally to spin the dome. Release to commit, or cancel with a right click.
 *   **HUD Angle Readout:** A clean digital compass at the bottom of the viewport displays the exact rotation angle in real time.
 
-> [!PLACEHOLDER: Interactive HDRI Rotation Demo]
-> *Show a viewport spinning the background HDRI with the bottom HUD angle displaying the rotation in degrees.*
+![Interactive HDRI World Rotation — Studio Setup](public/promo/promo-world_a.webp)
+![Interactive HDRI World Rotation — Exterior Scene](public/promo/promo-world_b.webp)
 
 ---
 
-### 4. Smart Light Isolation (Solo Mode)
+### 4. HDR Studio Light Textures & Gobos
+Project real-world high-dynamic-range softboxes and patterns directly from Blender Area Lights:
+*   **Photographic Realism:** Map photographic softbox reflection textures and studio Gobos with a single click.
+*   **Integrated Node Automation:** Behind the scenes, SLM handles shader setups, texture mapping coordinate projections, and strength balance.
+*   **Interactive Tweaks:** Adjust Gobo rotation, scale, and softness directly from viewport operators.
+
+![HDR Studio Light Textures — Gobo Projector Setup](public/promo/promo-light_texture_a.webp)
+![HDR Studio Light Textures — Studio Softbox](public/promo/promo-light_texture_b.webp)
+
+---
+
+### 5. Cinematic Presets & Custom Lighting Rigs
+Build master lighting setups in seconds using built-in rigs and saving custom presets:
+*   **Instant Rig Spawning:** Spawn standard 3-point rigs, butterfly setups, or backlighting rings aligned to your active viewport camera.
+*   **Preset Library Manager:** Save complete scene lighting states to the global asset library and restore them instantly.
+*   **Non-Destructive Mixing:** Test different lighting directions, colors, and intensities by saving snapshots as presets.
+
+![Cinematic Presets & Lighting Rigs — Portrait Studio Setup](public/promo/promo-presets_a.webp)
+![Cinematic Presets & Lighting Rigs — High-Contrast Cinematic Rim](public/promo/promo-presets_b.webp)
+
+---
+
+### 6. Smart Light Isolation (Solo Mode)
 Isolate a single light source to judge its contribution, shadows, and bounce:
 *   **Synchronized Soloing:** Solo any light via the viewport gizmo button or the sidebar list.
 *   **Automatic Restores:** Un-soloing returns your scene to the exact previous visibility layout.
@@ -69,25 +88,23 @@ Isolate a single light source to judge its contribution, shadows, and bounce:
 
 ---
 
-### 5. Unified Light Manager Sidebar
+### 7. Unified Light Manager Sidebar
 A beautiful, tabbed panel consolidating every light source, emissive mesh, and setting in your project:
 *   **Properties Tab:** Grouped list control over name, power, color, and visibility of all scene lights.
 *   **Synchronization Tab:** Seamlessly synchronize viewport selections, automatically activate collections, or sync visibility parameters.
 *   **Light List Tab:** Customize which property columns are visible (including icons for Light Groups, Light Linking, Shadow Linking, and Exposure Overrides).
 *   **Mesh Emitters Detection:** Automatically scan and list mesh objects acting as lights via emissive shaders (using configurable search terms like `led`, `emit`, `glow`).
 
-> [!PLACEHOLDER: Unified Sidebar Interface Screenshot]
-> *Show a clean, high-resolution screenshot of the addon sidebar with its tabs (Properties, Light List, Synchronization, etc.).*
+![Unified Sidebar Interface List Panel](public/panel_images/ui_list.png)
 
 ---
 
-### 6. Geographic Sun & Sky Positioning
+### 8. Geographic Sun & Sky Positioning
 Align your Nishita sky or solar directional lights using real-world geographic coordinates:
 *   **Latitude/Longitude Inputs:** Enter standard coordinates in Decimal format or degrees/minutes/seconds (e.g., `48°51'30.2"N 02°17'40.2"E`).
 *   **3D Solar Path Overlay:** Projects a beautiful daily solar path arc and cardinal direction compass (North-South, East-West) inside the 3D viewport.
 
-> [!PLACEHOLDER: Geographic Solar Arc Trajectory Demo]
-> *Show the 3D Solar trajectory yellow arc in the viewport showing solar position.*
+![Geographic Solar Positioning Interface](public/panel_images/geographic_sun_alignment.png)
 
 ---
 
