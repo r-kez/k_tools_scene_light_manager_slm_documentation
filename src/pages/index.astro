@@ -87,7 +87,7 @@ const base = import.meta.env.BASE_URL;
         class="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500"
         >Available On</span
       >
-      <div class="flex justify-center items-center">
+      <div class="flex flex-wrap justify-center items-center gap-5">
         <a
           href="https://superhivemarket.com/"
           target="_blank"
@@ -100,6 +100,19 @@ const base = import.meta.env.BASE_URL;
             class="h-10 object-contain"
           />
           <span>Superhive</span>
+        </a>
+        <a
+          href="https://kezives.gumroad.com/l/slm"
+          target="_blank"
+          class="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-zinc-950 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_4px_25px_rgba(255,255,255,0.15)]"
+          title="Gumroad"
+        >
+          <img
+            src={`${base}third_party/gumroad.png`}
+            alt="Gumroad"
+            class="h-10 object-contain"
+          />
+          <span>Gumroad</span>
         </a>
       </div>
     </div>
